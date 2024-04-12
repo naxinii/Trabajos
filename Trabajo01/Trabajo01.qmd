@@ -1,0 +1,31 @@
+---
+title: "Trabajo01"
+author: "IgnaciaCS"
+format: html
+editor: visual
+bibliography: Trabajo1.bib
+link-citations: true
+---
+
+## Trabajo 01: R para Análisis Estadístico
+
+## Por: Ignacia Castillo Soto
+
+### Mercantilización del sistema educativo y segregación escolar en Chile
+
+#### Introducción
+
+La mercantilización del sistema educativo en Chile se sitúa en el contexto de la década de los 80 en el país, marcado por la dictadura militar y la imposición del modelo neoliberal como experimento en Latinoamérica siendo nuestro país el primero en implementarlo, esta expansión mercantil hacia los ámbitos cotidianos de la vida desmanteló lo que se conocía como el Estado benefactor incentivando la competencia individual [ver @juaneduardogarcia-huidobroDesigualdadEducativaSegmentacion2007, pp., 70-71]. En cuanto al ámbito escolar,
+
+“se realizaron cuatro grandes transformaciones consideradas los pilares del actual modelo, 1) redefinición del marco regulatorio educativo, del rol del Estado y de la prelación de derechos educativos a través de una nueva Constitución; 2) instalación de un modelo de gestión del sistema educativo formal que introduce un nuevo y central actor, los sostenedores (municipios y agentes privados); 3) implementación de los establecimientos educacionales, a través de una particular versión de vouchers o subsidios portables a los alumnos; 4) reestructuración y privatización del sistema de educación superior. Todas estas transformaciones terminan por institucionalizarse a través de la Ley Orgánica Constitucional de Educación, dictada el 10 de marzo de 1990, un día antes que Pinochet entregara el poder.” [@budnikEmpresaEducativaChilena2011, pp. 307-308].
+
+A pesar de que han existido reformas, no han sido sustancialmente radicales para generar cambios en las políticas anteriormente mencionadas y si bien han existido, [@budnikEmpresaEducativaChilena2011] considera que han seguido desmontando el sistema de educación pública sujetando la educación a intereses comerciales, pasando de ser una garantía estatal a una mercancía, marcada por ideologías que sobrevaloran los mecanismos del mercado en la mejora de la enseñanza y aprendizaje, lo cual ha tenido como resultado una privatización extrema del sistema educativo con implicaciones significativas en términos de segregación y desigualdad.
+
+La segregación implica la manera en que los diferentes grupos sociales están distribuidos, ya sea en distintas unidades organizativas, en diferentes áreas geográficas, o en una combinación de ambas. Esta distribución desigual afecta las posibilidades de interacción entre los miembros de estos grupos. Según [@ministeriodeeducacionPrimerGranDebate2017],
+
+“Actualmente dos mecanismos de política pública son relevantes para hablar sobre segregación educativa. El primero tiene que ver con las facultades que poseen los establecimientos para seleccionar estudiantes, que redundan en que la conformación de estos establecimientos tienda a ser homogénea según criterios socioeconómicos o de género. Un segundo aspecto es la “libertad de elección de los padres”, que implica que, al momento de escoger un establecimiento, los padres ponen en práctica ciertos patrones socioculturales que a fin de cuentas actúan como mecanismos de autoselección.” (p. 56)\
+En Chile, se le da a los padres una gran libertad para elegir la escuela de sus hijos, más que en la mayoría de los países de la OCDE. En teoría, los padres tienen la libertad de elegir la escuela que deseen para sus hijos, sin restricciones geográficas u otras. Sin embargo, en la práctica, se permite que las escuelas utilicen una variedad de criterios de selección que a veces limitan esa libertad, según evidencian estudios como los de Carrasco, et. Al; y Godoy, Salazar y Treviño, en 2014. [ver @ministeriodeeducacionPrimerGranDebate2017, p.66].
+
+“El hecho de que la distribución de los alumnos entre las diferentes escuelas no se produzca en forma aleatoria dirige la atención hacia la identificación de las causas que explican la ocurrencia de la segregación escolar.” [@belleicEstudioSegregacionSocioeconomica2013, p.330].
+
+Como vimos anteriormente, la evidencia bibliográfica sugiere que en Chile las brechas educativas han ido en aumento gracias a que el sistema educacional está diseñado para funcionar mediante la lógica de la de competencia replicando las desigualdades preexistentes en país, por lo que para esta entrega nos centraremos en cómo las prácticas de mercantilización dentro del sistema educativo han permitido y fomentado la segregación escolar en el país, mediante mecanismos de selección y pruebas estandarizadas, legitimadas por las políticas que se han implementado desde la reforma neoliberal.
