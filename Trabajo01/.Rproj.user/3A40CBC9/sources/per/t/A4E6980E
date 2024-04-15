@@ -1,12 +1,12 @@
 {
-    "id": "E428E9CC",
+    "id": "A4E6980E",
     "path": "~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo01/Trabajo01.qmd",
     "project_path": "Trabajo01.qmd",
     "type": "quarto_markdown",
-    "hash": "3895883027",
+    "hash": "1521260572",
     "contents": "",
     "dirty": false,
-    "created": 1711409547109.0,
+    "created": 1713201958205.0,
     "source_on_save": false,
     "relative_order": 1,
     "properties": {
@@ -19,15 +19,15 @@
         "scrollLine": "0",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "3157:973.5999755859375",
+        "rmdVisualModeLocation": "3549:874.4000244140625",
         "docOutlineSize": "45"
     },
     "folds": "",
-    "lastKnownWriteTime": 1713135565,
+    "lastKnownWriteTime": 1713202387,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1713135565676,
+    "last_content_update": 1713202387361,
     "read_only": false,
     "read_only_alternatives": []
 }
