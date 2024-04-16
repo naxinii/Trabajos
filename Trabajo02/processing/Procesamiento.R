@@ -105,7 +105,7 @@ load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/
 
 frq(simce2m2017_total$rbd)
 
-#b. Recodificación - No aplica
+#b. Recodificar/ reordenar - No aplica
 
 #c. Etiquetado - No aplica
 
@@ -114,38 +114,60 @@ frq(simce2m2017_total$rbd)
 #a. Descriptivo
 
 frq(simce2m2017_total$cod_depe2)
+table(simce2m2017_total$cod_depe2)
 
-#b. Recodificación
+#b. Recodificar/ reordenar
 
-simce2m2017_total$cod_depe2 <- recode(simce2m2017_total$cod_depe2, "Municipal=1; Particular pagado=3; Particular subvencionado=2")
+simce2m2017_total$cod_depe2 = factor(simce2m2017_total$cod_depe2, levels = c("Municipal", "Particular subvencionado","Particular pagado"))
+
+frq(simce2m2017_total$cod_depe2)
+table(simce2m2017_total$cod_depe2)
 
 #c. Etiquetado
-
-
 
 #Variable 3: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
 #a. Descriptivo
 
 frq(simce2m2017_total$cod_grupo)
+table(simce2m2017_total$cod_grupo)
 
-#b. Recodificación
+#b. Recodificar/ reordenar
 
+simce2m2017_total$cod_grupo = factor(simce2m2017_total$cod_grupo, levels = c("Bajo","Medio bajo","Medio","Medio alto","Alto"))
 
+frq(simce2m2017_total$cod_grupo)
+table(simce2m2017_total$cod_grupo)
 
 #c. Etiquetado
 
 
 
-#Variable 4: "cdm_2017" = Categoría de Desempeño 2017 (ALTO, MEDIO, MEDIO-BAJO e INSUFICIENTE)
+#Variable 4: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
 
 #a. Descriptivo
 
 frq(simce2m2017_total$cdm_2017)
+table(simce2m2017_total$cdm_2017)
 
-#b. Recodificación
+
+#b. Recodificar/ reordenar
+
+#Casos perdidos
+
+simce2m2017_total %>% mutate(., cdm_2017 = case_when(cdm_2017 %in% c("SIN CATEGORIA: BAJA MATRICULA","SIN CATEGORIA: FALTA DE INFORMACIÓN")~NA_character_,
+                                                       TRUE~cdm_2017))
+
+frq(simce2m2017_total$cdm_2017)
+table(simce2m2017_total$cdm_2017)
+
+#Eliminar casos perdidos
 
 
+simce2m2017_total$cdm_2017 = factor(simce2m2017_total$cdm_2017, levels = c("INSUFICIENTE","MEDIO-BAJO","MEDIO","ALTO"))
+
+frq(simce2m2017_total$cdm_2017)
+table(simce2m2017_total$cdm_2017)
 
 #c. Etiquetado
 
