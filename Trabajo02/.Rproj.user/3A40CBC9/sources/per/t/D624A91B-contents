@@ -1,19 +1,36 @@
+
+
+
 #Trabajo 02: R para Análisis Estadístico
 
-#Preparación de datos
+
+
+#Código de preparación de datos
 
 #Antecedentes - Simce 2017
 #Simce es parte de las evaluaciones que se aplican en Chile, definidas en el Plan de Evaluaciones Nacionales e Internacionales, 
-#y corresponde a una medición estandarizada anual a todas y todos los estudiantes del país que cursan los niveles evaluados.
+#y corresponde a una medición estandarizada anual a todas y todos los estudiantes del país que cursan los niveles evaluados. (Para los fines de esta
+#investigación, se tomarán los resultados de los estudiantes de 2° medio en 2017).
 #Su objetivo es conocer los resultados educativos de los establecimientos, evaluando el logro de los contenidos y habilidades del Currículum Nacional,
 #con pruebas en diferentes asignaturas o áreas de aprendizaje; y recogiendo información sobre el contexto educativo a través de cuestionarios que 
 #responden directores(as), docentes, estudiantes, padres, madres y apoderados, de modo de analizar los resultados en forma integral.
 
+
+
 #1. Librerías a utilizar
 
-pacman::p_load(dplyr, sjmisc, car, sjlabelled, stargazer, haven)
+pacman::p_load(dplyr, 
+               sjmisc, 
+               car, 
+               sjlabelled, 
+               stargazer, 
+               haven)
+
+
 
 #2. Carga de la base de datos
+
+
 
 rm(list=ls())       
 options(scipen=999) 
@@ -34,9 +51,11 @@ View(simce2m2017_rbd)
 
 #Para este análisis consideré relevante las siguientes variables, según corresponda
 
+
+
 #De la base "cdm_2017"
- # "rbd" = Rol base de datos del establecimiento
- # "cdm_2017" = Categoría de Desempeño 2017 (ALTO, MEDIO, MEDIO-BAJO e INSUFICIENTE)
+# "rbd" = Rol base de datos del establecimiento
+# "cdm_2017" = Categoría de Desempeño 2017 (ALTO, MEDIO, MEDIO-BAJO e INSUFICIENTE)
 
 find_var(data = cdm_2017, "rbd")
 find_var(data = cdm_2017, "cdm_2017")
@@ -51,9 +70,11 @@ View(cdm_2017)
 
 save(proc_cdm_2017,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_cdm_2017.RData")
 
+
+
 #De la base "idps2m2017_rbd"
- # "rbd" = Rol base de datos del establecimiento
- # "cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
+# "rbd" = Rol base de datos del establecimiento
+# "cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
 
 find_var(data = idps2m2017_rbd, "rbd")
 find_var(data = idps2m2017_rbd, "cod_depe2")
@@ -68,9 +89,11 @@ View(proc_idps2m2017_rbd)
 
 save(proc_idps2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_idps2m2017_rbd.RData")
 
+
+
 #De la base "simce2m2017_rbd"
- # "rbd" = Rol base de datos del establecimiento
- # "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
+# "rbd" = Rol base de datos del establecimiento
+# "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
 find_var(data = simce2m2017_rbd, "rbd")
 find_var(data = simce2m2017_rbd, "cod_grupo")
@@ -85,10 +108,20 @@ View(proc_simce2m2017_rbd)
 
 save(proc_simce2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_simce2m2017_rbd.RData")
 
+
+
 #Unir por "rbd"
 
 data <- merge(proc_cdm_2017,proc_idps2m2017_rbd, by="rbd")
 simce2m2017_total <- merge (data, proc_simce2m2017_rbd, by="rbd")
+
+names(simce2m2017_total)
+sjlabelled::get_label(simce2m2017_total)
+
+find_var(data = simce2m2017_total, "cdm_2017")
+find_var(data = simce2m2017_total, "cod_depe2")
+find_var(data = simce2m2017_total,"cod_grupo")
+simce2m2017_total <- simce2m2017_total %>% select(cdm_2017,cod_depe2,cod_grupo)
 
 dim(simce2m2017_total)
 View(simce2m2017_total)
@@ -97,19 +130,15 @@ save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UA
 
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_total.RData")
 
+View(simce2m2017_total)
+
+
+
 #4. Procesamiento de Variables
 
-# Variable 1: "rbd" = Rol base de datos del establecimiento
 
-#a. Descriptivo
 
-frq(simce2m2017_total$rbd)
-
-#b. Recodificar/ reordenar - No aplica
-
-#c. Etiquetado - No aplica
-
-#Variable 2:"cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
+#VARIABLE 1:"cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
 
 #a. Descriptivo
 
@@ -125,7 +154,12 @@ table(simce2m2017_total$cod_depe2)
 
 #c. Etiquetado
 
-#Variable 3: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
+get_label(simce2m2017_total$cod_depe2)
+simce2m2017_total$cod_depe2 <- set_label(x = simce2m2017_total$cod_depe2,label = "Código desempeño")
+
+
+
+#VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
 #a. Descriptivo
 
@@ -141,28 +175,35 @@ table(simce2m2017_total$cod_grupo)
 
 #c. Etiquetado
 
+simce2m2017_total$cod_grupo<- set_label(x = simce2m2017_total$cod_grupo,label = "GSE")
 
 
-#Variable 4: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
 
-#a. Descriptivo
+#VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
+
+# Los establecimientos que tengan valores del Índice Final hasta el valor del percentil 12 (inclusive) de la distribución de este índice se clasificarán en la categoría Desempeño Insuficiente.
+# Los establecimientos que presenten valores del Índice Final por sobre el valor del percentil 12 y hasta el percentil 35 (inclusive) se clasificarán en la categoría Desempeño Medio-Bajo.
+# Los establecimientos que se sitúen por sobre el valor del percentil 35 y hasta el percentil 85 (inclusive) de la distribución del índice Final se clasificarán en la categoría Desempeño Medio.
+# Los establecimientos con valores del Índice Final superiores al valor del percentil 85 de la distribución de este índice se clasificarán en la categoría Desempeño Alto.
 
 frq(simce2m2017_total$cdm_2017)
 table(simce2m2017_total$cdm_2017)
-
 
 #b. Recodificar/ reordenar
 
-#Casos perdidos
-
-simce2m2017_total %>% mutate(., cdm_2017 = case_when(cdm_2017 %in% c("SIN CATEGORIA: BAJA MATRICULA","SIN CATEGORIA: FALTA DE INFORMACIÓN")~NA_character_,
-                                                       TRUE~cdm_2017))
+simce2m2017_total$cdm_2017 = factor(simce2m2017_total$cdm_2017, levels = c("SIN CATEGORIA","INSUFICIENTE","MEDIO-BAJO","MEDIO","ALTO"))
 
 frq(simce2m2017_total$cdm_2017)
 table(simce2m2017_total$cdm_2017)
 
-#Eliminar casos perdidos
+#Casos perdidos
 
+simce2m2017_total <- simce2m2017_total %>% 
+  mutate(., cdm_2017 = (case_when(cdm_2017 %in% c("SIN CATEGORIA")~NA_character_,
+                                  TRUE~cdm_2017)))
+
+frq(simce2m2017_total$cdm_2017)
+table(simce2m2017_total$cdm_2017)
 
 simce2m2017_total$cdm_2017 = factor(simce2m2017_total$cdm_2017, levels = c("INSUFICIENTE","MEDIO-BAJO","MEDIO","ALTO"))
 
@@ -170,6 +211,89 @@ frq(simce2m2017_total$cdm_2017)
 table(simce2m2017_total$cdm_2017)
 
 #c. Etiquetado
+
+simce2m2017_total$cdm_2017<- set_label(x = simce2m2017_total$cdm_2017,label = "Categoría desempeño")
+
+
+
+#Respaldar base simce2m2017_total
+
+simce2m2017_final <- simce2m2017_total
+save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+View(simce2m2017_final)
+dim(simce2m2017_final)
+
+#Eliminar casos perdidos
+
+dim(simce2m2017_final)
+sum(is.na(simce2m2017_final))
+
+View(simce2m2017_final)
+
+simce2m2017_final <- na.omit(simce2m2017_final)
+dim(simce2m2017_final)
+
+
+
+#Etiquetado Final
+
+simce2m2017_final <-sjlabelled::copy_labels(simce2m2017_final,simce2m2017_total)
+View(simce2m2017_final)
+
+simce2m2017_final <- simce2m2017_final
+save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+View(simce2m2017_final)
+dim(simce2m2017_final)
+
+frq(simce2m2017_final)
+
+#5. Generación de base de datos procesada
+
+simce2m2017_final <- as.data.frame(simce2m2017_final)
+stargazer(simce2m2017_final, type="text")
+save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
