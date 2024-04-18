@@ -5,7 +5,7 @@
 
 
 
-#Código de preparación de datos
+#Código de preparación y análisis de datos
 
 #Antecedentes - Simce 2017
 #Simce es parte de las evaluaciones que se aplican en Chile, definidas en el Plan de Evaluaciones Nacionales e Internacionales, 
@@ -27,7 +27,8 @@ pacman::p_load(dplyr,
                haven,
                kableExtra,
                sjPlot,
-               summarytools)
+               summarytools,
+               ggplot2)
 
 
 
@@ -158,7 +159,7 @@ table(simce2m2017_total$cod_depe2)
 #c. Etiquetado
 
 get_label(simce2m2017_total$cod_depe2)
-simce2m2017_total$cod_depe2 <- set_label(x = simce2m2017_total$cod_depe2,label = "Código desempeño")
+simce2m2017_total$cod_depe2 <- set_label(x = simce2m2017_total$cod_depe2,label = "Código dependencia")
 
 
 
@@ -245,9 +246,9 @@ sjmisc::descr(simce2m2017_total,
 summarytools::dfSummary(simce2m2017_total, plain.ascii = FALSE)
 view(dfSummary(simce2m2017_total, headings=FALSE))
 
-#Guardar y respaldar base simce2m2017_total > simce2m2017_final
+save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_total.RData")
 
-save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+#Guardar y respaldar base simce2m2017_total > simce2m2017_final
 
 simce2m2017_final <- simce2m2017_total
 save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
@@ -266,8 +267,6 @@ View(simce2m2017_final)
 simce2m2017_final <- na.omit(simce2m2017_final)
 dim(simce2m2017_final)
 
-
-
 #Etiquetado Final
 
 simce2m2017_final <-sjlabelled::copy_labels(simce2m2017_final,simce2m2017_total)
@@ -282,4 +281,15 @@ dim(simce2m2017_final)
 
 frq(simce2m2017_final)
 
+#3.2 Visualización de Variables
 
+graph1 <- simce2m2017_final %>% ggplot(aes(x = cdm_2017)) + 
+  geom_bar(fill = "coral")+
+  labs(title = "Categoría de Desempeño 2017",
+       x = "Categoría de Desempeño",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph1
+
+ggsave(graph1, file="output/graph1.png")
