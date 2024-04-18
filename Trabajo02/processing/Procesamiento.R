@@ -219,10 +219,22 @@ simce2m2017_total$cdm_2017<- set_label(x = simce2m2017_total$cdm_2017,label = "C
 
 #Verificar descriptivos
 
-frq(simce2m2017_total)
-table(simce2m2017_total)
+frq(simce2m2017_total$cod_depe2)
+frq(simce2m2017_total$cod_grupo)
+frq(simce2m2017_total$cdm_2017)
+
+table(simce2m2017_total$cod_depe2)
+table(simce2m2017_total$cod_grupo)
+table(simce2m2017_total$cdm_2017)
 
 #5. Generación de base de datos procesada
+
+simce2m2017_total$cod_depe2 <- as.factor(simce2m2017_total$cod_depe2)
+simce2m2017_total$cod_grupo <- as.factor(simce2m2017_total$cod_grupo)
+simce2m2017_total$cdm_2017 <- as.factor(simce2m2017_total$cdm_2017)
+
+frq(simce2m2017_total)
+table(simce2m2017_total)
 
 is.data.frame(simce2m2017_total)
 
