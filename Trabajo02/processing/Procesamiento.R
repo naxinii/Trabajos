@@ -26,7 +26,8 @@ pacman::p_load(dplyr,
                stargazer, 
                haven,
                kableExtra,
-               sjPlot)
+               sjPlot,
+               summarytools)
 
 
 
@@ -221,20 +222,20 @@ simce2m2017_total$cdm_2017<- set_label(x = simce2m2017_total$cdm_2017,label = "C
 frq(simce2m2017_total)
 table(simce2m2017_total)
 
-
-
 #5. Generación de base de datos procesada
 
 is.data.frame(simce2m2017_total)
 
 sjmisc::descr(simce2m2017_total,
               show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
-  kable(.,"markdown")
+              kable(.,"markdown")
+
+summarytools::dfSummary(simce2m2017_total, plain.ascii = FALSE)
+view(dfSummary(simce2m2017_total, headings=FALSE))
 
 #Guardar y respaldar base simce2m2017_total > simce2m2017_final
 
-save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
-
+save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
 
 simce2m2017_final <- simce2m2017_total
 save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
@@ -242,16 +243,6 @@ save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UA
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
 View(simce2m2017_final)
 dim(simce2m2017_final)
-
-#Descriptivos básicos de las variables
-
-#Media por grupos y representación
-
-simce2m2017_total %>% dplyr::group_by(simce2m2017_total$cod_grupo) %>% summarise(mean(cod_depe2, na.rm=TRUE))
-
-simce2m2017_total %>% dplyr::group_by(simce2m2017_total$cod_grupo) %>% summarise(mean(simce2m2017_total$cdm_2017, na.rm=TRUE))
-
-sjt.xtab(simce2m2017_total$cod_depe2, simce2m2017_total$ccdm_2017, encoding = "UTF-8")
 
 #Eliminar casos perdidos
 
