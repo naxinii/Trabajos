@@ -15,10 +15,10 @@
         "totalObservations": "2765",
         "displayedObservations": "2765",
         "variables": "3",
-        "cacheKey": "C4613472",
+        "cacheKey": "6AB63AB9",
         "object": "simce2m2017_final",
         "environment": "",
-        "contentUrl": "grid_resource/gridviewer.html?env=&obj=simce2m2017_final&cache_key=C4613472&max_display_columns=50",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=simce2m2017_final&cache_key=6AB63AB9&max_display_columns=50",
         "preview": "0",
         "source_window_id": "",
         "Source": "Source"

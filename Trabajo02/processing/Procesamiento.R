@@ -283,6 +283,8 @@ frq(simce2m2017_final)
 
 #3.2 Visualización de Variables
 
+#cdm_2017
+
 graph1 <- simce2m2017_final %>% ggplot(aes(x = cdm_2017)) + 
   geom_bar(fill = "coral")+
   labs(title = "Categoría de Desempeño 2017",
@@ -293,3 +295,72 @@ graph1 <- simce2m2017_final %>% ggplot(aes(x = cdm_2017)) +
 graph1
 
 ggsave(graph1, file="output/graph1.png")
+
+#cod_depe2
+
+graph2 <- simce2m2017_final %>% ggplot(aes(x = cod_depe2)) + 
+  geom_bar(fill = "green")+
+  labs(title = "Código de Dependencia Establecimiento",
+       x = "Codigo Dependencia",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph2
+
+ggsave(graph2, file="output/graph2.png")
+
+#cod_grupo
+
+graph3 <- simce2m2017_final %>% ggplot(aes(x = cod_grupo)) + 
+  geom_bar(fill = "yellow")+
+  labs(title = "Grupo Socio-Económico",
+       x = "GSE",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph3
+
+ggsave(graph3, file="output/graph3.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
