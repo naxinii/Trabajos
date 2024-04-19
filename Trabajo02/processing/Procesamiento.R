@@ -322,10 +322,30 @@ graph3
 
 ggsave(graph3, file="output/graph3.png")
 
+#Tabla de contingencia
+
+#cdm_2017 #cod_grupo 
+
+library(sjPlot)
+sjt.xtab(simce2m2017_final$cdm_2017, simce2m2017_final$cod_grupo,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
 
 
+#cod_depe2 #cod_grupo 
 
+sjt.xtab(simce2m2017_final$cod_depe2, simce2m2017_final$cod_grupo,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
 
+#cdm_2017 #cod_depe2
+
+sjt.xtab(simce2m2017_final$cdm_2017, simce2m2017_final$cod_depe2,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
 
 
 
