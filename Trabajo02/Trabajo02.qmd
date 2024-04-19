@@ -16,5 +16,3 @@ link-citations: true
 ### Mercantilización del sistema educativo y segregación escolar en Chile
 
 #### Introducción
-
-Adjunto link de la primera evaluación (corregida):
