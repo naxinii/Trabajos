@@ -59,7 +59,7 @@ View(simce2m2017_rbd)
 
 #De la base "cdm_2017"
 # "rbd" = Rol base de datos del establecimiento
-# "cdm_2017" = Categoría de Desempeño 2017 (ALTO, MEDIO, MEDIO-BAJO e INSUFICIENTE)
+# "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
 
 find_var(data = cdm_2017, "rbd")
 find_var(data = cdm_2017, "cdm_2017")
