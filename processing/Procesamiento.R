@@ -40,9 +40,9 @@ rm(list=ls())
 options(scipen=999) 
 
 library(readxl)
-cdm_2017 <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-orig/cdm_2017.xlsx")
-idps2m2017_rbd <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-orig/idps2m2017_rbd.xlsx")
-simce2m2017_rbd <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-orig/simce2m2017_rbd.xlsx")
+cdm_2017 <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-orig/cdm_2017.xlsx")
+idps2m2017_rbd <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-orig/idps2m2017_rbd.xlsx")
+simce2m2017_rbd <- read_excel("C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-orig/simce2m2017_rbd.xlsx")
 
 dim(cdm_2017)
 dim(idps2m2017_rbd)
@@ -72,7 +72,7 @@ sjlabelled::get_label(proc_cdm_2017)
 dim(proc_cdm_2017)
 View(cdm_2017)
 
-save(proc_cdm_2017,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_cdm_2017.RData")
+save(proc_cdm_2017,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/proc_cdm_2017.RData")
 
 
 
@@ -91,7 +91,7 @@ sjlabelled::get_label(proc_idps2m2017_rbd)
 dim(proc_idps2m2017_rbd)
 View(proc_idps2m2017_rbd)
 
-save(proc_idps2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_idps2m2017_rbd.RData")
+save(proc_idps2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/proc_idps2m2017_rbd.RData")
 
 
 
@@ -110,7 +110,7 @@ sjlabelled::get_label(proc_simce2m2017_rbd)
 dim(proc_simce2m2017_rbd)
 View(proc_simce2m2017_rbd)
 
-save(proc_simce2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/proc_simce2m2017_rbd.RData")
+save(proc_simce2m2017_rbd,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/proc_simce2m2017_rbd.RData")
 
 
 
@@ -130,9 +130,9 @@ simce2m2017_total <- simce2m2017_total %>% select(cdm_2017,cod_depe2,cod_grupo)
 dim(simce2m2017_total)
 View(simce2m2017_total)
 
-save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_total.RData")
+save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
 
-load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_total.RData")
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
 
 View(simce2m2017_total)
 
@@ -246,14 +246,14 @@ sjmisc::descr(simce2m2017_total,
 summarytools::dfSummary(simce2m2017_total, plain.ascii = FALSE)
 view(dfSummary(simce2m2017_total, headings=FALSE))
 
-save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_total.RData")
+save(simce2m2017_total,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
 
 #Guardar y respaldar base simce2m2017_total > simce2m2017_final
 
 simce2m2017_final <- simce2m2017_total
-save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 
-load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 View(simce2m2017_final)
 dim(simce2m2017_final)
 
@@ -273,9 +273,9 @@ simce2m2017_final <-sjlabelled::copy_labels(simce2m2017_final,simce2m2017_total)
 View(simce2m2017_final)
 
 simce2m2017_final <- simce2m2017_final
-save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+save(simce2m2017_final,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 
-load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo02/input/data-proc/simce2m2017_final.RData")
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 View(simce2m2017_final)
 dim(simce2m2017_final)
 
