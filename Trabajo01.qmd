@@ -3,7 +3,7 @@ title: "Trabajo01"
 author: "IgnaciaCS"
 format: html
 editor: visual
-bibliography: Trabajo1.bib
+bibliography: Trabajo02.bib
 link-citations: true
 ---
 
