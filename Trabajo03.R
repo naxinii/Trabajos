@@ -47,9 +47,6 @@ options(scipen=999)
  # Los establecimientos que se sitúen por sobre el valor del percentil 35 y hasta el percentil 85 (inclusive) de la distribución del índice Final se clasificarán en la categoría Desempeño Medio.
  # Los establecimientos con valores del Índice Final superiores al valor del percentil 85 de la distribución de este índice se clasificarán en la categoría Desempeño Alto.
 
-load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
-dim(simce2m2017_total)
-
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 View(simce2m2017_final)
 dim(simce2m2017_final)

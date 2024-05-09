@@ -1,7 +1,7 @@
 
-
-
 #Trabajo 02: R para Análisis Estadístico
+
+#Procesamiento y visualización de análisis descriptivo
 
 
 
