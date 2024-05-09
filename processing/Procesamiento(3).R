@@ -189,7 +189,6 @@ simce2m2017_finalnum2 <- simce2m2017_finalnum %>%
   mutate(segregación_escolar = sum(cdm_2017, cod_depe2, cod_grupo))
 summary(simce2m2017_finalnum2$segregación_escolar)
 
-simce2m2017_finalnum2 <-  simce2m2017_finalnum
 save(simce2m2017_finalnum2,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData")
 
 ggplot(simce2m2017_finalnum2, aes(x = segregación_escolar)) +
