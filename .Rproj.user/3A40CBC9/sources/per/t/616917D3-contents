@@ -46,10 +46,10 @@ options(scipen=999)
 #VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
 #VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
- # Los establecimientos que tengan valores del Índice Final hasta el valor del percentil 12 (inclusive) de la distribución de este índice se clasificarán en la categoría Desempeño Insuficiente.
- # Los establecimientos que presenten valores del Índice Final por sobre el valor del percentil 12 y hasta el percentil 35 (inclusive) se clasificarán en la categoría Desempeño Medio-Bajo.
- # Los establecimientos que se sitúen por sobre el valor del percentil 35 y hasta el percentil 85 (inclusive) de la distribución del índice Final se clasificarán en la categoría Desempeño Medio.
- # Los establecimientos con valores del Índice Final superiores al valor del percentil 85 de la distribución de este índice se clasificarán en la categoría Desempeño Alto.
+# Los establecimientos que tengan valores del Índice Final hasta el valor del percentil 12 (inclusive) de la distribución de este índice se clasificarán en la categoría Desempeño Insuficiente.
+# Los establecimientos que presenten valores del Índice Final por sobre el valor del percentil 12 y hasta el percentil 35 (inclusive) se clasificarán en la categoría Desempeño Medio-Bajo.
+# Los establecimientos que se sitúen por sobre el valor del percentil 35 y hasta el percentil 85 (inclusive) de la distribución del índice Final se clasificarán en la categoría Desempeño Medio.
+# Los establecimientos con valores del Índice Final superiores al valor del percentil 85 de la distribución de este índice se clasificarán en la categoría Desempeño Alto.
 
 #Para ver si podemos hacer el análisis con casos completos revisamos que los NA no sean más del 10%
 
@@ -58,7 +58,7 @@ load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/
 
 dim(simce2m2017_total)
 dim(simce2m2017_final)
- 
+
 2876-2765
 
 111/2876*100
@@ -167,15 +167,13 @@ sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_grupo)
 
 sjPlot::plot_scatter(simce2m2017_finalnum, cod_grupo, cod_depe2)
 
-#Escalas
+#Construcción de Escalas
 
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 frq(simce2m2017_finalnum)
 dim(simce2m2017_finalnum)
 
 #Utilizaremos las mismas variables, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA
-
-
 
 #Estimar correlación
 cor(simce2m2017_finalnum)
@@ -184,11 +182,21 @@ cor(simce2m2017_finalnum)
 
 psych::alpha(simce2m2017_finalnum)
 
-data2 <- data2 %>% 
-  rowwise() %>% 
-  mutate(sintomatologia_depresiva = sum(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))
-summary(data2$sintomatologia_depresiva)
+psych::alpha(dplyr::select(simce2m2017_finalnum, cdm_2017, cod_depe2, cod_grupo))
 
+simce2m2017_finalnum2 <- simce2m2017_finalnum %>% 
+  rowwise() %>% 
+  mutate(segregación_escolar = sum(cdm_2017, cod_depe2, cod_grupo))
+summary(simce2m2017_finalnum2$segregación_escolar)
+
+simce2m2017_finalnum2 <-  simce2m2017_finalnum
+save(simce2m2017_finalnum2,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData")
+
+ggplot(simce2m2017_finalnum2, aes(x = segregación_escolar)) +
+  geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
+  theme_bw() +
+  xlab("Segregación Escolar") +
+  ylab("Cantidad")
 
 
 
