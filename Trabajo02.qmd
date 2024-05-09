@@ -15,7 +15,7 @@ link-bibliography: true
 
 ## Por: Ignacia Castillo Soto
 
-### Mercantilización del sistema educativo y segregación escolar en Chile
+### **Mercantilización del sistema educativo y segregación escolar en Chile**
 
 #### Introducción[^1]
 
