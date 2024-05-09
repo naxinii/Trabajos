@@ -7,7 +7,9 @@ bibliography: Trabajo02.bib
 link-citations: true
 ---
 
-## Trabajo 01: R para Análisis Estadístico
+# Trabajo 01: R para Análisis Estadístico
+
+## Reporte en Quarto
 
 ## Por: Ignacia Castillo Soto
 

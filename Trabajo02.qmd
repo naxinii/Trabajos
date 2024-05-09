@@ -11,6 +11,8 @@ link-bibliography: true
 
 # Trabajo 02: R para Análisis Estadístico
 
+## **Procesamiento y visualización de análisis descriptivo**
+
 ## Por: Ignacia Castillo Soto
 
 ### Mercantilización del sistema educativo y segregación escolar en Chile
