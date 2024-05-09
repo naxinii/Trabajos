@@ -131,6 +131,10 @@ save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 frq(simce2m2017_finalnum)
 
+sjmisc::descr(simce2m2017_finalnum,
+              show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
+  kable(.,"markdown")
+
 
 
 #Parte 2
@@ -171,12 +175,19 @@ dim(simce2m2017_finalnum)
 
 #Utilizaremos las mismas variables, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA
 
+
+
+#Estimar correlación
 cor(simce2m2017_finalnum)
 
+#Estimar consistencia interna: Alfa de Chronbach
 
+psych::alpha(simce2m2017_finalnum)
 
-
-
+data2 <- data2 %>% 
+  rowwise() %>% 
+  mutate(sintomatologia_depresiva = sum(s11_01,s11_02,s11_03,s11_04,s11_05,s11_06,s11_07,s11_08,s11_09))
+summary(data2$sintomatologia_depresiva)
 
 
 

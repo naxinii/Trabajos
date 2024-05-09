@@ -3,7 +3,7 @@
     "path": "~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/processing/Procesamiento(3).R",
     "project_path": "processing/Procesamiento(3).R",
     "type": "r_source",
-    "hash": "3575485450",
+    "hash": "1872098550",
     "contents": "",
     "dirty": false,
     "created": 1715232975711.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "173,25",
-        "scrollLine": "155"
+        "cursorPosition": "137,0",
+        "scrollLine": "125"
     },
     "folds": "",
-    "lastKnownWriteTime": 1715276056,
+    "lastKnownWriteTime": 1715278935,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1715276056881,
+    "last_content_update": 1715278935119,
     "read_only": false,
     "read_only_alternatives": []
 }
