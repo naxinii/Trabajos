@@ -28,12 +28,12 @@ pacman::p_load(dplyr,
                summarytools,
                ggplot2)
 
-#2. Carga de la base de datos
-
 rm(list=ls())       
 options(scipen=999)
 
-#Para el trabajo 02 se realizó la preparación de los datos y se generaron 2 bases de datos (la 1ra cuenta con casos NA y la 2da no) simce2m2017_total.RData y simce2m2017_final.Rdata, 
+#2. Carga de la base de datos
+
+#Para el trabajo 02 se realizó la preparación de los datos y se generaron 2 bases de datos (la 1ra incluye los casos NA y la 2da no) simce2m2017_total.RData y simce2m2017_final.Rdata, 
 #en ambas se trabajó con las siguientes variables:
 
 
@@ -47,16 +47,33 @@ options(scipen=999)
  # Los establecimientos que se sitúen por sobre el valor del percentil 35 y hasta el percentil 85 (inclusive) de la distribución del índice Final se clasificarán en la categoría Desempeño Medio.
  # Los establecimientos con valores del Índice Final superiores al valor del percentil 85 de la distribución de este índice se clasificarán en la categoría Desempeño Alto.
 
+#Para ver si podemos hacer el análisis con casos completos revisamos que los NA no sean más del 10%
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
-View(simce2m2017_final)
+
+dim(simce2m2017_total)
 dim(simce2m2017_final)
+ 
+2876-2765
 
-frq(simce2m2017_final)
+111/2876*100
 
+#Ya que sólo el 3.859527% del total son casos perdidos no supone problemas trabajar con la base simce2m2017_final.RData, pd: la preparación y tratamiento de 
+#los casos perdidos con "listwise deletion" se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script "Procesamiento(2)" del Trabajo 2
 
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
+dim(simce2m2017_final)
+freq(simce2m2017_final)
 
+# Suponiendo que 'datos' es tu conjunto de datos y 'variable_factor' es la variable categórica a convertir
+datos$numerica <- as.numeric(factor(datos$variable_factor, levels = c("Categoría1", "Categoría2", "Categoría3")))
 
+#P
 
+#Parte 2
+
+#Matrices de correlación
 
 
 
