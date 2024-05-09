@@ -81,6 +81,17 @@ simce2m2017_final$cdm_2017 <- as.numeric(factor(simce2m2017_final$cdm_2017, leve
 
 frq(simce2m2017_final)
 
+#Recodificar para que la escala parta de "0" (Práctico 7)
+
+simce2m2017_final$cod_grupo <- recode(simce2m2017_final$cod_grupo,"1=0; 2=1; 3=2; 4=3; 5=4")
+
+simce2m2017_final$cod_depe2 <- recode(simce2m2017_final$cod_depe2,"1=0; 2=1; 3=2")
+
+simce2m2017_final$cdm_2017 <- recode(simce2m2017_final$cdm_2017,"1=0; 2=1; 3=2; 4=3")
+
+frq(simce2m2017_final)
+
+
 simce2m2017_finalnum <- simce2m2017_final
 save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 
@@ -91,26 +102,26 @@ frq(simce2m2017_finalnum)
 #Re-agregar etiquetas y nombrar
 
 simce2m2017_finalnum$cod_grupo <- set_labels(simce2m2017_finalnum$cod_grupo,
-                                             labels = c("Bajo"=1,
-                                                        "Medio bajo"=2,
-                                                        "Medio"=3,
-                                                        "Medio alto"=4,
-                                                        "Alto"=5))
+                                             labels = c("Bajo"=0,
+                                                        "Medio bajo"=1,
+                                                        "Medio"=2,
+                                                        "Medio alto"=3,
+                                                        "Alto"=4))
 
 simce2m2017_finalnum$cod_grupo <- set_label(x = simce2m2017_finalnum$cod_grupo,label = "GSE")
 
 simce2m2017_finalnum$cod_depe2 <- set_labels(simce2m2017_finalnum$cod_depe2,
-                                             labels = c("Municipal"=1, 
-                                                        "Particular subvencionado"=2,
-                                                        "Particular pagado"=3))
+                                             labels = c("Municipal"=0,
+                                                        "Particular subvencionado"=1,
+                                                        "Particular pagado"=2))
 
 simce2m2017_finalnum$cod_depe2 <- set_label(x = simce2m2017_finalnum$cod_depe2,label = "Código dependencia")
 
 simce2m2017_finalnum$cdm_2017 <- set_labels(simce2m2017_finalnum$cdm_2017,
-                                            labels = c("INSUFICIENTE"=1,
-                                                       "MEDIO-BAJO"=2,
-                                                       "MEDIO"=3,
-                                                       "ALTO"=4))
+                                            labels = c("INSUFICIENTE"=0,
+                                                       "MEDIO-BAJO"=1,
+                                                       "MEDIO"=2,
+                                                       "ALTO"=3))
 
 simce2m2017_finalnum$cdm_2017 <- set_label(x = simce2m2017_finalnum$cdm_2017,label = "Categoría desempeño")
 
@@ -119,6 +130,8 @@ save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad
 
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 frq(simce2m2017_finalnum)
+
+
 
 #Parte 2
 
@@ -150,15 +163,16 @@ sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_grupo)
 
 sjPlot::plot_scatter(simce2m2017_finalnum, cod_grupo, cod_depe2)
 
-
-
-#Indices
+#Escalas
 
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 frq(simce2m2017_finalnum)
 dim(simce2m2017_finalnum)
 
-#Utilizaremos las mismas variables, la base "simce2m2017_finalnum" ya se encuentra sin casos NA
+#Utilizaremos las mismas variables, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA
+
+cor(simce2m2017_finalnum)
+
 
 
 
