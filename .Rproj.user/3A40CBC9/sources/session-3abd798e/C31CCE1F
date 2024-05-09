@@ -3,7 +3,7 @@
     "path": "~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/Trabajo01.qmd",
     "project_path": "Trabajo01.qmd",
     "type": "quarto_markdown",
-    "hash": "2631967117",
+    "hash": "1275168833",
     "contents": "",
     "dirty": false,
     "created": 1713502251203.0,
@@ -19,14 +19,14 @@
         "scrollLine": "0",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "298:5.333333492279053"
+        "rmdVisualModeLocation": "284:0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1715227377,
+    "lastKnownWriteTime": 1715227976,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1715227377458,
+    "last_content_update": 1715227976220,
     "read_only": false,
     "read_only_alternatives": []
 }
