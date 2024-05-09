@@ -13,20 +13,24 @@
 #con pruebas en diferentes asignaturas o áreas de aprendizaje; y recogiendo información sobre el contexto educativo a través de cuestionarios que 
 #responden directores(as), docentes, estudiantes, padres, madres y apoderados, de modo de analizar los resultados en forma integral.
 
+#Parte 1
 
+#Recursos de las prácticas y preparación de datos
 
 #1. Librerías a utilizar
 
 pacman::p_load(dplyr, 
                sjmisc, 
-               car, 
+               sjPlot, 
                sjlabelled, 
-               stargazer, 
+               kableExtra, 
+               GGally, 
+               corrplot,
+               tidyverse, 
+               car, 
                haven,
-               kableExtra,
-               sjPlot,
                summarytools,
-               ggplot2)
+               psych)
 
 rm(list=ls())       
 options(scipen=999)
@@ -62,33 +66,99 @@ dim(simce2m2017_final)
 #Ya que sólo el 3.859527% del total son casos perdidos no supone problemas trabajar con la base simce2m2017_final.RData, pd: la preparación y tratamiento de 
 #los casos perdidos con "listwise deletion" se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script "Procesamiento(2)" del Trabajo 2
 
+
 load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
 dim(simce2m2017_final)
-freq(simce2m2017_final)
+frq(simce2m2017_final)
 
-# Suponiendo que 'datos' es tu conjunto de datos y 'variable_factor' es la variable categórica a convertir
-datos$numerica <- as.numeric(factor(datos$variable_factor, levels = c("Categoría1", "Categoría2", "Categoría3")))
+#Convertir variables desde "factor" a "numeric"
 
-#P
+simce2m2017_final$cod_grupo <- as.numeric(factor(simce2m2017_final$cod_grupo, levels = c("Bajo","Medio bajo","Medio","Medio alto","Alto")))
+
+simce2m2017_final$cod_depe2 <- as.numeric(factor(simce2m2017_final$cod_depe2, levels =c("Municipal", "Particular subvencionado","Particular pagado")))
+
+simce2m2017_final$cdm_2017 <- as.numeric(factor(simce2m2017_final$cdm_2017, levels =c("INSUFICIENTE","MEDIO-BAJO","MEDIO","ALTO")))
+
+frq(simce2m2017_final)
+
+simce2m2017_finalnum <- simce2m2017_final
+save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+dim(simce2m2017_finalnum)
+frq(simce2m2017_finalnum)
+
+#Re-agregar etiquetas y nombrar
+
+simce2m2017_finalnum$cod_grupo <- set_labels(simce2m2017_finalnum$cod_grupo,
+                                             labels = c("Bajo"=1,
+                                                        "Medio bajo"=2,
+                                                        "Medio"=3,
+                                                        "Medio alto"=4,
+                                                        "Alto"=5))
+
+simce2m2017_finalnum$cod_grupo <- set_label(x = simce2m2017_finalnum$cod_grupo,label = "GSE")
+
+simce2m2017_finalnum$cod_depe2 <- set_labels(simce2m2017_finalnum$cod_depe2,
+                                             labels = c("Municipal"=1, 
+                                                        "Particular subvencionado"=2,
+                                                        "Particular pagado"=3))
+
+simce2m2017_finalnum$cod_depe2 <- set_label(x = simce2m2017_finalnum$cod_depe2,label = "Código dependencia")
+
+simce2m2017_finalnum$cdm_2017 <- set_labels(simce2m2017_finalnum$cdm_2017,
+                                            labels = c("INSUFICIENTE"=1,
+                                                       "MEDIO-BAJO"=2,
+                                                       "MEDIO"=3,
+                                                       "ALTO"=4))
+
+simce2m2017_finalnum$cdm_2017 <- set_label(x = simce2m2017_finalnum$cdm_2017,label = "Categoría desempeño")
+
+frq(simce2m2017_finalnum)
+save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
 
 #Parte 2
 
 #Matrices de correlación
 
+#Opción 1: cor
+
+M <- cor(simce2m2017_finalnum, use = "complete.obs")
+M
+
+#Opción 2: tab_ corr
+
+sjPlot::tab_corr(simce2m2017_finalnum, 
+                 triangle = "lower")
+
+#Opción 3: corrplot.mixed
+
+corrplot.mixed(M)
+
+#Opción 4: ggpairs
+
+ggpairs(simce2m2017_finalnum)
+
+#Opción 5: scatterplot
+
+sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_depe2)
+
+sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_grupo)
+
+sjPlot::plot_scatter(simce2m2017_finalnum, cod_grupo, cod_depe2)
 
 
 
+#Indices
 
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
+dim(simce2m2017_finalnum)
 
-
-
-
-
-
-
-
-
-
+#Utilizaremos las mismas variables, la base "simce2m2017_finalnum" ya se encuentra sin casos NA
 
 
 

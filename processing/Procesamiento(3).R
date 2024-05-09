@@ -117,6 +117,8 @@ simce2m2017_finalnum$cdm_2017 <- set_label(x = simce2m2017_finalnum$cdm_2017,lab
 frq(simce2m2017_finalnum)
 save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
 
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
 
 #Parte 2
 
@@ -134,8 +136,6 @@ sjPlot::tab_corr(simce2m2017_finalnum,
 
 #Opción 3: corrplot.mixed
 
-library(corrplot)
-
 corrplot.mixed(M)
 
 #Opción 4: ggpairs
@@ -149,6 +149,16 @@ sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_depe2)
 sjPlot::plot_scatter(simce2m2017_finalnum, cdm_2017, cod_grupo)
 
 sjPlot::plot_scatter(simce2m2017_finalnum, cod_grupo, cod_depe2)
+
+
+
+#Indices
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
+dim(simce2m2017_finalnum)
+
+#Utilizaremos las mismas variables, la base "simce2m2017_finalnum" ya se encuentra sin casos NA
 
 
 
