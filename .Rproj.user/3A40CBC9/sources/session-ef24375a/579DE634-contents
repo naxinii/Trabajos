@@ -43,9 +43,7 @@ La segunda entrega de este curso[^2] contó con la generación de una nueva base
 
 -   VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
--   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))[^3]
-
-[^3]: <https://bcn.cl/2lh80>
+-   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))
 
 Se destacó que la mayoría de los establecimientos tienen un desempeño académico medio, seguido por un desempeño medio-bajo. En cuanto al tipo de establecimiento una gran mayoria son del tipo municipal subvencionado. En relación con el GSE más del 50% de establecimientos se encuentran entre el Medio y el Bajo. Se incluyen gráficos que muestran la distribución de las categorías de desempeño y del tipo de establecimiento. En el primer gráfico se observa una distribución desigual entre las categorías, destacando el desempeño medio como el más común. En el segundo gráfico, se destaca la minoría de colegios particulares pagados en comparación con los subvencionados.
 
@@ -207,16 +205,22 @@ sjmisc::descr(simce2m2017_finalnum,
 
 M <- cor(simce2m2017_finalnum, use = "complete.obs")
 M
+```
 
+```{r}
 #Opción 2: tab_ corr
 
 sjPlot::tab_corr(simce2m2017_finalnum, 
                  triangle = "lower")
+```
 
+```{r}
 #| label: cor-complete
-#| fig-cap: "Correlación variables Simce 2017"
+#| fig-cap: "Correlación Variables Simce 2017"
 corrplot.mixed(M)
 ```
+
+Al revisar la matriz de correlación y visualizar la @cor-complete, nos indica que la variable cdm_2017 tiene una correlación de 0.361 con la variable cod_depe2 lo que sugiere una relación positiva/ moderada entre el desempeño escolar y el tipo de dependencia de la institución educativa, lo mismo sucede con la categoría de desempeño (cdm_2017) y el cod_grupo (GSE) con una correlación de 0.432, por ultimo para las variables cod_depe2 y cod_grupo, la correlación es de 0.718, lo que sugiere una relación positiva fuerte entre el tipo de dependencia de la institución educativa y en que GSE se posiciona, esto podría sugerir que establecimientos con estudiantes de ciertos GSE tienden a tener un mejor desempeño en las pruebas SIMCE.
 
 #### Parte 2.1 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach
 
@@ -232,15 +236,22 @@ dim(simce2m2017_finalnum)
 #Estimar consistencia interna: Alfa de Chronbach
 
 psych::alpha(dplyr::select(simce2m2017_finalnum, cdm_2017, cod_depe2, cod_grupo))
+```
 
+Esto nos indica una consistencia interna de 0.71, es decir que la fiabilidad de la escala total tiene un buen panorama general, si bien no es el mejor, es mayor a 0.6 así que podemos trabajar con este valor, también se puede ver que si se elimina algún item, alfa aumenta el mínimo (0,01) para "cdm_2017", pero disminuye para los otros dos, lo que sugiere que pueden estar menos relacionados con la escala
+
+```{r}
 simce2m2017_finalnum2 <- simce2m2017_finalnum %>% 
   rowwise() %>% 
   mutate(segregación_escolar = sum(cdm_2017, cod_depe2, cod_grupo))
 summary(simce2m2017_finalnum2$segregación_escolar)
+```
 
+```{r}
 save(simce2m2017_finalnum2,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData")
+```
 
-
+```{r}
 #| label: fig-plot-segregacion
 #| fig-cap: "Histograma Segregación Escolar"
 ggplot(simce2m2017_finalnum2, aes(x = segregación_escolar)) +
@@ -249,3 +260,5 @@ ggplot(simce2m2017_finalnum2, aes(x = segregación_escolar)) +
   xlab("Segregación Escolar") +
   ylab("Cantidad")
 ```
+
+Al observar la @fig-plot-segregacion que busca representar la distribución de la segregación escolar en Chile, se observa que la mayoría de los estudiantes se encuentran en niveles moderados de segregación, con una concentración significativa en torno a la mediana de 4.214, sin embargo, existe una distribución sesgada hacia los niveles más bajos concentrando la mayor cantidad de estudiantes bajo la media, al contrastar con la bibliografía referenciada en las entregas anteriores, y considerando la falta de información estadística para construir índices o escalas sobre segregación escolar, hacen que esta no sea consistente con los múltiples estudios concluyen que Chile es un país altamente segregado, ni sea fiel a los datos de otras áreas de investigación, por lo que como objetivo está el construir conocimiento sobre la segregación escolar en el sistema educacional chileno

@@ -210,6 +210,32 @@
             "title": "La Segregación Escolar en América Latina. Qué se Estudia y Cómo se Investiga?",
             "type": "article-journal",
             "volume": "18"
+        },
+        {
+            "author": [
+                {
+                    "family": "Ministerio de Educación"
+                },
+                {
+                    "family": "Educación",
+                    "given": "Ministerio",
+                    "non-dropping-particle": "de"
+                }
+            ],
+            "id": "ministeriodeeducación2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017,
+                        1,
+                        1
+                    ]
+                ]
+            },
+            "note": "MAG ID: 2960528532 S2ID: 86a431a96743c455da01eb3af905a9577652ebc0",
+            "title": "El primer gran debate de la reforma educacional: Ley de inclusión escolar.",
+            "title-short": "El primer gran debate de la reforma educacional",
+            "type": "article-journal"
         }
     ],
     "project_biblios": []

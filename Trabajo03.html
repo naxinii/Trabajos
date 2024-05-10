@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>VARIABLE 1:“cod_depe2” = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))</p></li>
 <li><p>VARIABLE 2: “cod_grupo” = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))</p></li>
-<li><p>VARIABLE 3: “cdm_2017” = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>VARIABLE 3: “cdm_2017” = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))</p></li>
 </ul>
 <p>Se destacó que la mayoría de los establecimientos tienen un desempeño académico medio, seguido por un desempeño medio-bajo. En cuanto al tipo de establecimiento una gran mayoria son del tipo municipal subvencionado. En relación con el GSE más del 50% de establecimientos se encuentran entre el Medio y el Bajo. Se incluyen gráficos que muestran la distribución de las categorías de desempeño y del tipo de establecimiento. En el primer gráfico se observa una distribución desigual entre las categorías, destacando el desempeño medio como el más común. En el segundo gráfico, se destaca la minoría de colegios particulares pagados en comparación con los&nbsp;subvencionados.</p>
 <div class="cell">
@@ -579,6 +579,8 @@ cdm_2017  1.0000000 0.3610706 0.4320752
 cod_depe2 0.3610706 1.0000000 0.7184894
 cod_grupo 0.4320752 0.7184894 1.0000000</code></pre>
 </div>
+</div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Opción 2: tab_ corr</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(simce2m2017_finalnum, </span>
@@ -616,13 +618,19 @@ cod_grupo 0.4320752 0.7184894 1.0000000</code></pre>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cor-complete</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Correlación variables Simce 2017"</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Trabajo03_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Trabajo03_files/figure-html/cor-complete-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Correlación Variables Simce 2017</figcaption>
+</figure>
 </div>
 </div>
+</div>
+<p>Al revisar la matriz de correlación y visualizar la <strong>?@cor-complete</strong>, nos indica que la variable cdm_2017 tiene una correlación de 0.361 con la variable cod_depe2 lo que sugiere una relación positiva/ moderada entre el desempeño escolar y el tipo de dependencia de la institución educativa, lo mismo sucede con la categoría de desempeño (cdm_2017) y el cod_grupo (GSE) con una correlación de 0.432, por ultimo para las variables cod_depe2 y cod_grupo, la correlación es de 0.718, lo que sugiere una relación positiva fuerte entre el tipo de dependencia de la institución educativa y en que GSE se posiciona, esto podría sugerir que establecimientos con estudiantes de ciertos GSE tienden a tener un mejor desempeño en las&nbsp;pruebas&nbsp;SIMCE.</p>
 </section>
 <section id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach" class="level4">
 <h4 class="anchored" data-anchor-id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach">Parte 2.1 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach</h4>
@@ -706,6 +714,9 @@ cdm_2017  0.12 0.24 0.48 0.16 0.00    0
 cod_depe2 0.27 0.59 0.13 0.00 0.00    0
 cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
 </div>
+</div>
+<p>Esto nos indica una consistencia interna de 0.71, es decir que la fiabilidad de la escala total tiene un buen panorama general, si bien no es el mejor, es mayor a 0.6 así que podemos trabajar con este valor, también se puede ver que si se elimina algún item, alfa aumenta el mínimo (0,01) para “cdm_2017”, pero disminuye para los otros dos, lo que sugiere que pueden estar menos relacionados con la escala</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum2 <span class="ot">&lt;-</span> simce2m2017_finalnum <span class="sc">%&gt;%</span> </span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(segregación<span class="at">_escolar =</span> <span class="fu">sum</span>(cdm_2017, cod_depe2, cod_grupo))</span>
@@ -714,20 +725,26 @@ cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   0.000   2.000   4.000   4.214   6.000   9.000 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum2,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData"</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plot-segregacion</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Histograma Segregación Escolar"</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simce2m2017_finalnum2, <span class="fu">aes</span>(<span class="at">x =</span> segregación_escolar)) <span class="sc">+</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Segregación Escolar"</span>) <span class="sc">+</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cantidad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum2,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simce2m2017_finalnum2, <span class="fu">aes</span>(<span class="at">x =</span> segregación_escolar)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Segregación Escolar"</span>) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cantidad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Trabajo03_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div id="fig-plot-segregacion" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Trabajo03_files/figure-html/fig-plot-segregacion-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Histograma Segregación Escolar</figcaption>
+</figure>
 </div>
 </div>
+</div>
+<p>Al observar la <a href="#fig-plot-segregacion">Figure&nbsp;1</a> que busca representar la distribución de la segregación escolar en Chile, se observa que la mayoría de los estudiantes se encuentran en niveles moderados de segregación, con una concentración significativa en torno a la mediana de 4.214, sin embargo, existe una distribución sesgada hacia los niveles más bajos concentrando la mayor cantidad de estudiantes bajo la media, al contrastar con la bibliografía referenciada en las entregas anteriores, y considerando la falta de información estadística para construir índices o escalas sobre segregación escolar, hacen que esta no sea consistente con los múltiples estudios concluyen que Chile es un país altamente segregado, ni sea fiel a los datos de otras áreas de investigación, por lo que como objetivo está el construir conocimiento sobre la segregación escolar en el sistema educacional chileno</p>
 </section>
 </section>
 </section>
@@ -739,7 +756,6 @@ cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
 <ol>
 <li id="fn1"><p>Informe teórico en <a href="https://naxinii.github.io/Trabajos/Trabajo01.html">Trabajo01 (naxinii.github.io)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Procesamiento y análisis completo en <a href="https://naxinii.github.io/Trabajos/Trabajo02.html">Trabajo02 (naxinii.github.io)</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://bcn.cl/2lh80" class="uri">https://bcn.cl/2lh80</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
