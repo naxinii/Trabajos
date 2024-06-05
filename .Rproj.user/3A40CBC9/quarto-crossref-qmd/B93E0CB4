@@ -1,0 +1,18 @@
+{
+    "entries": [
+        {
+            "file": "Trabajo03.qmd",
+            "type": "fig",
+            "id": "plot-condición",
+            "suffix": "",
+            "title": "Histograma Condición Educacional"
+        },
+        {
+            "file": "Trabajo03.qmd",
+            "type": "fig",
+            "id": "cdm_2017",
+            "suffix": "",
+            "title": "“Categorías de Desempeño”"
+        }
+    ]
+}

@@ -86,6 +86,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#por-ignacia-castillo-soto" id="toc-por-ignacia-castillo-soto" class="nav-link" data-scroll-target="#por-ignacia-castillo-soto">Por: Ignacia Castillo Soto</a>
   <ul class="collapse">
   <li><a href="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" id="toc-mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" class="nav-link" data-scroll-target="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile"><strong>Mercantilización del sistema educativo y segregación escolar en Chile</strong></a></li>
+  <li><a href="#conclusiones-sustantivas" id="toc-conclusiones-sustantivas" class="nav-link" data-scroll-target="#conclusiones-sustantivas">Conclusiones Sustantivas</a></li>
+  <li><a href="#conclusión-general" id="toc-conclusión-general" class="nav-link" data-scroll-target="#conclusión-general">Conclusión General</a></li>
+  <li><a href="#implicaciones-de-política-educativa" id="toc-implicaciones-de-política-educativa" class="nav-link" data-scroll-target="#implicaciones-de-política-educativa">Implicaciones de Política Educativa</a></li>
+  <li><a href="#interpretación-del-gráfico-segmentado" id="toc-interpretación-del-gráfico-segmentado" class="nav-link" data-scroll-target="#interpretación-del-gráfico-segmentado">Interpretación del Gráfico Segmentado</a></li>
+  <li><a href="#conclusiones-generales" id="toc-conclusiones-generales" class="nav-link" data-scroll-target="#conclusiones-generales">Conclusiones Generales</a></li>
+  <li><a href="#implicaciones-de-política-educativa-1" id="toc-implicaciones-de-política-educativa-1" class="nav-link" data-scroll-target="#implicaciones-de-política-educativa-1">Implicaciones de Política Educativa</a></li>
+  <li><a href="#descripción-del-histograma" id="toc-descripción-del-histograma" class="nav-link" data-scroll-target="#descripción-del-histograma">Descripción del Histograma</a></li>
+  <li><a href="#interpretación-sustantiva" id="toc-interpretación-sustantiva" class="nav-link" data-scroll-target="#interpretación-sustantiva">Interpretación Sustantiva</a></li>
+  <li><a href="#interpretación-del-gráfico-segmentado-1" id="toc-interpretación-del-gráfico-segmentado-1" class="nav-link" data-scroll-target="#interpretación-del-gráfico-segmentado-1">Interpretación del Gráfico Segmentado</a></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión">Conclusión</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -200,9 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parte-1.-preparación-de-datos" class="level4">
 <h4 class="anchored" data-anchor-id="parte-1.-preparación-de-datos">Parte 1. Preparación de datos</h4>
 <p>Para el trabajo 02 se realizó la preparación de los datos y se generaron 2 bases (la 1ra incluye los casos NA y la 2da no) simce2m2017_total.RData y simce2m2017_final.Rdata</p>
-<p>Para ver si podemos hacer el análisis con casos completos revisamos que los NA no sean más del 10%</p>
-<p>Ya que sólo el 3.859527% del total son casos perdidos no supone problemas trabajar con la base simce2m2017_final.RData</p>
-<p>PD: La preparación y tratamiento de los casos perdidos con “listwise deletion” se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script “Procesamiento(2)” del Trabajo 2</p>
+<p>Revisamos que los NA no sean más del 10% para ver si podemos hacer el análisis con casos completos, luego de eso tenemos que sólo el 3.859527% del total son casos perdidos lo cual no supone problemas para trabajar con la base “simce2m2017_final.RData”<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, </span>
@@ -282,7 +290,7 @@ Alto       | 366 | 13.24 |   13.24 | 100.00
 &lt;NA&gt;       |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
 </div>
-<p>Convertir variables desde &lt;factor&gt; a &lt;numeric&gt;, recodificar, re-agregar etiquetas y nombres</p>
+<p>Convertir variables desde &lt;factor&gt; a &lt;numeric&gt;, recodificar, re-agregar etiquetas y nombres<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(simce2m2017_final<span class="sc">$</span>cod_grupo, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>,<span class="st">"Medio bajo"</span>,<span class="st">"Medio"</span>,<span class="st">"Medio alto"</span>,<span class="st">"Alto"</span>)))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -510,135 +518,555 @@ Value |      Label |   N | Raw % | Valid % | Cum. %
     4 |       Alto | 366 | 13.24 |   13.24 | 100.00
  &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(simce2m2017_finalnum,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="parte.-2-matrices-de-correlación-tablas-de-contingencia" class="level4">
+<h4 class="anchored" data-anchor-id="parte.-2-matrices-de-correlación-tablas-de-contingencia">Parte. 2 Matrices de correlación // Tablas de Contingencia</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(simce2m2017_finalnum<span class="sc">$</span>cod_depe2, simce2m2017_finalnum<span class="sc">$</span>cod_grupo,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.col.prc=</span><span class="cn">TRUE</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.summary=</span><span class="cn">FALSE</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<div id="tbl-sjt-xtab1" class="anchored">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Table&nbsp;1: Código dependencia y GSE</caption>
 <colgroup>
 <col style="width: 14%">
-<col style="width: 28%">
-<col style="width: 7%">
-<col style="width: 10%">
 <col style="width: 14%">
 <col style="width: 14%">
-<col style="width: 11%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">var</th>
-<th style="text-align: left;">label</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">NA.prc</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
-<th style="text-align: left;">range</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">cdm_2017</td>
-<td style="text-align: left;">Categoría desempeño</td>
-<td style="text-align: right;">2765</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.6748644</td>
-<td style="text-align: right;">0.8775837</td>
-<td style="text-align: left;">3 (0-3)</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">Código dependencia</td>
+<td colspan="5" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">GSE</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid;">Total</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">cod_depe2</td>
-<td style="text-align: left;">Código dependencia</td>
-<td style="text-align: right;">2765</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0.8578662</td>
-<td style="text-align: right;">0.6225215</td>
-<td style="text-align: left;">2 (0-2)</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Bajo</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Medio bajo</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Medio</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Medio alto</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">Alto</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">cod_grupo</td>
-<td style="text-align: left;">GSE</td>
-<td style="text-align: right;">2765</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1.6813743</td>
-<td style="text-align: right;">1.3029371</td>
-<td style="text-align: left;">4 (0-4)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Municipal</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">377</span><br>
+<span style="color:#339933;">64&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">284</span><br>
+<span style="color:#339933;">35.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">87</span><br>
+<span style="color:#339933;">13.2&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">12</span><br>
+<span style="color:#339933;">3.3&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span><br>
+<span style="color:#339933;">0&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">760</span><br>
+<span style="color:#339933;">27.5&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Particular<br>
+subvencionado</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">212</span><br>
+<span style="color:#339933;">36&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">510</span><br>
+<span style="color:#339933;">64.2&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">569</span><br>
+<span style="color:#339933;">86.6&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">325</span><br>
+<span style="color:#339933;">90.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span><br>
+<span style="color:#339933;">6&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1638</span><br>
+<span style="color:#339933;">59.2&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Particular pagado</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span><br>
+<span style="color:#339933;">0&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">0</span><br>
+<span style="color:#339933;">0&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1</span><br>
+<span style="color:#339933;">0.2&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">22</span><br>
+<span style="color:#339933;">6.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">344</span><br>
+<span style="color:#339933;">94&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">367</span><br>
+<span style="color:#339933;">13.3&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">589</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">794</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">657</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">359</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">366</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">2765</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </section>
-<section id="parte.-2-matrices-de-correlación" class="level4">
-<h4 class="anchored" data-anchor-id="parte.-2-matrices-de-correlación">Parte. 2 Matrices de correlación</h4>
+</section>
+<section id="conclusiones-sustantivas" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-sustantivas">Conclusiones Sustantivas</h3>
+<ol type="1">
+<li><p><strong>Segregación Socioeconómica en el Sistema Educativo</strong>:</p>
+<ul>
+<li><p><strong>Colegios Municipales</strong>: Predominantemente, los estudiantes de colegios municipales pertenecen a los GSE más bajos (64% en GSE bajo y 35.8% en GSE medio bajo).</p></li>
+<li><p><strong>Colegios Particulares Subvencionados</strong>: Tienen una mezcla más amplia de estudiantes de diferentes GSE, pero con una mayor proporción de GSE medio (86.6%) y medio alto (90.5%).</p></li>
+<li><p><strong>Colegios Particulares Pagados</strong>: Prácticamente todos los estudiantes pertenecen al GSE alto (94%).</p></li>
+</ul>
+<p>Esto muestra una clara segregación socioeconómica, donde los estudiantes de niveles socioeconómicos bajos asisten principalmente a colegios municipales, y los estudiantes de niveles socioeconómicos altos asisten principalmente a colegios particulares pagados.</p></li>
+</ol>
+<section id="tabla-1-código-de-dependencia-y-grupo-socioeconómico-gse" class="level4">
+<h4 class="anchored" data-anchor-id="tabla-1-código-de-dependencia-y-grupo-socioeconómico-gse">Tabla 1: Código de Dependencia y Grupo Socioeconómico (GSE)</h4>
+<p>Esta tabla muestra la distribución del grupo socioeconómico (GSE) entre los diferentes tipos de colegios (municipal, particular subvencionado y particular pagado).</p>
+<ul>
+<li><p><strong>Municipal</strong>:</p>
+<ul>
+<li><p>64% de los estudiantes en colegios municipales pertenecen al GSE bajo.</p></li>
+<li><p>35.8% pertenecen al GSE medio bajo.</p></li>
+<li><p>13.2% pertenecen al GSE medio.</p></li>
+<li><p>3.3% pertenecen al GSE medio alto.</p></li>
+<li><p>0% pertenecen al GSE alto.</p></li>
+</ul></li>
+<li><p><strong>Particular subvencionado</strong>:</p>
+<ul>
+<li><p>36% de los estudiantes en colegios particulares subvencionados pertenecen al GSE bajo.</p></li>
+<li><p>64.2% pertenecen al GSE medio bajo.</p></li>
+<li><p>86.6% pertenecen al GSE medio.</p></li>
+<li><p>90.5% pertenecen al GSE medio alto.</p></li>
+<li><p>6% pertenecen al GSE alto.</p></li>
+</ul></li>
+<li><p><strong>Particular pagado</strong>:</p>
+<ul>
+<li><p>0% de los estudiantes en colegios particulares pagados pertenecen al GSE bajo o medio bajo.</p></li>
+<li><p>0.2% pertenecen al GSE medio.</p></li>
+<li><p>6.1% pertenecen al GSE medio alto.</p></li>
+<li><p>94% pertenecen al GSE alto.</p></li>
+</ul></li>
+</ul>
+<p><strong>Interpretación</strong>: La tabla muestra una clara segregación socioeconómica en los colegios chilenos. Los colegios municipales tienen una alta concentración de estudiantes de GSE bajo y medio bajo, mientras que los colegios particulares pagados tienen una alta concentración de estudiantes de GSE alto. Esto indica que los estudiantes de mayor nivel socioeconómico tienden a asistir a colegios particulares pagados, mientras que los estudiantes de niveles socioeconómicos más bajos asisten mayoritariamente a colegios municipales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(simce2m2017_finalnum, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           cdm_2017 cod_depe2 cod_grupo
-cdm_2017  1.0000000 0.3610706 0.4320752
-cod_depe2 0.3610706 1.0000000 0.7184894
-cod_grupo 0.4320752 0.7184894 1.0000000</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Opción 2: tab_ corr</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(simce2m2017_finalnum, </span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(simce2m2017_finalnum<span class="sc">$</span>cod_depe2, simce2m2017_finalnum<span class="sc">$</span>cdm_2017,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.col.prc=</span><span class="cn">TRUE</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.summary=</span><span class="cn">FALSE</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
+<div id="tbl-sjt-xtab2" class="anchored">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Table&nbsp;2: Código dependencia y Categoría desempeño</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Categoría desempeño</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Código dependencia</td>
-<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">GSE</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">Código dependencia</td>
+<td colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Categoría desempeño</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid;">Total</td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">Categoría desempeño</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">INSUFICIENTE</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">MEDIO-BAJO</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">MEDIO</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">ALTO</td>
 </tr>
 <tr class="odd">
-<td style="font-style: italic">Código dependencia</td>
-<td style="text-align: center; padding: 0.2cm;">0.361<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Municipal</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">187</span><br>
+<span style="color:#339933;">56.3&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">286</span><br>
+<span style="color:#339933;">43.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">236</span><br>
+<span style="color:#339933;">17.6&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">51</span><br>
+<span style="color:#339933;">11.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">760</span><br>
+<span style="color:#339933;">27.5&nbsp;%</span></td>
 </tr>
 <tr class="even">
-<td style="font-style: italic">GSE</td>
-<td style="text-align: center; padding: 0.2cm;">0.432<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">0.718<span style="vertical-align:super;font-size:0.8em;">***</span></td>
-<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Particular<br>
+subvencionado</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">120</span><br>
+<span style="color:#339933;">36.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">355</span><br>
+<span style="color:#339933;">53.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">922</span><br>
+<span style="color:#339933;">68.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">241</span><br>
+<span style="color:#339933;">56.2&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">1638</span><br>
+<span style="color:#339933;">59.2&nbsp;%</span></td>
 </tr>
 <tr class="odd">
-<td colspan="4" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with listwise-deletion.</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Particular pagado</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">25</span><br>
+<span style="color:#339933;">7.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">23</span><br>
+<span style="color:#339933;">3.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">182</span><br>
+<span style="color:#339933;">13.6&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">137</span><br>
+<span style="color:#339933;">31.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">367</span><br>
+<span style="color:#339933;">13.3&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">332</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">664</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">1340</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">429</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">2765</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+</div>
+<ul>
+<li><p><strong>Desigualdad en el Desempeño Académico según Dependencia Escolar</strong>:</p>
+<ul>
+<li><p><strong>Colegios Municipales</strong>: Mayor proporción de estudiantes con desempeño insuficiente (56.3%) y medio-bajo (43.1%).</p></li>
+<li><p><strong>Colegios Particulares Subvencionados</strong>: Predominan en categorías de desempeño medio (68.8%) y alto (56.2%), aunque también tienen una proporción considerable en categorías más bajas.</p></li>
+<li><p><strong>Colegios Particulares Pagados</strong>: Mayor proporción de estudiantes con desempeño alto (31.9%) y menor proporción con desempeño insuficiente (7.5%).</p></li>
+</ul>
+<p>Esta distribución indica que los colegios particulares pagados tienen un desempeño académico significativamente mejor que los colegios municipales, con los particulares subvencionados ubicándose en una posición intermedia.</p></li>
+<li></li>
+</ul>
+</section>
+<section id="tabla-2-código-de-dependencia-y-categoría-de-desempeño" class="level4">
+<h4 class="anchored" data-anchor-id="tabla-2-código-de-dependencia-y-categoría-de-desempeño">Tabla 2: Código de Dependencia y Categoría de Desempeño</h4>
+<p>Esta tabla muestra cómo se distribuyen las categorías de desempeño (INSUFICIENTE, MEDIO-BAJO, MEDIO, ALTO) entre los distintos tipos de colegios.</p>
+<ul>
+<li><p><strong>Municipal</strong>:</p>
+<ul>
+<li><p>56.3% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>43.1% tienen un desempeño medio-bajo.</p></li>
+<li><p>17.6% tienen un desempeño medio.</p></li>
+<li><p>11.9% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>Particular subvencionado</strong>:</p>
+<ul>
+<li><p>36.1% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>53.5% tienen un desempeño medio-bajo.</p></li>
+<li><p>68.8% tienen un desempeño medio.</p></li>
+<li><p>56.2% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>Particular pagado</strong>:</p>
+<ul>
+<li><p>7.5% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>3.5% tienen un desempeño medio-bajo.</p></li>
+<li><p>13.6% tienen un desempeño medio.</p></li>
+<li><p>31.9% tienen un desempeño alto.</p></li>
+</ul></li>
+</ul>
+<p><strong>Interpretación</strong>: La tabla muestra una desigualdad en el desempeño académico entre los tipos de colegios. Los estudiantes en colegios municipales tienen una mayor probabilidad de tener un desempeño insuficiente o medio-bajo, mientras que los estudiantes en colegios particulares pagados tienen una mayor probabilidad de tener un desempeño alto. Esto sugiere que los colegios particulares pagados, que tienen una mayor concentración de estudiantes de GSE alto, también tienen un mejor desempeño académico en comparación con los colegios municipales.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sjt.xtab</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo, simce2m2017_finalnum<span class="sc">$</span>cdm_2017,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.col.prc=</span><span class="cn">TRUE</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">show.summary=</span><span class="cn">FALSE</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="tbl-sjt-xtab3" class="anchored">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<caption>Table&nbsp;3: GSE y Categoría desempeño</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; border-bottom: 1px solid;">GSE</td>
+<td colspan="4" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal;">Categoría desempeño</td>
+<td rowspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; font-weight: bolder; font-style: italic; border-bottom: 1px solid;">Total</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">INSUFICIENTE</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">MEDIO-BAJO</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">MEDIO</td>
+<td style="text-align: center; border-bottom: 1px solid; padding: 0.2cm;">ALTO</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Bajo</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">128</span><br>
+<span style="color:#339933;">38.6&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">251</span><br>
+<span style="color:#339933;">37.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">202</span><br>
+<span style="color:#339933;">15.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">8</span><br>
+<span style="color:#339933;">1.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">589</span><br>
+<span style="color:#339933;">21.3&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Medio bajo</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">135</span><br>
+<span style="color:#339933;">40.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">252</span><br>
+<span style="color:#339933;">38&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">348</span><br>
+<span style="color:#339933;">26&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">59</span><br>
+<span style="color:#339933;">13.8&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">794</span><br>
+<span style="color:#339933;">28.7&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Medio</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">37</span><br>
+<span style="color:#339933;">11.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">109</span><br>
+<span style="color:#339933;">16.4&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">382</span><br>
+<span style="color:#339933;">28.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">129</span><br>
+<span style="color:#339933;">30.1&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">657</span><br>
+<span style="color:#339933;">23.8&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Medio alto</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">9</span><br>
+<span style="color:#339933;">2.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">31</span><br>
+<span style="color:#339933;">4.7&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">227</span><br>
+<span style="color:#339933;">16.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">92</span><br>
+<span style="color:#339933;">21.4&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">359</span><br>
+<span style="color:#339933;">13&nbsp;%</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: middle;">Alto</td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">23</span><br>
+<span style="color:#339933;">6.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">21</span><br>
+<span style="color:#339933;">3.2&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">181</span><br>
+<span style="color:#339933;">13.5&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">141</span><br>
+<span style="color:#339933;">32.9&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm;"><span style="color:black;">366</span><br>
+<span style="color:#339933;">13.2&nbsp;%</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; border-bottom: double; font-weight: bolder; font-style: italic; vertical-align: middle;">Total</td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">332</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">664</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">1340</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">429</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+<td style="text-align: center; padding: 0.2cm; border-bottom: double;"><span style="color:black;">2765</span><br>
+<span style="color:#339933;">100&nbsp;%</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><strong>Relación entre GSE y Desempeño Académico</strong>:</p>
+<ul>
+<li><p><strong>GSE Bajo y Medio Bajo</strong>: Alta proporción de estudiantes con desempeño insuficiente (38.6% en GSE bajo y 40.7% en GSE medio bajo) y medio-bajo (37.8% en GSE bajo y 38% en GSE medio bajo).</p></li>
+<li><p><strong>GSE Medio y Medio Alto</strong>: Menor proporción de desempeño insuficiente y mayor proporción de desempeño medio y alto.</p></li>
+<li><p><strong>GSE Alto</strong>: Alta proporción de estudiantes con desempeño alto (32.9%) y baja proporción con desempeño insuficiente (6.9%).</p></li>
+</ul>
+<p>La relación entre el GSE y el desempeño académico es clara: a medida que el GSE aumenta, la proporción de estudiantes con desempeño académico alto también aumenta, mientras que la proporción de estudiantes con desempeño insuficiente disminuye.</p>
+</section>
+<section id="tabla-3-grupo-socioeconómico-gse-y-categoría-de-desempeño" class="level4">
+<h4 class="anchored" data-anchor-id="tabla-3-grupo-socioeconómico-gse-y-categoría-de-desempeño">Tabla 3: Grupo Socioeconómico (GSE) y Categoría de Desempeño</h4>
+<p>Esta tabla muestra la relación entre el nivel socioeconómico de los estudiantes y su desempeño académico.</p>
+<ul>
+<li><p><strong>GSE Bajo</strong>:</p>
+<ul>
+<li><p>38.6% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>37.8% tienen un desempeño medio-bajo.</p></li>
+<li><p>15.1% tienen un desempeño medio.</p></li>
+<li><p>1.9% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>GSE Medio bajo</strong>:</p>
+<ul>
+<li><p>40.7% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>38% tienen un desempeño medio-bajo.</p></li>
+<li><p>26% tienen un desempeño medio.</p></li>
+<li><p>13.8% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>GSE Medio</strong>:</p>
+<ul>
+<li><p>11.1% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>16.4% tienen un desempeño medio-bajo.</p></li>
+<li><p>28.5% tienen un desempeño medio.</p></li>
+<li><p>30.1% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>GSE Medio alto</strong>:</p>
+<ul>
+<li><p>2.7% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>4.7% tienen un desempeño medio-bajo.</p></li>
+<li><p>16.9% tienen un desempeño medio.</p></li>
+<li><p>21.4% tienen un desempeño alto.</p></li>
+</ul></li>
+<li><p><strong>GSE Alto</strong>:</p>
+<ul>
+<li><p>6.9% de los estudiantes tienen un desempeño insuficiente.</p></li>
+<li><p>3.2% tienen un desempeño medio-bajo.</p></li>
+<li><p>13.5% tienen un desempeño medio.</p></li>
+<li><p>32.9% tienen un desempeño alto.</p></li>
+</ul></li>
+</ul>
+<p><strong>Interpretación</strong>: La tabla muestra que hay una fuerte relación entre el nivel socioeconómico y el desempeño académico. Los estudiantes de GSE bajo tienen una mayor probabilidad de tener un desempeño insuficiente o medio-bajo, mientras que los estudiantes de GSE alto tienen una mayor probabilidad de tener un desempeño alto. Esto sugiere que el nivel socioeconómico es un factor importante en el desempeño académico, con estudiantes de niveles socioeconómicos más altos obteniendo mejores resultados académicos.</p>
+</section>
+</section>
+<section id="conclusión-general" class="level3">
+<h3 class="anchored" data-anchor-id="conclusión-general">Conclusión General</h3>
+<p>Las tablas de contingencia muestran que existe una clara segregación socioeconómica en los colegios chilenos, y que esta segregación está relacionada con diferencias significativas en el desempeño académico. Los estudiantes de mayor nivel socioeconómico tienden a asistir a colegios particulares pagados y tienen un mejor desempeño académico, mientras que los estudiantes de menor nivel socioeconómico asisten mayoritariamente a colegios municipales y tienen un desempeño académico inferior. Esto resalta la desigualdad educativa en el sistema escolar chileno.</p>
+</section>
+<section id="implicaciones-de-política-educativa" class="level3">
+<h3 class="anchored" data-anchor-id="implicaciones-de-política-educativa">Implicaciones de Política Educativa</h3>
+<ol type="1">
+<li><p><strong>Necesidad de Políticas de Inclusión y Equidad</strong>:</p>
+<ul>
+<li>La segregación socioeconómica observada sugiere la necesidad de políticas que promuevan una mayor inclusión y equidad en el sistema educativo. Esto podría incluir mecanismos de financiamiento que aumenten los recursos para los colegios municipales y subvencionados, así como programas de becas para estudiantes de bajos ingresos en colegios particulares.</li>
+</ul></li>
+<li><p><strong>Intervenciones en Colegios Municipales</strong>:</p>
+<ul>
+<li>Dado el bajo desempeño académico en colegios municipales, es fundamental implementar intervenciones focalizadas que mejoren la calidad educativa en estos colegios. Esto podría incluir capacitación docente, mejora de infraestructuras y recursos educativos adicionales.</li>
+</ul></li>
+<li><p><strong>Programas de Apoyo para Estudiantes de GSE Bajo</strong>:</p>
+<ul>
+<li>Los estudiantes de GSE bajo necesitan programas de apoyo específicos, como tutorías, programas de mentoría y actividades extracurriculares que refuercen su aprendizaje y los motiven a alcanzar un mejor desempeño académico.</li>
+</ul></li>
+<li><p><strong>Monitoreo y Evaluación Continuos</strong>:</p>
+<ul>
+<li>Es crucial mantener un monitoreo y evaluación continuos del desempeño académico en relación con el GSE y la dependencia escolar para identificar áreas problemáticas y evaluar la efectividad de las políticas implementadas.</li>
+</ul></li>
+</ol>
+<p>En resumen, las tablas de contingencia revelan una segregación socioeconómica significativa y una correlación fuerte entre el GSE y el desempeño académico. Abordar estas disparidades es esencial para promover un sistema educativo más equitativo y justo en Chile.</p>
+<section id="parte.-2.1-asociación-entre-tres-variables" class="level4">
+<h4 class="anchored" data-anchor-id="parte.-2.1-asociación-entre-tres-variables">Parte. 2.1 Asociación entre tres Variables</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">factor</span>(simce2m2017_finalnum<span class="sc">$</span>cod_depe2,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span>, <span class="st">"Particular subvencionado"</span>, <span class="st">"Particular pagado"</span>))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> simce2m2017_finalnum <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cod_grupo, cod_depe2) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">promedio =</span> <span class="fu">mean</span>(cdm_2017))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'cod_grupo'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(cod_grupo), <span class="at">y =</span> promedio)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GSE"</span>, <span class="at">y =</span> <span class="st">"Desempeño Académico"</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">1</span>, <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> cod_depe2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="fig-plot-asociacion" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Trabajo03_files/figure-html/cor-complete-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Correlación Variables Simce 2017</figcaption>
+<p><img src="Trabajo03_files/figure-html/fig-plot-asociacion-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Gráfico Segmentado</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Al revisar la matriz de correlación y visualizar la <strong>?@cor-complete</strong>, nos indica que la variable cdm_2017 tiene una correlación de 0.361 con la variable cod_depe2 lo que sugiere una relación positiva/ moderada entre el desempeño escolar y el tipo de dependencia de la institución educativa, lo mismo sucede con la categoría de desempeño (cdm_2017) y el cod_grupo (GSE) con una correlación de 0.432, por ultimo para las variables cod_depe2 y cod_grupo, la correlación es de 0.718, lo que sugiere una relación positiva fuerte entre el tipo de dependencia de la institución educativa y en que GSE se posiciona, esto podría sugerir que establecimientos con estudiantes de ciertos GSE tienden a tener un mejor desempeño en las&nbsp;pruebas&nbsp;SIMCE.</p>
 </section>
-<section id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach" class="level4">
-<h4 class="anchored" data-anchor-id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach">Parte 2.1 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach</h4>
+</section>
+<section id="interpretación-del-gráfico-segmentado" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-del-gráfico-segmentado">Interpretación del Gráfico Segmentado</h3>
+<p>El gráfico muestra la relación entre el Grupo Socioeconómico (GSE) y el Desempeño Académico (Categoría de Desempeño) segmentado por tipo de dependencia escolar (Municipal, Particular Subvencionado, Particular Pagado). A continuación, se detallan las conclusiones sustantivas derivadas de este análisis:</p>
+<section id="desempeño-académico-en-colegios-municipales" class="level4">
+<h4 class="anchored" data-anchor-id="desempeño-académico-en-colegios-municipales">1. <strong>Desempeño Académico en Colegios Municipales</strong></h4>
+<ul>
+<li><p><strong>Bajo Desempeño Académico</strong>: Los estudiantes en colegios municipales tienden a tener un desempeño académico más bajo en comparación con los otros tipos de colegios.</p></li>
+<li><p><strong>Disparidades en Desempeño</strong>: Existe una disparidad significativa en el desempeño académico entre los diferentes grupos socioeconómicos (GSE) dentro de los colegios municipales. Los estudiantes de GSE bajo (0 y 1) tienen un desempeño notablemente más bajo que aquellos en los grupos socioeconómicos más altos (3 y 4).</p></li>
+</ul>
+</section>
+<section id="desempeño-académico-en-colegios-particulares-subvencionados" class="level4">
+<h4 class="anchored" data-anchor-id="desempeño-académico-en-colegios-particulares-subvencionados">2. <strong>Desempeño Académico en Colegios Particulares Subvencionados</strong></h4>
+<ul>
+<li><p><strong>Mejor Desempeño Comparado con Municipales</strong>: Los colegios particulares subvencionados muestran un mejor desempeño académico promedio en comparación con los colegios municipales.</p></li>
+<li><p><strong>Disminución de Disparidades</strong>: Aunque existen disparidades en el desempeño académico entre los diferentes GSE, la diferencia no es tan marcada como en los colegios municipales. Los estudiantes de GSE medio y medio alto (2 y 3) tienen un desempeño académico superior, acercándose al desempeño de los estudiantes de GSE alto (4).</p></li>
+</ul>
+</section>
+<section id="desempeño-académico-en-colegios-particulares-pagados" class="level4">
+<h4 class="anchored" data-anchor-id="desempeño-académico-en-colegios-particulares-pagados">3. <strong>Desempeño Académico en Colegios Particulares Pagados</strong></h4>
+<ul>
+<li><p><strong>Alto Desempeño Académico</strong>: Los estudiantes en colegios particulares pagados tienen el desempeño académico más alto en todas las categorías de GSE.</p></li>
+<li><p><strong>Menor Variabilidad en Desempeño</strong>: La variabilidad en el desempeño académico entre los diferentes GSE es menor en comparación con los otros tipos de colegios. Esto sugiere que los recursos y las oportunidades educativas en los colegios particulares pagados contribuyen a un desempeño académico más homogéneo y elevado.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusiones-generales" class="level3">
+<h3 class="anchored" data-anchor-id="conclusiones-generales">Conclusiones Generales</h3>
+<ol type="1">
+<li><p><strong>Desigualdades en el Sistema Educativo</strong>: El gráfico ilustra las desigualdades en el sistema educativo chileno, donde el tipo de dependencia escolar y el GSE juegan un papel crucial en el desempeño académico de los estudiantes.</p></li>
+<li><p><strong>Necesidad de Políticas de Equidad</strong>: Es esencial implementar políticas que reduzcan estas desigualdades, proporcionando más recursos y apoyo a los colegios municipales y a los estudiantes de GSE bajo y medio bajo.</p></li>
+<li><p><strong>Impacto de la Dependencia Escolar</strong>: Los colegios particulares, especialmente los pagados, muestran mejores resultados académicos, lo que sugiere la necesidad de estudiar y potencialmente replicar las prácticas efectivas de estos colegios en el sistema público.</p></li>
+</ol>
+</section>
+<section id="implicaciones-de-política-educativa-1" class="level3">
+<h3 class="anchored" data-anchor-id="implicaciones-de-política-educativa-1">Implicaciones de Política Educativa</h3>
+<ol type="1">
+<li><p><strong>Fomento de la Equidad en Recursos Educativos</strong>:</p>
+<ul>
+<li>Es crucial implementar políticas que aseguren una distribución equitativa de recursos educativos, especialmente para colegios municipales que muestran un desempeño académico más bajo. Esto podría incluir financiamiento adicional, programas de capacitación docente y mejoras en infraestructuras escolares.</li>
+</ul></li>
+<li><p><strong>Apoyo a Estudiantes de GSE Bajo en Colegios Particulares Subvencionados</strong>:</p>
+<ul>
+<li>Aunque los colegios particulares subvencionados muestran un mejor desempeño en general, aún existe una variación significativa en el desempeño académico según el GSE. Implementar programas de apoyo específico para estudiantes de GSE bajo podría ayudar a cerrar esta brecha.</li>
+</ul></li>
+<li><p><strong>Evaluación y Monitoreo Continuo</strong>:</p>
+<ul>
+<li>Realizar evaluaciones y monitoreos continuos del desempeño académico en relación con el tipo de dependencia escolar y el GSE permitirá identificar áreas problemáticas y evaluar la efectividad de las políticas implementadas para promover la equidad educativa.</li>
+</ul></li>
+</ol>
+<p>Este análisis subraya la importancia de abordar las disparidades educativas para promover un sistema educativo más equitativo y justo en Chile.</p>
+<section id="parte-2.2-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach" class="level4">
+<h4 class="anchored" data-anchor-id="parte-2.2-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach">Parte 2.2 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construcción de Escalas</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construcción de Escalas</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
 # total N=2765 valid N=2765 mean=1.67 sd=0.88
@@ -673,79 +1101,135 @@ Value |      Label |   N | Raw % | Valid % | Cum. %
     4 |       Alto | 366 | 13.24 |   13.24 | 100.00
  &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2765    3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Utilizaremos las mismas variables, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimar consistencia interna: Alfa de Chronbach</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(simce2m2017_finalnum, cdm_2017, cod_depe2, cod_grupo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Utilizaremos las dos variables ordinales: cod_grupo y cdm_2017, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimar consistencia interna: Alfa de Chronbach</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(simce2m2017_finalnum, cdm_2017, cod_grupo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Reliability analysis   
 Call: psych::alpha(x = dplyr::select(simce2m2017_finalnum, cdm_2017, 
-    cod_depe2, cod_grupo))
+    cod_grupo))
 
-  raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd median_r
-      0.71      0.75    0.71       0.5   3 0.0081  1.4 0.77     0.43
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+      0.57       0.6    0.43      0.43 1.5 0.015  1.7 0.93     0.43
 
     95% confidence boundaries 
          lower alpha upper
-Feldt     0.69  0.71  0.73
-Duhachek  0.69  0.71  0.72
+Feldt     0.54  0.57   0.6
+Duhachek  0.54  0.57   0.6
 
  Reliability if an item is dropped:
-          raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
-cdm_2017       0.72      0.84    0.72      0.72 5.1    0.007    NA  0.72
-cod_depe2      0.57      0.60    0.43      0.43 1.5    0.015    NA  0.43
-cod_grupo      0.51      0.53    0.36      0.36 1.1    0.018    NA  0.36
+          raw_alpha std.alpha G6(smc) average_r  S/N alpha se var.r med.r
+cdm_2017       0.29      0.43    0.19      0.43 0.76       NA     0  0.43
+cod_grupo      0.64      0.43    0.19      0.43 0.76       NA     0  0.43
 
  Item statistics 
              n raw.r std.r r.cor r.drop mean   sd
-cdm_2017  2765  0.72  0.73  0.48   0.44 1.67 0.88
-cod_depe2 2765  0.81  0.85  0.77   0.67 0.86 0.62
-cod_grupo 2765  0.92  0.88  0.82   0.66 1.68 1.30
+cdm_2017  2765  0.77  0.85  0.56   0.43  1.7 0.88
+cod_grupo 2765  0.90  0.85  0.56   0.43  1.7 1.30
 
 Non missing response frequency for each item
              0    1    2    3    4 miss
 cdm_2017  0.12 0.24 0.48 0.16 0.00    0
-cod_depe2 0.27 0.59 0.13 0.00 0.00    0
 cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
 </div>
 </div>
-<p>Esto nos indica una consistencia interna de 0.71, es decir que la fiabilidad de la escala total tiene un buen panorama general, si bien no es el mejor, es mayor a 0.6 así que podemos trabajar con este valor, también se puede ver que si se elimina algún item, alfa aumenta el mínimo (0,01) para “cdm_2017”, pero disminuye para los otros dos, lo que sugiere que pueden estar menos relacionados con la escala</p>
+<p>CORREGIR</p>
+<p><strong>Coeficiente Alfa de Cronbach</strong>:</p>
+<ul>
+<li><p>El coeficiente alfa de 0.57 sugiere una consistencia moderada en las respuestas de los estudiantes en las variables <code>cdm_2017</code> (Categoría de Desempeño) y <code>cod_grupo</code> (Grupo Socioeconómico). Esto indica que existe cierta relación entre la categoría de desempeño en el SIMCE 2017 y el grupo socioeconómico al que pertenecen los estudiantes, pero podría ser mejor.</p></li>
+<li><p>En resumen, los resultados sugieren que las variables <code>cdm_2017</code> (Categoría de Desempeño) y <code>cod_grupo</code> (Grupo Socioeconómico) están relacionadas, pero la relación no es muy fuerte. Esto podría deberse a que otros factores, además del grupo socioeconómico, influyen en el desempeño académico de los estudiantes en el SIMCE 2017.</p></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum2 <span class="ot">&lt;-</span> simce2m2017_finalnum <span class="sc">%&gt;%</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(segregación<span class="at">_escolar =</span> <span class="fu">sum</span>(cdm_2017, cod_depe2, cod_grupo))</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simce2m2017_finalnum2<span class="sc">$</span>segregación_escolar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum2 <span class="ot">&lt;-</span> simce2m2017_finalnum <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cond_socioeduc =</span> <span class="fu">sum</span>(cdm_2017, cod_grupo))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simce2m2017_finalnum2<span class="sc">$</span>cond_socioeduc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  0.000   2.000   4.000   4.214   6.000   9.000 </code></pre>
+  0.000   2.000   3.000   3.356   5.000   7.000 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum2,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum2,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simce2m2017_finalnum2, <span class="fu">aes</span>(<span class="at">x =</span> segregación_escolar)) <span class="sc">+</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Segregación Escolar"</span>) <span class="sc">+</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cantidad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simce2m2017_finalnum2, <span class="fu">aes</span>(<span class="at">x =</span> cond_socioeduc)) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Condición Socioeducativa"</span>) <span class="sc">+</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cantidad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-plot-segregacion" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-plot-condicion" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Trabajo03_files/figure-html/fig-plot-segregacion-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Histograma Segregación Escolar</figcaption>
+<p><img src="Trabajo03_files/figure-html/fig-plot-condicion-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Histograma Condición Socioeducativa</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Al observar la <a href="#fig-plot-segregacion">Figure&nbsp;1</a> que busca representar la distribución de la segregación escolar en Chile, se observa que la mayoría de los estudiantes se encuentran en niveles moderados de segregación, con una concentración significativa en torno a la mediana de 4.214, sin embargo, existe una distribución sesgada hacia los niveles más bajos concentrando la mayor cantidad de estudiantes bajo la media, al contrastar con la bibliografía referenciada en las entregas anteriores, y considerando la falta de información estadística para construir índices o escalas sobre segregación escolar, hacen que esta no sea consistente con los múltiples estudios concluyen que Chile es un país altamente segregado, ni sea fiel a los datos de otras áreas de investigación, por lo que como objetivo está el construir conocimiento sobre la segregación escolar en el sistema educacional chileno</p>
 </section>
+<section id="conclusiones" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones">Conclusiones</h4>
+</section>
+</section>
+<section id="descripción-del-histograma" class="level3">
+<h3 class="anchored" data-anchor-id="descripción-del-histograma">Descripción del Histograma</h3>
+<ol type="1">
+<li><p><strong>Eje X (Condición Socioeducativa)</strong>:</p>
+<ul>
+<li><p>La escala de la Condición Socioeducativa varía de 0 a 7.</p></li>
+<li><p>Cada valor en el eje X representa una combinación específica de desempeño académico y grupo socioeconómico.</p></li>
+</ul></li>
+<li><p><strong>Eje Y (Cantidad)</strong>:</p>
+<ul>
+<li>El eje Y muestra la cantidad de estudiantes que se encuentran en cada nivel de la Condición Socioeducativa.</li>
+</ul></li>
+</ol>
+</section>
+<section id="interpretación-sustantiva" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-sustantiva">Interpretación Sustantiva</h3>
+</section>
+<section id="interpretación-del-gráfico-segmentado-1" class="level3">
+<h3 class="anchored" data-anchor-id="interpretación-del-gráfico-segmentado-1">Interpretación del Gráfico Segmentado</h3>
+<p>El gráfico segmentado muestra la relación entre el Grupo Socioeconómico (GSE) y el Desempeño Académico (Categoría de Desempeño) según la dependencia escolar:</p>
+<ul>
+<li><p><strong>Colegios Municipales:</strong> Los estudiantes tienden a tener un desempeño académico más bajo, con disparidades significativas entre diferentes GSE.</p></li>
+<li><p><strong>Colegios Particulares Subvencionados:</strong> Muestran un mejor desempeño académico en comparación con los municipales, con menos disparidades entre GSE.</p></li>
+<li><p><strong>Colegios Particulares Pagados:</strong> Tienen el desempeño académico más alto y menor variabilidad entre los diferentes GSE.</p></li>
+</ul>
+<ol type="1">
+<li><p><strong>Distribución de la Condición Socioeducativa</strong>:</p>
+<ul>
+<li><p><strong>Modos en los valores de 2 y 4</strong>: La mayor cantidad de estudiantes se concentra en los valores 2 y 4 de la escala, lo que sugiere que hay un gran número de estudiantes con una combinación de desempeño académico y grupo socioeconómico que se encuentra en niveles intermedios.</p></li>
+<li><p><strong>Menor cantidad en los extremos</strong>: Hay menos estudiantes en los extremos de la escala (0 y 7), lo que indica que menos estudiantes se encuentran en las combinaciones extremas de bajo desempeño académico en grupos socioeconómicos bajos (0) y alto desempeño académico en grupos socioeconómicos altos (7).</p></li>
+</ul></li>
+<li><p><strong>Interpretación de los picos</strong>:</p>
+<ul>
+<li><p><strong>Valor 2</strong>: Este pico podría representar estudiantes que tienen un desempeño académico medio bajo en un grupo socioeconómico medio bajo.</p></li>
+<li><p><strong>Valor 4</strong>: Este pico podría representar estudiantes con un desempeño académico medio en un grupo socioeconómico medio, o una combinación de desempeño y grupo socioeconómico que se equilibra en la mitad de la escala.</p></li>
+</ul></li>
+<li><p><strong>Desigualdad y Segregación</strong>:</p>
+<ul>
+<li><p>La distribución indica una mayor concentración en los niveles intermedios, lo que puede sugerir que la mayoría de los estudiantes se encuentran en situaciones de desempeño y condiciones socioeconómicas medias.</p></li>
+<li><p>La menor cantidad de estudiantes en los extremos podría reflejar desigualdad y segregación en el sistema educativo, donde menos estudiantes alcanzan los niveles más altos de desempeño académico y grupo socioeconómico, y menos estudiantes caen en los niveles más bajos.</p></li>
+</ul></li>
+</ol>
+</section>
+<section id="conclusión" class="level3">
+<h3 class="anchored" data-anchor-id="conclusión">Conclusión</h3>
+<p>El histograma de la Condición Socioeducativa muestra que hay una concentración significativa de estudiantes en los niveles intermedios, con menos estudiantes en los extremos de la escala. Esta distribución puede ser indicativa de un sistema educativo donde la mayoría de los estudiantes se encuentran en situaciones medias en términos de desempeño académico y grupo socioeconómico, pero también refleja la existencia de desigualdades, ya que menos estudiantes se encuentran en los extremos más favorables o desfavorables de la escala. Esta interpretación sustantiva puede ayudarte a comprender mejor cómo se distribuyen las condiciones socioeducativas de los estudiantes y cómo esto se relaciona con la segregación y desigualdad en el sistema educativo chileno.</p>
+<p>El tipo de dependencia escolar y el GSE juegan un papel crucial en el desempeño académico de los estudiantes, evidenciando desigualdades en el sistema educativo chileno.</p>
+<p>Los resultados de este estudio confirman que la mercantilización del sistema educativo en Chile ha fomentado una significativa segregación escolar. Las tablas y gráficos muestran claramente que los establecimientos particulares pagados tienden a concentrar estudiantes de grupos socioeconómicos altos, mientras que los establecimientos municipales acogen principalmente a estudiantes de grupos socioeconómicos bajos. Esta distribución desigual se refleja en los puntajes del SIMCE, donde los colegios particulares pagados obtienen consistentemente mejores resultados que los municipales.</p>
+<p>Estos hallazgos respaldan la teoría de que la privatización y los mecanismos de mercado en la educación aumentan las brechas educativas, como sugieren Budnik et al.&nbsp;(2011) y Carrillo et al.&nbsp;(2020). La libertad de elección de los padres y la capacidad de los establecimientos para seleccionar estudiantes han contribuido a esta segregación, limitando la igualdad de oportunidades educativas.</p>
+<p>Las implicaciones de estos resultados son significativas. La perpetuación de un sistema educativo que favorece la competencia y la privatización puede continuar exacerbando las desigualdades sociales en Chile. Por lo tanto, es crucial reconsiderar las políticas actuales y explorar enfoques que promuevan una mayor equidad y cohesión social en el ámbito educativo.</p>
+<p>Futuras investigaciones podrían profundizar en los mecanismos específicos a través de los cuales se produce esta segregación y evaluar el impacto de recientes reformas educativas en la reducción de estas desigualdades. Asimismo, sería valioso investigar cómo otros factores, como la ubicación geográfica y la infraestructura escolar, influyen en la calidad educativa y la segregación.</p>
 </section>
 </section>
 </section>
@@ -756,6 +1240,8 @@ cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
 <ol>
 <li id="fn1"><p>Informe teórico en <a href="https://naxinii.github.io/Trabajos/Trabajo01.html">Trabajo01 (naxinii.github.io)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Procesamiento y análisis completo en <a href="https://naxinii.github.io/Trabajos/Trabajo02.html">Trabajo02 (naxinii.github.io)</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>PD: La preparación y tratamiento de los casos perdidos con “listwise deletion” se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script “Procesamiento(2)” del Trabajo 2<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Esto según los códigos contenidos en las glosas que se encuentran en la carpeta “input” bajo el nombre de “simce2m2017_glosas”<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->

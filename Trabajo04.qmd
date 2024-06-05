@@ -1,0 +1,92 @@
+---
+title: "Trabajo04"
+author: "IgnaciaCS"
+format: html
+editor: visual
+toc: true
+link-citations: true
+bibliography: Trabajo02.bib
+link-bibliography: true
+---
+
+# Trabajo 04: R para Análisis Estadístico
+
+## Regresión Lineal
+
+## Por: Ignacia Castillo Soto
+
+### **Mercantilización del sistema educativo y segregación escolar en Chile**
+
+#### Introducción
+
+###### (Trabajo 01)
+
+Cómo se mencionó en la primera entrega[^1], la mercantilización del sistema educativo en el país comienza con las reformas neoliberales implementadas en dictadura, las cuales debilitaron el sistema educativo estatal promoviendo los fines de lucro y la competencia individual, a pesar de nuevas reformas, estas no han generado cambios sustanciales en las politicas educativas las cuales han llevado a una extrema privatización de la educación, la cual ha fomentado la segregación y desigualdad de oportunidades educativas en Chile.
+
+[^1]: Informe teórico en [Trabajo01 (naxinii.github.io)](https://naxinii.github.io/Trabajos/Trabajo01.html)
+
+La segregación escolar se refiere a la distribución desigual de los estudiantes en las escuelas según sus características socioeconómicas o culturales. En Chile, la segregación se evidencia tanto en la facultad que tienen los establecimientos para seleccionar estudiantes como en la libertad de elección de los padres, libertad teórica, ya que en la práctica, esta elección puede estar limitada por factores socioeconómicos y culturales, lo que lleva a la concentración de ciertos grupos en determinadas escuelas.
+
+Las brechas educativas han aumentado debido a la naturaleza del sistema educacional actual, el cual reproduce las desigualdades preexistentes en el país. La idea principal de esta investigación se centra en cómo las prácticas de privatización han fomentado la segregación escolar, tomando los datos disponibles que entrega la Agencia de la Calidad de la Educación de la prueba SIMCE 2017 2° medio , seleccionando las variables que podrían reflejar mejor este fenómeno.
+
+#### Análisis descriptivo
+
+###### (Trabajo 02)
+
+SIMCE es una evaluación cuyo objetivo es conocer los resultados educativos de los establecimientos, evaluando el logro de los contenidos y habilidades del Currículum Nacional, recogiendo información sobre el contexto educativo a través de cuestionarios que responden directores(as), docentes, estudiantes, padres, madres y apoderados, de modo de analizar los resultados en forma integral.
+
+La segunda entrega de este curso[^2] contó con la generación de una nueva base de datos a partir de las bases originales del proceso SIMCE 2017 para los cursos de 2° medio a nivel país, junto a la selección, procesamiento y analisis descriptivo de las variables relevantes para el informe, las cuales son:
+
+[^2]: Procesamiento y análisis completo en [Trabajo02 (naxinii.github.io)](https://naxinii.github.io/Trabajos/Trabajo02.html)
+
+-   VARIABLE 1:"cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
+
+-   VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
+
+-   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))
+
+Se destacó que la mayoría de los establecimientos tienen un desempeño académico medio, seguido por un desempeño medio-bajo. En cuanto al tipo de establecimiento una gran mayoria son del tipo municipal subvencionado. En relación con el GSE más del 50% de establecimientos se encuentran entre el Medio y el Bajo. Se incluyen gráficos que muestran la distribución de las categorías de desempeño y del tipo de establecimiento. En el primer gráfico se observa una distribución desigual entre las categorías, destacando el desempeño medio como el más común. En el segundo gráfico, se destaca la minoría de colegios particulares pagados en comparación con los subvencionados.
+
+```{r}
+pacman::p_load(dplyr, 
+               sjmisc, 
+               car, 
+               sjlabelled, 
+               stargazer, 
+               haven,
+               kableExtra,
+               sjPlot,
+               summarytools,
+               ggplot2)
+rm(list=ls())       
+options(scipen=999) 
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
+
+#| label: fig-cdm_2017
+#| fig-cap: “Categorías de Desempeño”
+graph1 <- simce2m2017_final %>% ggplot(aes(x = cdm_2017)) + 
+  geom_bar(fill = "coral")+
+  labs(title = "Categoría de Desempeño 2017",
+       x = "Categoría de Desempeño",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph1
+#| label: fig-cod_depe2
+#| fig-cap:  “Código de Dependencia Establecimiento”
+graph2 <- simce2m2017_final %>% ggplot(aes(x = cod_depe2)) + 
+  geom_bar(fill = "green")+
+  labs(title = "Código de Dependencia Establecimiento",
+       x = "Codigo Dependencia",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph2
+```
+
+#### Asociación de variables y construcción de índices
+
+###### (Trabajo 03)
+
+#### Regresión Lineal

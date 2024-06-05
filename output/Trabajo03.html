@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="IgnaciaCS">
+
+<title>Trabajo03</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Trabajo03_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Trabajo03_files/libs/quarto-html/quarto.js"></script>
+<script src="Trabajo03_files/libs/quarto-html/popper.min.js"></script>
+<script src="Trabajo03_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Trabajo03_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Trabajo03_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Trabajo03_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Trabajo03_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Trabajo03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Trabajo03_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#trabajo-03-r-para-análisis-estadístico" id="toc-trabajo-03-r-para-análisis-estadístico" class="nav-link active" data-scroll-target="#trabajo-03-r-para-análisis-estadístico">Trabajo 03: R para Análisis Estadístico</a>
+  <ul class="collapse">
+  <li><a href="#asociación-de-variables-y-construcción-de-índices" id="toc-asociación-de-variables-y-construcción-de-índices" class="nav-link" data-scroll-target="#asociación-de-variables-y-construcción-de-índices">Asociación de variables y construcción de índices</a></li>
+  <li><a href="#por-ignacia-castillo-soto" id="toc-por-ignacia-castillo-soto" class="nav-link" data-scroll-target="#por-ignacia-castillo-soto">Por: Ignacia Castillo Soto</a>
+  <ul class="collapse">
+  <li><a href="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" id="toc-mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" class="nav-link" data-scroll-target="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile"><strong>Mercantilización del sistema educativo y segregación escolar en Chile</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Trabajo03</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>IgnaciaCS </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="trabajo-03-r-para-análisis-estadístico" class="level1">
+<h1>Trabajo 03: R para Análisis Estadístico</h1>
+<section id="asociación-de-variables-y-construcción-de-índices" class="level2">
+<h2 class="anchored" data-anchor-id="asociación-de-variables-y-construcción-de-índices">Asociación de variables y construcción de índices</h2>
+</section>
+<section id="por-ignacia-castillo-soto" class="level2">
+<h2 class="anchored" data-anchor-id="por-ignacia-castillo-soto">Por: Ignacia Castillo Soto</h2>
+<section id="mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" class="level3">
+<h3 class="anchored" data-anchor-id="mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile"><strong>Mercantilización del sistema educativo y segregación escolar en Chile</strong></h3>
+<section id="introducción" class="level4">
+<h4 class="anchored" data-anchor-id="introducción">Introducción</h4>
+<section id="trabajo-01" class="level6">
+<h6 class="anchored" data-anchor-id="trabajo-01">(Trabajo 01)</h6>
+<p>Cómo se mencionó en la primera entrega<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, la mercantilización del sistema educativo en el país comienza con las reformas neoliberales implementadas en dictadura, las cuales debilitaron el sistema educativo estatal promoviendo los fines de lucro y la competencia individual, a pesar de nuevas reformas, estas no han generado cambios sustanciales en las politicas educativas las cuales han llevado a una extrema privatización de la educación, la cual ha fomentado la segregación y desigualdad de oportunidades educativas en Chile.</p>
+<p>La segregación escolar se refiere a la distribución desigual de los estudiantes en las escuelas según sus características socioeconómicas o culturales. En Chile, la segregación se evidencia tanto en la facultad que tienen los establecimientos para seleccionar estudiantes como en la libertad de elección de los padres, libertad teórica, ya que en la práctica, esta elección puede estar limitada por factores socioeconómicos y culturales, lo que lleva a la concentración de ciertos grupos en determinadas escuelas.</p>
+<p>Las brechas educativas han aumentado debido a la naturaleza del sistema educacional actual, el cual reproduce las desigualdades preexistentes en el país. La idea principal de esta investigación se centra en cómo las prácticas de privatización han fomentado la segregación escolar, tomando los datos disponibles que entrega la Agencia de la Calidad de la Educación de la prueba SIMCE 2017 2° medio , seleccionando las variables que podrían reflejar mejor este fenómeno.</p>
+</section>
+</section>
+<section id="análisis-descriptivo" class="level4">
+<h4 class="anchored" data-anchor-id="análisis-descriptivo">Análisis descriptivo</h4>
+<section id="trabajo-02" class="level6">
+<h6 class="anchored" data-anchor-id="trabajo-02">(Trabajo 02)</h6>
+<p>SIMCE es una evaluación cuyo objetivo es conocer los resultados educativos de los establecimientos, evaluando el logro de los contenidos y habilidades del Currículum Nacional, recogiendo información sobre el contexto educativo a través de cuestionarios que responden directores(as), docentes, estudiantes, padres, madres y apoderados, de modo de analizar los resultados en forma integral.</p>
+<p>La segunda entrega de este curso<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> contó con la generación de una nueva base de datos a partir de las bases originales del proceso SIMCE 2017 para los cursos de 2° medio a nivel país, junto a la selección, procesamiento y analisis descriptivo de las variables relevantes para el informe, las cuales son:</p>
+<ul>
+<li><p>VARIABLE 1:“cod_depe2” = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))</p></li>
+<li><p>VARIABLE 2: “cod_grupo” = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))</p></li>
+<li><p>VARIABLE 3: “cdm_2017” = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))</p></li>
+</ul>
+<p>Se destacó que la mayoría de los establecimientos tienen un desempeño académico medio, seguido por un desempeño medio-bajo. En cuanto al tipo de establecimiento una gran mayoria son del tipo municipal subvencionado. En relación con el GSE más del 50% de establecimientos se encuentran entre el Medio y el Bajo. Se incluyen gráficos que muestran la distribución de las categorías de desempeño y del tipo de establecimiento. En el primer gráfico se observa una distribución desigual entre las categorías, destacando el desempeño medio como el más común. En el segundo gráfico, se destaca la minoría de colegios particulares pagados en comparación con los&nbsp;subvencionados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               car, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               sjlabelled, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               stargazer, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               kableExtra,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               sjPlot,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               summarytools,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               ggplot2)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cdm_2017</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: “Categorías de Desempeño”</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>graph1 <span class="ot">&lt;-</span> simce2m2017_final <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cdm_2017)) <span class="sc">+</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"coral"</span>)<span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Categoría de Desempeño 2017"</span>,</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Categoría de Desempeño"</span>,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>graph1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Trabajo03_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-cod_depe2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap:  “Código de Dependencia Establecimiento”</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>graph2 <span class="ot">&lt;-</span> simce2m2017_final <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cod_depe2)) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"green"</span>)<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Código de Dependencia Establecimiento"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Codigo Dependencia"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>graph2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Trabajo03_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="asociación-de-variables-y-construcción-de-índices-1" class="level4">
+<h4 class="anchored" data-anchor-id="asociación-de-variables-y-construcción-de-índices-1">Asociación de variables y construcción de índices</h4>
+<section id="trabajo-03" class="level6">
+<h6 class="anchored" data-anchor-id="trabajo-03">(Trabajo 03)</h6>
+</section>
+</section>
+<section id="parte-1.-preparación-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="parte-1.-preparación-de-datos">Parte 1. Preparación de datos</h4>
+<p>Para el trabajo 02 se realizó la preparación de los datos y se generaron 2 bases (la 1ra incluye los casos NA y la 2da no) simce2m2017_total.RData y simce2m2017_final.Rdata</p>
+<p>Para ver si podemos hacer el análisis con casos completos revisamos que los NA no sean más del 10%</p>
+<p>Ya que sólo el 3.859527% del total son casos perdidos no supone problemas trabajar con la base simce2m2017_final.RData</p>
+<p>PD: La preparación y tratamiento de los casos perdidos con “listwise deletion” se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script “Procesamiento(2)” del Trabajo 2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               sjPlot, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               sjlabelled, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               kableExtra, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>               GGally, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>               corrplot,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>               tidyverse, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>               car, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               summarytools,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               psych)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Carga de la base de datos</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2876    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2765    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2876-2765</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 111</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">111</span><span class="sc">/</span><span class="dv">2876</span><span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.859527</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2765    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;categorical&gt; 
+# total N=2765 valid N=2765 mean=2.67 sd=0.88
+
+Value        |    N | Raw % | Valid % | Cum. %
+----------------------------------------------
+INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+MEDIO-BAJO   |  664 | 24.01 |   24.01 |  36.02
+MEDIO        | 1340 | 48.46 |   48.46 |  84.48
+ALTO         |  429 | 15.52 |   15.52 | 100.00
+&lt;NA&gt;         |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+Código dependencia (cod_depe2) &lt;categorical&gt; 
+# total N=2765 valid N=2765 mean=1.86 sd=0.62
+
+Value                    |    N | Raw % | Valid % | Cum. %
+----------------------------------------------------------
+Municipal                |  760 | 27.49 |   27.49 |  27.49
+Particular subvencionado | 1638 | 59.24 |   59.24 |  86.73
+Particular pagado        |  367 | 13.27 |   13.27 | 100.00
+&lt;NA&gt;                     |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+GSE (cod_grupo) &lt;categorical&gt; 
+# total N=2765 valid N=2765 mean=2.68 sd=1.30
+
+Value      |   N | Raw % | Valid % | Cum. %
+-------------------------------------------
+Bajo       | 589 | 21.30 |   21.30 |  21.30
+Medio bajo | 794 | 28.72 |   28.72 |  50.02
+Medio      | 657 | 23.76 |   23.76 |  73.78
+Medio alto | 359 | 12.98 |   12.98 |  86.76
+Alto       | 366 | 13.24 |   13.24 | 100.00
+&lt;NA&gt;       |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<p>Convertir variables desde &lt;factor&gt; a &lt;numeric&gt;, recodificar, re-agregar etiquetas y nombres</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(simce2m2017_final<span class="sc">$</span>cod_grupo, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>,<span class="st">"Medio bajo"</span>,<span class="st">"Medio"</span>,<span class="st">"Medio alto"</span>,<span class="st">"Alto"</span>)))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(simce2m2017_final<span class="sc">$</span>cod_depe2, <span class="at">levels =</span><span class="fu">c</span>(<span class="st">"Municipal"</span>, <span class="st">"Particular subvencionado"</span>,<span class="st">"Particular pagado"</span>)))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cdm_2017 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(simce2m2017_final<span class="sc">$</span>cdm_2017, <span class="at">levels =</span><span class="fu">c</span>(<span class="st">"INSUFICIENTE"</span>,<span class="st">"MEDIO-BAJO"</span>,<span class="st">"MEDIO"</span>,<span class="st">"ALTO"</span>)))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cdm_2017 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=2.67 sd=0.88
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  332 | 12.01 |   12.01 |  12.01
+    2 |  664 | 24.01 |   24.01 |  36.02
+    3 | 1340 | 48.46 |   48.46 |  84.48
+    4 |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_depe2 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.86 sd=0.62
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  760 | 27.49 |   27.49 |  27.49
+    2 | 1638 | 59.24 |   59.24 |  86.73
+    3 |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_grupo &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=2.68 sd=1.30
+
+Value |   N | Raw % | Valid % | Cum. %
+--------------------------------------
+    1 | 589 | 21.30 |   21.30 |  21.30
+    2 | 794 | 28.72 |   28.72 |  50.02
+    3 | 657 | 23.76 |   23.76 |  73.78
+    4 | 359 | 12.98 |   12.98 |  86.76
+    5 | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recodificar para que la escala parta de "0" (Práctico 7)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">recode</span>(simce2m2017_final<span class="sc">$</span>cod_grupo,<span class="st">"1=0; 2=1; 3=2; 4=3; 5=4"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">recode</span>(simce2m2017_final<span class="sc">$</span>cod_depe2,<span class="st">"1=0; 2=1; 3=2"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>simce2m2017_final<span class="sc">$</span>cdm_2017 <span class="ot">&lt;-</span> <span class="fu">recode</span>(simce2m2017_final<span class="sc">$</span>cdm_2017,<span class="st">"1=0; 2=1; 3=2; 4=3"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cdm_2017 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  332 | 12.01 |   12.01 |  12.01
+    1 |  664 | 24.01 |   24.01 |  36.02
+    2 | 1340 | 48.46 |   48.46 |  84.48
+    3 |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_depe2 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  760 | 27.49 |   27.49 |  27.49
+    1 | 1638 | 59.24 |   59.24 |  86.73
+    2 |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_grupo &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |   N | Raw % | Valid % | Cum. %
+--------------------------------------
+    0 | 589 | 21.30 |   21.30 |  21.30
+    1 | 794 | 28.72 |   28.72 |  50.02
+    2 | 657 | 23.76 |   23.76 |  73.78
+    3 | 359 | 12.98 |   12.98 |  86.76
+    4 | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum <span class="ot">&lt;-</span> simce2m2017_final</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2765    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cdm_2017 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  332 | 12.01 |   12.01 |  12.01
+    1 |  664 | 24.01 |   24.01 |  36.02
+    2 | 1340 | 48.46 |   48.46 |  84.48
+    3 |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_depe2 &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  760 | 27.49 |   27.49 |  27.49
+    1 | 1638 | 59.24 |   59.24 |  86.73
+    2 |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_grupo &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |   N | Raw % | Valid % | Cum. %
+--------------------------------------
+    0 | 589 | 21.30 |   21.30 |  21.30
+    1 | 794 | 28.72 |   28.72 |  50.02
+    2 | 657 | 23.76 |   23.76 |  73.78
+    3 | 359 | 12.98 |   12.98 |  86.76
+    4 | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Re-agregar etiquetas y nombrar</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Medio bajo"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Medio"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Medio alto"</span><span class="ot">=</span><span class="dv">3</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Alto"</span><span class="ot">=</span><span class="dv">4</span>))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> simce2m2017_finalnum<span class="sc">$</span>cod_grupo,<span class="at">label =</span> <span class="st">"GSE"</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(simce2m2017_finalnum<span class="sc">$</span>cod_depe2,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Particular subvencionado"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                                                        <span class="st">"Particular pagado"</span><span class="ot">=</span><span class="dv">2</span>))</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> simce2m2017_finalnum<span class="sc">$</span>cod_depe2,<span class="at">label =</span> <span class="st">"Código dependencia"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cdm_2017 <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(simce2m2017_finalnum<span class="sc">$</span>cdm_2017,</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"INSUFICIENTE"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"MEDIO-BAJO"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"MEDIO"</span><span class="ot">=</span><span class="dv">2</span>,</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"ALTO"</span><span class="ot">=</span><span class="dv">3</span>))</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cdm_2017 <span class="ot">&lt;-</span> <span class="fu">set_label</span>(<span class="at">x =</span> simce2m2017_finalnum<span class="sc">$</span>cdm_2017,<span class="at">label =</span> <span class="st">"Categoría desempeño"</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |        Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------
+    0 | INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+    1 |   MEDIO-BAJO |  664 | 24.01 |   24.01 |  36.02
+    2 |        MEDIO | 1340 | 48.46 |   48.46 |  84.48
+    3 |         ALTO |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |         &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+Código dependencia (cod_depe2) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |                    Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------------------
+    0 |                Municipal |  760 | 27.49 |   27.49 |  27.49
+    1 | Particular subvencionado | 1638 | 59.24 |   59.24 |  86.73
+    2 |        Particular pagado |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |                     &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+GSE (cod_grupo) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |      Label |   N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    0 |       Bajo | 589 | 21.30 |   21.30 |  21.30
+    1 | Medio bajo | 794 | 28.72 |   28.72 |  50.02
+    2 |      Medio | 657 | 23.76 |   23.76 |  73.78
+    3 | Medio alto | 359 | 12.98 |   12.98 |  86.76
+    4 |       Alto | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |        Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------
+    0 | INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+    1 |   MEDIO-BAJO |  664 | 24.01 |   24.01 |  36.02
+    2 |        MEDIO | 1340 | 48.46 |   48.46 |  84.48
+    3 |         ALTO |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |         &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+Código dependencia (cod_depe2) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |                    Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------------------
+    0 |                Municipal |  760 | 27.49 |   27.49 |  27.49
+    1 | Particular subvencionado | 1638 | 59.24 |   59.24 |  86.73
+    2 |        Particular pagado |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |                     &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+GSE (cod_grupo) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |      Label |   N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    0 |       Bajo | 589 | 21.30 |   21.30 |  21.30
+    1 | Medio bajo | 794 | 28.72 |   28.72 |  50.02
+    2 |      Medio | 657 | 23.76 |   23.76 |  73.78
+    3 | Medio alto | 359 | 12.98 |   12.98 |  86.76
+    4 |       Alto | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(simce2m2017_finalnum,</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 28%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">var</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">NA.prc</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: left;">range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">cdm_2017</td>
+<td style="text-align: left;">Categoría desempeño</td>
+<td style="text-align: right;">2765</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.6748644</td>
+<td style="text-align: right;">0.8775837</td>
+<td style="text-align: left;">3 (0-3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">cod_depe2</td>
+<td style="text-align: left;">Código dependencia</td>
+<td style="text-align: right;">2765</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.8578662</td>
+<td style="text-align: right;">0.6225215</td>
+<td style="text-align: left;">2 (0-2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">cod_grupo</td>
+<td style="text-align: left;">GSE</td>
+<td style="text-align: right;">2765</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.6813743</td>
+<td style="text-align: right;">1.3029371</td>
+<td style="text-align: left;">4 (0-4)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="parte.-2-matrices-de-correlación" class="level4">
+<h4 class="anchored" data-anchor-id="parte.-2-matrices-de-correlación">Parte. 2 Matrices de correlación</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(simce2m2017_finalnum, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           cdm_2017 cod_depe2 cod_grupo
+cdm_2017  1.0000000 0.3610706 0.4320752
+cod_depe2 0.3610706 1.0000000 0.7184894
+cod_grupo 0.4320752 0.7184894 1.0000000</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Opción 2: tab_ corr</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(simce2m2017_finalnum, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Categoría desempeño</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">Código dependencia</td>
+<td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">GSE</td>
+</tr>
+<tr class="even">
+<td style="font-style: italic">Categoría desempeño</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="odd">
+<td style="font-style: italic">Código dependencia</td>
+<td style="text-align: center; padding: 0.2cm;">0.361<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="even">
+<td style="font-style: italic">GSE</td>
+<td style="text-align: center; padding: 0.2cm;">0.432<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">0.718<span style="vertical-align:super;font-size:0.8em;">***</span></td>
+<td style="text-align: center; padding: 0.2cm;">&nbsp;</td>
+</tr>
+<tr class="odd">
+<td colspan="4" style="text-align: right; border-bottom: double black; border-top: 1px solid black; font-style: italic; font-size: 0.9em;">Computed correlation used pearson-method with listwise-deletion.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Trabajo03_files/figure-html/cor-complete-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Correlación Variables Simce 2017</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Al revisar la matriz de correlación y visualizar la <strong>?@cor-complete</strong>, nos indica que la variable cdm_2017 tiene una correlación de 0.361 con la variable cod_depe2 lo que sugiere una relación positiva/ moderada entre el desempeño escolar y el tipo de dependencia de la institución educativa, lo mismo sucede con la categoría de desempeño (cdm_2017) y el cod_grupo (GSE) con una correlación de 0.432, por ultimo para las variables cod_depe2 y cod_grupo, la correlación es de 0.718, lo que sugiere una relación positiva fuerte entre el tipo de dependencia de la institución educativa y en que GSE se posiciona, esto podría sugerir que establecimientos con estudiantes de ciertos GSE tienden a tener un mejor desempeño en las&nbsp;pruebas&nbsp;SIMCE.</p>
+</section>
+<section id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach" class="level4">
+<h4 class="anchored" data-anchor-id="parte-2.1-construcción-de-escalas---reporte-de-consistencia-interna-alfa-de-chronbach">Parte 2.1 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construcción de Escalas</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |        Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------
+    0 | INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+    1 |   MEDIO-BAJO |  664 | 24.01 |   24.01 |  36.02
+    2 |        MEDIO | 1340 | 48.46 |   48.46 |  84.48
+    3 |         ALTO |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |         &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+Código dependencia (cod_depe2) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |                    Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------------------
+    0 |                Municipal |  760 | 27.49 |   27.49 |  27.49
+    1 | Particular subvencionado | 1638 | 59.24 |   59.24 |  86.73
+    2 |        Particular pagado |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |                     &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+GSE (cod_grupo) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |      Label |   N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    0 |       Bajo | 589 | 21.30 |   21.30 |  21.30
+    1 | Medio bajo | 794 | 28.72 |   28.72 |  50.02
+    2 |      Medio | 657 | 23.76 |   23.76 |  73.78
+    3 | Medio alto | 359 | 12.98 |   12.98 |  86.76
+    4 |       Alto | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2765    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Utilizaremos las mismas variables, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Estimar consistencia interna: Alfa de Chronbach</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">alpha</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(simce2m2017_finalnum, cdm_2017, cod_depe2, cod_grupo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Reliability analysis   
+Call: psych::alpha(x = dplyr::select(simce2m2017_finalnum, cdm_2017, 
+    cod_depe2, cod_grupo))
+
+  raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd median_r
+      0.71      0.75    0.71       0.5   3 0.0081  1.4 0.77     0.43
+
+    95% confidence boundaries 
+         lower alpha upper
+Feldt     0.69  0.71  0.73
+Duhachek  0.69  0.71  0.72
+
+ Reliability if an item is dropped:
+          raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+cdm_2017       0.72      0.84    0.72      0.72 5.1    0.007    NA  0.72
+cod_depe2      0.57      0.60    0.43      0.43 1.5    0.015    NA  0.43
+cod_grupo      0.51      0.53    0.36      0.36 1.1    0.018    NA  0.36
+
+ Item statistics 
+             n raw.r std.r r.cor r.drop mean   sd
+cdm_2017  2765  0.72  0.73  0.48   0.44 1.67 0.88
+cod_depe2 2765  0.81  0.85  0.77   0.67 0.86 0.62
+cod_grupo 2765  0.92  0.88  0.82   0.66 1.68 1.30
+
+Non missing response frequency for each item
+             0    1    2    3    4 miss
+cdm_2017  0.12 0.24 0.48 0.16 0.00    0
+cod_depe2 0.27 0.59 0.13 0.00 0.00    0
+cod_grupo 0.21 0.29 0.24 0.13 0.13    0</code></pre>
+</div>
+</div>
+<p>Esto nos indica una consistencia interna de 0.71, es decir que la fiabilidad de la escala total tiene un buen panorama general, si bien no es el mejor, es mayor a 0.6 así que podemos trabajar con este valor, también se puede ver que si se elimina algún item, alfa aumenta el mínimo (0,01) para “cdm_2017”, pero disminuye para los otros dos, lo que sugiere que pueden estar menos relacionados con la escala</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum2 <span class="ot">&lt;-</span> simce2m2017_finalnum <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(segregación<span class="at">_escolar =</span> <span class="fu">sum</span>(cdm_2017, cod_depe2, cod_grupo))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(simce2m2017_finalnum2<span class="sc">$</span>segregación_escolar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   2.000   4.000   4.214   6.000   9.000 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(simce2m2017_finalnum2,<span class="at">file =</span> <span class="st">"C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simce2m2017_finalnum2, <span class="fu">aes</span>(<span class="at">x =</span> segregación_escolar)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.6</span>, <span class="at">colour=</span><span class="st">"black"</span>, <span class="at">fill=</span><span class="st">"yellow"</span>) <span class="sc">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Segregación Escolar"</span>) <span class="sc">+</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Cantidad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-plot-segregacion" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Trabajo03_files/figure-html/fig-plot-segregacion-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Histograma Segregación Escolar</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Al observar la <a href="#fig-plot-segregacion">Figure&nbsp;1</a> que busca representar la distribución de la segregación escolar en Chile, se observa que la mayoría de los estudiantes se encuentran en niveles moderados de segregación, con una concentración significativa en torno a la mediana de 4.214, sin embargo, existe una distribución sesgada hacia los niveles más bajos concentrando la mayor cantidad de estudiantes bajo la media, al contrastar con la bibliografía referenciada en las entregas anteriores, y considerando la falta de información estadística para construir índices o escalas sobre segregación escolar, hacen que esta no sea consistente con los múltiples estudios concluyen que Chile es un país altamente segregado, ni sea fiel a los datos de otras áreas de investigación, por lo que como objetivo está el construir conocimiento sobre la segregación escolar en el sistema educacional chileno</p>
+</section>
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Informe teórico en <a href="https://naxinii.github.io/Trabajos/Trabajo01.html">Trabajo01 (naxinii.github.io)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Procesamiento y análisis completo en <a href="https://naxinii.github.io/Trabajos/Trabajo02.html">Trabajo02 (naxinii.github.io)</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

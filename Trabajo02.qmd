@@ -33,7 +33,7 @@ Las variables que seleccioné para este trabajo son de tipo categóricas, y pert
 
 -   VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
 
--   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)[^3]
+-   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))[^3]
 
     -   Los establecimientos que tengan valores del Índice Final hasta el valor del percentil 12 (inclusive) de la distribución de este índice se clasificarán en la categoría Desempeño Insuficiente.
 
@@ -204,7 +204,7 @@ table(simce2m2017_total$cod_grupo)
 simce2m2017_total$cod_grupo<- set_label(x = simce2m2017_total$cod_grupo,label = "GSE")
 
 
-#VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE, MEDIO-BAJO, MEDIO Y ALTO)
+#VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))
 
 frq(simce2m2017_total$cdm_2017)
 table(simce2m2017_total$cdm_2017)
