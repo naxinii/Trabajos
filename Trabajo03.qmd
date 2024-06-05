@@ -206,11 +206,9 @@ sjt.xtab(simce2m2017_finalnum$cod_depe2, simce2m2017_finalnum$cod_grupo,
          encoding = "UTF-8")
 ```
 
-### Conclusiones Sustantivas
+En la @tbl-sjt-xtab1 podemos ver que predominantemente los establecimientos de dependencia municipal se concentran en los GSE más bajos, undefined
 
-1.  **Segregación Socioeconómica en el Sistema Educativo**:
-
-    -   **Colegios Municipales**: Predominantemente, los estudiantes de colegios municipales pertenecen a los GSE más bajos (64% en GSE bajo y 35.8% en GSE medio bajo).
+1.  (64% en GSE bajo y 35.8% en GSE medio bajo).
 
     -   **Colegios Particulares Subvencionados**: Tienen una mezcla más amplia de estudiantes de diferentes GSE, pero con una mayor proporción de GSE medio (86.6%) y medio alto (90.5%).
 

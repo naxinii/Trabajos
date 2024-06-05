@@ -154,6 +154,8 @@ stargazer(reg1, type="text")
 
 Intercepto es: 1.675\*\*\* (0.017)
 
+Este modelo básico con solo la constante (intercepto) indica que el desempeño promedio de los establecimientos en el SIMCE 2017 es de aproximadamente 1.675 puntos. Sin embargo, el R cuadrado y el R cuadrado ajustado son ambos 0, lo que sugiere que el modelo no explica la variabilidad en el desempeño del establecimiento. El error estándar residual es de 0.878, lo que indica la dispersión de los datos alrededor de la línea de regresión.
+
 ```{r results='asis'}
 reg2 <- lm(cdm_2017 ~ cod_depe2, data=simce2m2017_finalnum)
 reg3 <- lm(cdm_2017 ~ cod_grupo, data=simce2m2017_finalnum)
@@ -171,6 +173,38 @@ knitreg(list(reg2, reg3),
           caption.above = TRUE)
 ```
 
+n este modelo de regresión simple, se evalúan dos variables independientes: la dependencia del establecimiento educativo (categorizada en particular subvencionado, particular pagado y municipal, siendo esta última la referencia) y el nivel socioeconómico de los estudiantes (categorizado en bajo, medio y alto, siendo bajo la referencia).
+
+1.  **Dependencia del establecimiento**:
+
+    -   Los establecimientos particulares subvencionados tienen un efecto positivo significativo en el desempeño del establecimiento en comparación con los municipales (coeficiente = 0.59, p \< 0.001).
+
+    -   Los establecimientos particulares pagados tienen un efecto aún mayor en el desempeño (coeficiente = 0.98, p \< 0.001).
+
+2.  **Nivel socioeconómico (GSE) de los estudiantes**:
+
+    -   El nivel socioeconómico medio tiene un efecto positivo significativo en el desempeño del establecimiento en comparación con el nivel bajo (coeficiente = 0.61, p \< 0.001).
+
+    -   El nivel socioeconómico alto tiene el efecto más significativo en el desempeño (coeficiente = 0.86, p \< 0.001).
+
+En general, este modelo explica el 19% de la variabilidad en el desempeño del establecimiento, según el R cuadrado ajustado.
+
+Este modelo sugiere que, en el contexto de Chile, la dependencia del establecimiento educativo (si es municipal, particular subvencionado o particular pagado) y el nivel socioeconómico de los estudiantes tienen un impacto significativo en el desempeño académico de los establecimientos.
+
+1.  **Dependencia del establecimiento**:
+
+    -   Los establecimientos particulares subvencionados y particulares pagados tienden a tener un desempeño académico superior en comparación con los municipales. Esto podría deberse a diferencias en recursos, infraestructura, o enfoques educativos entre los tipos de establecimientos.
+
+    -   El mayor efecto se observa en los establecimientos particulares pagados, lo que sugiere que el financiamiento privado puede estar asociado con mejores resultados académicos.
+
+2.  **Nivel socioeconómico de los estudiantes**:
+
+    -   Los establecimientos con un mayor porcentaje de estudiantes en el nivel socioeconómico medio o alto tienden a tener un desempeño académico superior en comparación con aquellos con mayor proporción de estudiantes en el nivel bajo.
+
+    -   Esto podría reflejar diferencias en el entorno familiar, acceso a recursos educativos adicionales, o apoyo académico fuera de la escuela que influyen en el rendimiento estudiantil.
+
+En resumen, este modelo resalta la influencia significativa que factores como la dependencia del establecimiento y el nivel socioeconómico de los estudiantes tienen en el desempeño académico de los establecimientos educativos en Chile, lo que subraya la importancia de abordar las desigualdades en educación para mejorar la equidad y calidad educativa.
+
 ```{r}
 plot_model(reg2, 
            title = "", 
@@ -187,6 +221,28 @@ plot_model(reg2,
   theme_bw()
 ```
 
+En este modelo (Modelo 2), la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el nivel socioeconómico (GSE), donde se han creado dos variables ficticias para representar los niveles medio y alto, siendo el nivel bajo de referencia.
+
+-   **Intercepto (1.30)**: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico bajo (GSE: Bajo) es de aproximadamente 1.30. Esto significa que, en promedio, se espera que los establecimientos en el nivel socioeconómico bajo tengan un desempeño académico de 1.30 en la escala utilizada en el estudio.
+
+-   **GSE: Medio (0.61)**: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico medio es de aproximadamente 0.61 unidades más alto que para un establecimiento en el nivel socioeconómico bajo. Esto sugiere que, en promedio, se espera que los establecimientos en el nivel socioeconómico medio tengan un desempeño académico superior en 0.61 unidades en comparación con los del nivel bajo.
+
+-   **GSE: Alto (0.86)**: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico alto es de aproximadamente 0.86 unidades más alto que para un establecimiento en el nivel socioeconómico bajo. Esto sugiere que, en promedio, se espera que los establecimientos en el nivel socioeconómico alto tengan un desempeño académico superior en 0.86 unidades en comparación con los del nivel bajo.
+
+En resumen, este modelo indica que, después de controlar otros factores, se espera que los establecimientos ubicados en niveles socioeconómicos medio y alto tengan un desempeño académico superior en comparación con los establecimientos en el nivel socioeconómico bajo, siendo este efecto mayor para los establecimientos en el nivel socioeconómico alto.
+
+\-
+
+Para interpretar los valores predichos en este modelo (Modelo 1), se debe tener en cuenta que la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el tipo de dependencia del establecimiento (cod_depe2), donde el valor 1 corresponde a establecimientos municipales, el valor 2 a establecimientos particulares subvencionados y el valor 3 a establecimientos particulares pagados.
+
+-   **Intercepto (1.20)**: El valor predicho de desempeño académico para un establecimiento municipal es de aproximadamente 1.20. Esto significa que, en promedio, se espera que los establecimientos municipales tengan un desempeño académico de 1.20 en la escala utilizada en el estudio.
+
+-   **Dependencia: Particular subvencionado (0.59)**: El valor predicho de desempeño académico para un establecimiento particular subvencionado es de aproximadamente 0.59 unidades más alto que para un establecimiento municipal. Esto sugiere que, en promedio, se espera que los establecimientos particulares subvencionados tengan un desempeño académico superior en 0.59 unidades en comparación con los municipales.
+
+-   **Dependencia: Particular pagado (0.98)**: El valor predicho de desempeño académico para un establecimiento particular pagado es de aproximadamente 0.98 unidades más alto que para un establecimiento municipal. Esto sugiere que, en promedio, se espera que los establecimientos particulares pagados tengan un desempeño académico superior en 0.98 unidades en comparación con los municipales.
+
+En resumen, este modelo indica que, después de controlar otros factores, se espera que los establecimientos particulares subvencionados y particulares pagados tengan un desempeño académico superior en comparación con los municipales, siendo este efecto mayor para los establecimientos particulares pagados.
+
 ```{r}
 plot_model(reg3, 
            title = "", 
@@ -202,6 +258,28 @@ plot_model(reg3,
            show.legend = FALSE) + 
   theme_bw()
 ```
+
+**Modelo 1 (reg2):**
+
+-   **Intercepto:** El desempeño promedio de los establecimientos municipales en el SIMCE 2017 es de aproximadamente 1.20 puntos.
+
+-   **Dependencia: Particular subvencionado vs. Municipal:** Los establecimientos particulares subvencionados tienen un desempeño promedio 0.59 puntos mayor que los municipales, manteniendo constantes las demás variables en el modelo.
+
+-   **Dependencia: Particular pagado vs. Municipal:** Los establecimientos particulares pagados tienen un desempeño promedio 0.98 puntos mayor que los municipales, manteniendo constantes las demás variables en el modelo.
+
+-   **R2:** El modelo explica el 13% de la variabilidad en el desempeño del establecimiento.
+
+**Modelo 2 (reg3):**
+
+-   **Intercepto:** El desempeño promedio de los establecimientos del grupo socioeconómico (GSE) bajo en el SIMCE 2017 es de aproximadamente 1.30 puntos.
+
+-   **GSE: Medio vs. Bajo:** Los establecimientos del GSE medio tienen un desempeño promedio 0.61 puntos mayor que los del GSE bajo, manteniendo constantes las demás variables en el modelo.
+
+-   **GSE: Alto vs. Bajo:** Los establecimientos del GSE alto tienen un desempeño promedio 0.86 puntos mayor que los del GSE bajo, manteniendo constantes las demás variables en el modelo.
+
+-   **R2:** El modelo explica el 19% de la variabilidad en el desempeño del establecimiento.
+
+En resumen, los resultados sugieren que la dependencia administrativa y el nivel socioeconómico de los estudiantes están asociados significativamente con el desempeño académico de los establecimientos en el SIMCE 2017, con los establecimientos particulares (subvencionados y pagados) y los del GSE alto mostrando un mejor desempeño en comparación con los municipales y los del GSE bajo, respectivamente.
 
 ### Modelo 1:
 
