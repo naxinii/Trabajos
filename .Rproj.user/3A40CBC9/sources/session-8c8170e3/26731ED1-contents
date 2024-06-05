@@ -248,13 +248,7 @@ dim(simce2m2017_finalnum)
 psych::alpha(dplyr::select(simce2m2017_finalnum, cdm_2017, cod_grupo))
 ```
 
-CORREGIR
-
-**Coeficiente Alfa de Cronbach**:
-
--   El coeficiente alfa de 0.57 sugiere una consistencia moderada en las respuestas de los estudiantes en las variables `cdm_2017` (Categoría de Desempeño) y `cod_grupo` (Grupo Socioeconómico). Esto indica que existe cierta relación entre la categoría de desempeño en el SIMCE 2017 y el grupo socioeconómico al que pertenecen los estudiantes, pero podría ser mejor.
-
--   En resumen, los resultados sugieren que las variables `cdm_2017` (Categoría de Desempeño) y `cod_grupo` (Grupo Socioeconómico) están relacionadas, pero la relación no es muy fuerte. Esto podría deberse a que otros factores, además del grupo socioeconómico, influyen en el desempeño académico de los estudiantes en el SIMCE 2017.
+El coeficiente alfa de 0.57 sugiere una consistencia no favorable entre ambas variables analizadas sin embargo para los propósitos del trabajo vamos a trabajar tratando de realizar la escala de igual manera pero no se seguirá trabajando con ella.
 
 ```{r}
 simce2m2017_finalnum2 <- simce2m2017_finalnum %>% 
@@ -277,60 +271,6 @@ ggplot(simce2m2017_finalnum2, aes(x = cond_socioeduc)) +
   ylab("Cantidad")
 ```
 
+Esta distribución puede ser indicativa de un sistema educativo donde la mayoría de los estudiantes se encuentran en situaciones medias en términos de desempeño académico y grupo socioeconómico, sin embargo se evidencia la existencia de desigualdades o segregación ya que la distribución de estas condiciones educativas concentraría a minorías en los extremos desfavorables (o más favorables).
+
 #### Conclusiones
-
-### Descripción del Histograma
-
-1.  **Eje X (Condición Socioeducativa)**:
-
-    -   La escala de la Condición Socioeducativa varía de 0 a 7.
-
-    -   Cada valor en el eje X representa una combinación específica de desempeño académico y grupo socioeconómico.
-
-2.  **Eje Y (Cantidad)**:
-
-    -   El eje Y muestra la cantidad de estudiantes que se encuentran en cada nivel de la Condición Socioeducativa.
-
-### Interpretación Sustantiva
-
-### Interpretación del Gráfico Segmentado
-
-El gráfico segmentado muestra la relación entre el Grupo Socioeconómico (GSE) y el Desempeño Académico (Categoría de Desempeño) según la dependencia escolar:
-
--   **Colegios Municipales:** Los estudiantes tienden a tener un desempeño académico más bajo, con disparidades significativas entre diferentes GSE.
-
--   **Colegios Particulares Subvencionados:** Muestran un mejor desempeño académico en comparación con los municipales, con menos disparidades entre GSE.
-
--   **Colegios Particulares Pagados:** Tienen el desempeño académico más alto y menor variabilidad entre los diferentes GSE.
-
-1.  **Distribución de la Condición Socioeducativa**:
-
-    -   **Modos en los valores de 2 y 4**: La mayor cantidad de estudiantes se concentra en los valores 2 y 4 de la escala, lo que sugiere que hay un gran número de estudiantes con una combinación de desempeño académico y grupo socioeconómico que se encuentra en niveles intermedios.
-
-    -   **Menor cantidad en los extremos**: Hay menos estudiantes en los extremos de la escala (0 y 7), lo que indica que menos estudiantes se encuentran en las combinaciones extremas de bajo desempeño académico en grupos socioeconómicos bajos (0) y alto desempeño académico en grupos socioeconómicos altos (7).
-
-2.  **Interpretación de los picos**:
-
-    -   **Valor 2**: Este pico podría representar estudiantes que tienen un desempeño académico medio bajo en un grupo socioeconómico medio bajo.
-
-    -   **Valor 4**: Este pico podría representar estudiantes con un desempeño académico medio en un grupo socioeconómico medio, o una combinación de desempeño y grupo socioeconómico que se equilibra en la mitad de la escala.
-
-3.  **Desigualdad y Segregación**:
-
-    -   La distribución indica una mayor concentración en los niveles intermedios, lo que puede sugerir que la mayoría de los estudiantes se encuentran en situaciones de desempeño y condiciones socioeconómicas medias.
-
-    -   La menor cantidad de estudiantes en los extremos podría reflejar desigualdad y segregación en el sistema educativo, donde menos estudiantes alcanzan los niveles más altos de desempeño académico y grupo socioeconómico, y menos estudiantes caen en los niveles más bajos.
-
-### Conclusión
-
-El histograma de la Condición Socioeducativa muestra que hay una concentración significativa de estudiantes en los niveles intermedios, con menos estudiantes en los extremos de la escala. Esta distribución puede ser indicativa de un sistema educativo donde la mayoría de los estudiantes se encuentran en situaciones medias en términos de desempeño académico y grupo socioeconómico, pero también refleja la existencia de desigualdades, ya que menos estudiantes se encuentran en los extremos más favorables o desfavorables de la escala. Esta interpretación sustantiva puede ayudarte a comprender mejor cómo se distribuyen las condiciones socioeducativas de los estudiantes y cómo esto se relaciona con la segregación y desigualdad en el sistema educativo chileno.
-
-El tipo de dependencia escolar y el GSE juegan un papel crucial en el desempeño académico de los estudiantes, evidenciando desigualdades en el sistema educativo chileno.
-
-Los resultados de este estudio confirman que la mercantilización del sistema educativo en Chile ha fomentado una significativa segregación escolar. Las tablas y gráficos muestran claramente que los establecimientos particulares pagados tienden a concentrar estudiantes de grupos socioeconómicos altos, mientras que los establecimientos municipales acogen principalmente a estudiantes de grupos socioeconómicos bajos. Esta distribución desigual se refleja en los puntajes del SIMCE, donde los colegios particulares pagados obtienen consistentemente mejores resultados que los municipales.
-
-Estos hallazgos respaldan la teoría de que la privatización y los mecanismos de mercado en la educación aumentan las brechas educativas, como sugieren Budnik et al. (2011) y Carrillo et al. (2020). La libertad de elección de los padres y la capacidad de los establecimientos para seleccionar estudiantes han contribuido a esta segregación, limitando la igualdad de oportunidades educativas.
-
-Las implicaciones de estos resultados son significativas. La perpetuación de un sistema educativo que favorece la competencia y la privatización puede continuar exacerbando las desigualdades sociales en Chile. Por lo tanto, es crucial reconsiderar las políticas actuales y explorar enfoques que promuevan una mayor equidad y cohesión social en el ámbito educativo.
-
-Futuras investigaciones podrían profundizar en los mecanismos específicos a través de los cuales se produce esta segregación y evaluar el impacto de recientes reformas educativas en la reducción de estas desigualdades. Asimismo, sería valioso investigar cómo otros factores, como la ubicación geográfica y la infraestructura escolar, influyen en la calidad educativa y la segregación.
