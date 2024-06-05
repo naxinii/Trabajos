@@ -86,6 +86,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#por-ignacia-castillo-soto" id="toc-por-ignacia-castillo-soto" class="nav-link" data-scroll-target="#por-ignacia-castillo-soto">Por: Ignacia Castillo Soto</a>
   <ul class="collapse">
   <li><a href="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" id="toc-mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" class="nav-link" data-scroll-target="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile"><strong>Mercantilización del sistema educativo y segregación escolar en Chile</strong></a></li>
+  <li><a href="#modelo-1" id="toc-modelo-1" class="nav-link" data-scroll-target="#modelo-1">Modelo 1:</a></li>
+  <li><a href="#modelo-2" id="toc-modelo-2" class="nav-link" data-scroll-target="#modelo-2">Modelo 2:</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -199,6 +201,681 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="regresión-lineal-1" class="level4">
 <h4 class="anchored" data-anchor-id="regresión-lineal-1">Regresión Lineal</h4>
+<section id="trabajo-04" class="level6">
+<h6 class="anchored" data-anchor-id="trabajo-04">(Trabajo 04)</h6>
+</section>
+</section>
+<section id="parte-1.-carga-de-librerías-y-preparación-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="parte-1.-carga-de-librerías-y-preparación-de-datos">Parte 1. Carga de Librerías y preparación de datos</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>               car, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               sjmisc, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               sjPlot, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               sjlabelled, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>               stargazer, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>               kableExtra, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>               corrplot, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>               texreg, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>               ggplot2, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>               ggpubr,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>               summarytools,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>               fastDummies, </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>               ggeffects)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Carga de la base de datos</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData"</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2765    3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |        Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------
+    0 | INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+    1 |   MEDIO-BAJO |  664 | 24.01 |   24.01 |  36.02
+    2 |        MEDIO | 1340 | 48.46 |   48.46 |  84.48
+    3 |         ALTO |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |         &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+Código dependencia (cod_depe2) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |                    Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------------------
+    0 |                Municipal |  760 | 27.49 |   27.49 |  27.49
+    1 | Particular subvencionado | 1638 | 59.24 |   59.24 |  86.73
+    2 |        Particular pagado |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |                     &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+GSE (cod_grupo) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.68 sd=1.30
+
+Value |      Label |   N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    0 |       Bajo | 589 | 21.30 |   21.30 |  21.30
+    1 | Medio bajo | 794 | 28.72 |   28.72 |  50.02
+    2 |      Medio | 657 | 23.76 |   23.76 |  73.78
+    3 | Medio alto | 359 | 12.98 |   12.98 |  86.76
+    4 |       Alto | 366 | 13.24 |   13.24 | 100.00
+ &lt;NA&gt; |       &lt;NA&gt; |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Recodificar la variable "cod_grupo" (Bajo, Medio, Alto) para reducir categorías</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">recode</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo, <span class="st">"c(0,1)=0; c(2)=1; c(3,4)=2"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">set_labels</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">labels=</span><span class="fu">c</span>( <span class="st">"Bajo"</span><span class="ot">=</span><span class="dv">0</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"Medio"</span><span class="ot">=</span><span class="dv">1</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"Alto"</span><span class="ot">=</span><span class="dv">2</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GSE (x) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=0.76 sd=0.84
+
+Value | Label |    N | Raw % | Valid % | Cum. %
+-----------------------------------------------
+    0 |  Bajo | 1383 | 50.02 |   50.02 |  50.02
+    1 | Medio |  657 | 23.76 |   23.76 |  73.78
+    2 |  Alto |  725 | 26.22 |   26.22 | 100.00
+ &lt;NA&gt; |  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Aplicar "as_factor" </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_grupo <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(simce2m2017_finalnum<span class="sc">$</span>cod_grupo)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>simce2m2017_finalnum<span class="sc">$</span>cod_depe2 <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(simce2m2017_finalnum<span class="sc">$</span>cod_depe2)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(simce2m2017_finalnum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Categoría desempeño (cdm_2017) &lt;numeric&gt; 
+# total N=2765 valid N=2765 mean=1.67 sd=0.88
+
+Value |        Label |    N | Raw % | Valid % | Cum. %
+------------------------------------------------------
+    0 | INSUFICIENTE |  332 | 12.01 |   12.01 |  12.01
+    1 |   MEDIO-BAJO |  664 | 24.01 |   24.01 |  36.02
+    2 |        MEDIO | 1340 | 48.46 |   48.46 |  84.48
+    3 |         ALTO |  429 | 15.52 |   15.52 | 100.00
+ &lt;NA&gt; |         &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_depe2 &lt;categorical&gt; 
+# total N=2765 valid N=2765 mean=0.86 sd=0.62
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  760 | 27.49 |   27.49 |  27.49
+    1 | 1638 | 59.24 |   59.24 |  86.73
+    2 |  367 | 13.27 |   13.27 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+cod_grupo &lt;categorical&gt; 
+# total N=2765 valid N=2765 mean=0.76 sd=0.84
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 1383 | 50.02 |   50.02 |  50.02
+    1 |  657 | 23.76 |   23.76 |  73.78
+    2 |  725 | 26.22 |   26.22 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="parte-2.-modelo-de-regresión-lineal-simple" class="level4">
+<h4 class="anchored" data-anchor-id="parte-2.-modelo-de-regresión-lineal-simple">Parte 2. Modelo de Regresión Lineal Simple</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(reg1, <span class="at">type=</span><span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+===============================================
+                        Dependent variable:    
+                    ---------------------------
+                             cdm_2017          
+-----------------------------------------------
+Constant                     1.675***          
+                              (0.017)          
+                                               
+-----------------------------------------------
+Observations                   2,765           
+R2                             0.000           
+Adjusted R2                    0.000           
+Residual Std. Error      0.878 (df = 2764)     
+===============================================
+Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<p>Intercepto es: 1.675*** (0.017)</p>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_depe2, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_grupo, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">knitreg</span>(<span class="fu">list</span>(reg2, reg3), </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"Modelo 1"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Modelo 2"</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.note =</span> <span class="st">"*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.coef.names =</span> <span class="fu">c</span>(<span class="st">"Intercepto"</span>, </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Dependencia: Particular subvencionado &lt;br&gt; &lt;i&gt;(Ref. Dep.: Municipal)&lt;/i&gt;"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Dependencia: Particular pagado"</span>, </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"GSE: Medio &lt;br&gt; &lt;i&gt;(Ref. GSE: Bajo)&lt;/i&gt;"</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"GSE: Alto"</span>),</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption =</span> <span class="st">"Desempeño del Establecimiento"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">caption.above =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Desempeño del Establecimiento
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+Modelo 1
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+Modelo 2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Intercepto
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.20<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.30<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.03)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.02)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Dependencia: Particular subvencionado <br> <i>(Ref. Dep.: Municipal)</i>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.59<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Dependencia: Particular pagado
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.98<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.05)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+GSE: Medio <br> <i>(Ref. GSE: Bajo)</i>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.61<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+GSE: Alto
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.86<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.13
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Adj. R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.13
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.19
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+2765
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+2765
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="3">
+*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05
+</td>
+</tr>
+</tfoot>
+
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(reg2, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">""</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.values =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">dot.size =</span> <span class="dv">3</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">line.size =</span> <span class="dv">1</span>, </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">value.size =</span> <span class="dv">4</span>, </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">spacing =</span> <span class="dv">1</span>, </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">vline.color =</span> <span class="st">"red"</span>, </span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis.labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span>, </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Particular subvencionado"</span>, </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Particular pagado"</span>), </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Trabajo04_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(reg3, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">""</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.values =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">dot.size =</span> <span class="dv">3</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">line.size =</span> <span class="dv">1</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">value.size =</span> <span class="dv">4</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">spacing =</span> <span class="dv">1</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">vline.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis.labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Medio"</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Alto"</span>), </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Trabajo04_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="modelo-1" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-1">Modelo 1:</h3>
+<ul>
+<li><p><strong>Intercepto</strong>: El desempeño promedio de los establecimientos municipales (categoría de referencia) es de 1.20.</p></li>
+<li><p><strong>Dependencia: Particular subvencionado</strong>: En promedio, los establecimientos particulares subvencionados tienen un desempeño 0.59 puntos más alto que los municipales, manteniendo constante el efecto de las otras variables.</p></li>
+<li><p><strong>Dependencia: Particular pagado</strong>: En promedio, los establecimientos particulares pagados tienen un desempeño 0.98 puntos más alto que los municipales, manteniendo constante el efecto de las otras variables.</p></li>
+</ul>
+</section>
+<section id="modelo-2" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-2">Modelo 2:</h3>
+<ul>
+<li><p><strong>Intercepto</strong>: El desempeño promedio de los establecimientos clasificados como “Bajo” en el grupo socioeconómico (GSE) es de 1.30.</p></li>
+<li><p><strong>GSE: Medio</strong>: En promedio, los establecimientos clasificados como “Medio” en el GSE tienen un desempeño 0.61 puntos más alto que los clasificados como “Bajo”, manteniendo constante el efecto de las otras variables.</p></li>
+<li><p><strong>GSE: Alto</strong>: En promedio, los establecimientos clasificados como “Alto” en el GSE tienen un desempeño 0.86 puntos más alto que los clasificados como “Bajo”, manteniendo constante el efecto de las otras variables.</p></li>
+</ul>
+<p>Estas interpretaciones indican cómo cada variable independiente (dependencia y grupo socioeconómico) se relaciona con el desempeño educativo, considerando las demás variables constantes en el modelo.</p>
+<p>Por ejemplo, una interpretación sustantiva de los resultados podría ser que, en promedio, los estudiantes de establecimientos particulares pagados tienden a tener un desempeño educativo significativamente superior en el SIMCE en comparación con los estudiantes de establecimientos municipales, incluso después de controlar otros factores. Otra interpretación podría ser que los estudiantes de nivel socioeconómico alto tienen un desempeño educativo notablemente mejor que los estudiantes de nivel socioeconómico bajo, independientemente de otros factores.</p>
+<ol type="1">
+<li><p><strong>Modelo 1 (reg2):</strong> Este modelo analiza la relación entre el tipo de dependencia de los establecimientos educativos (Municipal, Particular subvencionado, Particular pagado) y el desempeño educativo (cdm_2017).</p>
+<ul>
+<li><p>El intercepto (1.20) representa el desempeño promedio en la categoría de referencia, que en este caso es la dependencia municipal.</p></li>
+<li><p>El coeficiente para Particular subvencionado (0.59) indica que, en promedio, los establecimientos de esta categoría tienen un desempeño 0.59 puntos más alto que los municipales.</p></li>
+<li><p>El coeficiente para Particular pagado (0.98) indica que, en promedio, los establecimientos de esta categoría tienen un desempeño 0.98 puntos más alto que los municipales.</p></li>
+</ul></li>
+<li><p><strong>Modelo 2 (reg3):</strong> Este modelo analiza la relación entre el grupo socioeconómico de los estudiantes (Bajo, Medio, Alto) y el desempeño educativo (cdm_2017).</p>
+<ul>
+<li><p>El intercepto (1.30) representa el desempeño promedio en la categoría de referencia, que en este caso es el grupo socioeconómico Bajo.</p></li>
+<li><p>El coeficiente para Medio (0.61) indica que, en promedio, los estudiantes de nivel socioeconómico Medio tienen un desempeño 0.61 puntos más alto que los estudiantes de nivel socioeconómico Bajo.</p></li>
+<li><p>El coeficiente para Alto (0.86) indica que, en promedio, los estudiantes de nivel socioeconómico Alto tienen un desempeño 0.86 puntos más alto que los estudiantes de nivel socioeconómico Bajo.</p></li>
+</ul></li>
+</ol>
+<p>Estas interpretaciones sugieren que tanto el tipo de dependencia de los establecimientos educativos como el grupo socioeconómico de los estudiantes tienen un impacto significativo en el desempeño educativo, con diferencias importantes entre los distintos tipos de establecimientos y grupos socioeconómicos.</p>
+<section id="parte-2.1-cálculo-de-valores-predichos-de-un-coef.-de-regresión" class="level4">
+<h4 class="anchored" data-anchor-id="parte-2.1-cálculo-de-valores-predichos-de-un-coef.-de-regresión">Parte 2.1 <strong>Cálculo de Valores Predichos de un Coef. de Regresión</strong></h4>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_depe2, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knitreg</span>(<span class="fu">list</span>(reg2), </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"Modelo 1"</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.coef.names =</span> <span class="fu">c</span>(<span class="st">"Intercepto"</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular subvencionado &lt;br&gt; &lt;i&gt;(Ref. Dep.: Municipal)&lt;/i&gt;"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular pagado"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+Modelo 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Intercepto
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.20<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.03)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Dependencia: Particular subvencionado <br> <i>(Ref. Dep.: Municipal)</i>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.59<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Dependencia: Particular pagado
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.98<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.05)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.13
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Adj. R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.13
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+2765
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="2">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05
+</td>
+</tr>
+</tfoot>
+
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(reg2, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"cod_depe2"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">fill=</span><span class="st">"grey"</span>)<span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Código de Dependencia"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span>, </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular subvencionado"</span>, </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular pagado"</span>)) <span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">16</span>), </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">16</span>, <span class="at">by =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-plot-reg2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Trabajo04_files/figure-html/fig-plot-reg2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: reg2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_grupo, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knitreg</span>(<span class="fu">list</span>(reg3), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"Modelo 2"</span>),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.coef.names =</span> <span class="fu">c</span>(<span class="st">"Intercepto"</span>, </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"GSE: Medio &lt;br&gt; &lt;i&gt;(Ref. GSE: Bajo)&lt;/i&gt;"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"GSE: Alto"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+Modelo 2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Intercepto
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.30<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.02)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+GSE: Medio <br> <i>(Ref. GSE: Bajo)</i>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.61<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+GSE: Alto
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.86<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.04)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.19
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Adj. R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.19
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+2765
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="2">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05
+</td>
+</tr>
+</tfoot>
+
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(reg3, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"cod_grupo"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"pink"</span>, <span class="at">fill=</span><span class="st">"pink"</span>)<span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"GSE"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Medio"</span>, </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Alto"</span>)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">16</span>), </span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">16</span>, <span class="at">by =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-plot-reg3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Trabajo04_files/figure-html/fig-plot-reg3-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: reg3</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="parte-3-análisis-e-interpretación" class="level4">
+<h4 class="anchored" data-anchor-id="parte-3-análisis-e-interpretación">Parte 3 Análisis e Interpretación</h4>
+</section>
+<section id="conclusiones" class="level4">
+<h4 class="anchored" data-anchor-id="conclusiones">Conclusiones</h4>
 </section>
 </section>
 </section>
