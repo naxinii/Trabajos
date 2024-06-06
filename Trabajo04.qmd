@@ -89,6 +89,58 @@ graph2
 
 ###### (Trabajo 03)
 
+En este tercer trabajo[^3] mediante diferentes tablas de contingencia, se realizó un análisis que muestra como los establecimientos municipales y particulares subvencionados concentran a estudiantes de los grupos socioeconómicos más bajos, mientras que los particulares pagados pertenecen casi exclusivamente a los grupos altos, esta segregación por grupos se refleja en el desempeño académico, donde los colegios particulares y los establecimientos que pertenecen a grupos socioeconómicos medios altos y altos obtienen una mejor categoría de desempeño en el sistema nacional de evaluación de resultados de aprendizaje (SIMCE). Esta entrega también contó con la construcción de una escala socioeducativa, aunque con una consistencia interna baja (alfa de Cronbach de 0.57), por lo que se tomó la decisión de realizarla sólo para ejemplificar la posibilidad de la construcción de una escala pero no se utilizará en función del análisis en profundidad. En conclusión, los datos de las tablas de contingencia respaldan la teoría de que la privatización y los mecanismos de mercado en la educación chilena aumentan las brechas educativas, perpetuando desigualdades socioeconómicas.
+
+[^3]: Corrección e interpretación en extensión de la tercera entrega en [Trabajo03 (naxinii.github.io)](https://naxinii.github.io/Trabajos/Trabajo03)
+
+```{r}
+pacman::p_load(dplyr, 
+               sjmisc, 
+               sjPlot, 
+               sjlabelled, 
+               kableExtra, 
+               GGally, 
+               corrplot,
+               tidyverse, 
+               car, 
+               haven,
+               summarytools,
+               psych)
+
+rm(list=ls())       
+options(scipen=999)
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
+```
+
+```{r}
+#| label: tbl-sjt-xtab1
+#| tbl-cap: "Código dependencia y GSE"
+sjt.xtab(simce2m2017_finalnum$cod_depe2, simce2m2017_finalnum$cod_grupo,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
+```{r}
+#| label: tbl-sjt-xtab2
+#| tbl-cap: "Código dependencia y Categoría desempeño"
+sjt.xtab(simce2m2017_finalnum$cod_depe2, simce2m2017_finalnum$cdm_2017,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
+```{r}
+#| label: tbl-sjt-xtab3
+#| tbl-cap: "GSE y Categoría desempeño"
+sjt.xtab(simce2m2017_finalnum$cod_grupo, simce2m2017_finalnum$cdm_2017,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
 #### Regresión Lineal
 
 ###### (Trabajo 04)
