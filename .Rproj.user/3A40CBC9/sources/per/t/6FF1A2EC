@@ -1,26 +1,26 @@
 {
-    "id": "08CCA173",
+    "id": "6FF1A2EC",
     "path": "~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/processing/Procesamiento(4).R",
     "project_path": "processing/Procesamiento(4).R",
     "type": "r_source",
     "hash": "3523146042",
     "contents": "",
     "dirty": false,
-    "created": 1717605139876.0,
+    "created": 1717593448878.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 2,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "73,59",
-        "scrollLine": "0"
+        "cursorPosition": "58,0",
+        "scrollLine": "50"
     },
     "folds": "",
     "lastKnownWriteTime": 1717615708,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1717615708872,
+    "last_content_update": 1717615708,
     "read_only": false,
     "read_only_alternatives": []
 }

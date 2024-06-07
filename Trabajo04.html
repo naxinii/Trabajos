@@ -55,7 +55,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="Trabajo04_files/libs/clipboard/clipboard.min.js"></script>
@@ -86,8 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#por-ignacia-castillo-soto" id="toc-por-ignacia-castillo-soto" class="nav-link" data-scroll-target="#por-ignacia-castillo-soto">Por: Ignacia Castillo Soto</a>
   <ul class="collapse">
   <li><a href="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" id="toc-mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile" class="nav-link" data-scroll-target="#mercantilización-del-sistema-educativo-y-segregación-escolar-en-chile"><strong>Mercantilización del sistema educativo y segregación escolar en Chile</strong></a></li>
-  <li><a href="#modelo-1" id="toc-modelo-1" class="nav-link" data-scroll-target="#modelo-1">Modelo 1:</a></li>
-  <li><a href="#modelo-2" id="toc-modelo-2" class="nav-link" data-scroll-target="#modelo-2">Modelo 2:</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -710,8 +727,7 @@ Residual Std. Error      0.878 (df = 2764)
 Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
 </div>
 </div>
-<p>Intercepto es: 1.675*** (0.017)</p>
-<p>Este modelo básico con solo la constante (intercepto) indica que el desempeño promedio de los establecimientos en el SIMCE 2017 es de aproximadamente 1.675 puntos. Sin embargo, el R cuadrado y el R cuadrado ajustado son ambos 0, lo que sugiere que el modelo no explica la variabilidad en el desempeño del establecimiento. El error estándar residual es de 0.878, lo que indica la dispersión de los datos alrededor de la línea de regresión.</p>
+<p>El intercepto es: 1.675*** (0.017) lo que nos indica la media del desempeño académico.</p>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_depe2, <span class="at">data=</span>simce2m2017_finalnum)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_grupo, <span class="at">data=</span>simce2m2017_finalnum)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -898,34 +914,11 @@ Num. obs.
 </tfoot>
 
 </table>
-<p>n este modelo de regresión simple, se evalúan dos variables independientes: la dependencia del establecimiento educativo (categorizada en particular subvencionado, particular pagado y municipal, siendo esta última la referencia) y el nivel socioeconómico de los estudiantes (categorizado en bajo, medio y alto, siendo bajo la referencia).</p>
-<ol type="1">
-<li><p><strong>Dependencia del establecimiento</strong>:</p>
-<ul>
-<li><p>Los establecimientos particulares subvencionados tienen un efecto positivo significativo en el desempeño del establecimiento en comparación con los municipales (coeficiente = 0.59, p &lt; 0.001).</p></li>
-<li><p>Los establecimientos particulares pagados tienen un efecto aún mayor en el desempeño (coeficiente = 0.98, p &lt; 0.001).</p></li>
-</ul></li>
-<li><p><strong>Nivel socioeconómico (GSE) de los estudiantes</strong>:</p>
-<ul>
-<li><p>El nivel socioeconómico medio tiene un efecto positivo significativo en el desempeño del establecimiento en comparación con el nivel bajo (coeficiente = 0.61, p &lt; 0.001).</p></li>
-<li><p>El nivel socioeconómico alto tiene el efecto más significativo en el desempeño (coeficiente = 0.86, p &lt; 0.001).</p></li>
-</ul></li>
-</ol>
-<p>En general, este modelo explica el 19% de la variabilidad en el desempeño del establecimiento, según el R cuadrado ajustado.</p>
-<p>Este modelo sugiere que, en el contexto de Chile, la dependencia del establecimiento educativo (si es municipal, particular subvencionado o particular pagado) y el nivel socioeconómico de los estudiantes tienen un impacto significativo en el desempeño académico de los establecimientos.</p>
-<ol type="1">
-<li><p><strong>Dependencia del establecimiento</strong>:</p>
-<ul>
-<li><p>Los establecimientos particulares subvencionados y particulares pagados tienden a tener un desempeño académico superior en comparación con los municipales. Esto podría deberse a diferencias en recursos, infraestructura, o enfoques educativos entre los tipos de establecimientos.</p></li>
-<li><p>El mayor efecto se observa en los establecimientos particulares pagados, lo que sugiere que el financiamiento privado puede estar asociado con mejores resultados académicos.</p></li>
-</ul></li>
-<li><p><strong>Nivel socioeconómico de los estudiantes</strong>:</p>
-<ul>
-<li><p>Los establecimientos con un mayor porcentaje de estudiantes en el nivel socioeconómico medio o alto tienden a tener un desempeño académico superior en comparación con aquellos con mayor proporción de estudiantes en el nivel bajo.</p></li>
-<li><p>Esto podría reflejar diferencias en el entorno familiar, acceso a recursos educativos adicionales, o apoyo académico fuera de la escuela que influyen en el rendimiento estudiantil.</p></li>
-</ul></li>
-</ol>
-<p>En resumen, este modelo resalta la influencia significativa que factores como la dependencia del establecimiento y el nivel socioeconómico de los estudiantes tienen en el desempeño académico de los establecimientos educativos en Chile, lo que subraya la importancia de abordar las desigualdades en educación para mejorar la equidad y calidad educativa.</p>
+<p>En este modelo de regresión lineal simple, se evalúan dos variables independientes como lo son la dependencia del establecimiento educativo y el grupo socioeconómico del mismo.</p>
+<p>1. Tipo de dependencia del establecimiento, los establecimientos particulares subvencionados tienen un efecto positivo significativo en el desempeño del establecimiento en comparación con los municipales (coeficiente = 0.59, p &lt; 0.001) y los particulares pagados tienen un efecto aún mayor en el desempeño (coeficiente = 0.98, p &lt; 0.001).</p>
+<p>2. Grupo socioeconómico del establecimiento, el GSE medio tiene un efecto positivo significativo en el desempeño del establecimiento en comparación con el nivel bajo (coeficiente = 0.61, p &lt; 0.001), el GSE alto tiene el efecto más significativo en el desempeño (coeficiente = 0.86, p &lt; 0.001).</p>
+<p>Estas interpretaciones indican cómo cada variable independiente se relaciona con el desempeño educativo, en resumen, este modelo sugiere que en el contexto de Chile, la dependencia del establecimiento educativo y el GSE al que este pertenece tiene un impacto significativo en el desempeño académico de este en el SIMCE, lo que subraya la importancia de abordar las desigualdades en educación para mejorar la equidad y calidad educativa.</p>
+<p><strong>Modelo 1 (reg2):</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(reg2, </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">""</span>, </span>
@@ -944,96 +937,12 @@ Num. obs.
 <p><img src="Trabajo04_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>En este modelo (Modelo 2), la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el nivel socioeconómico (GSE), donde se han creado dos variables ficticias para representar los niveles medio y alto, siendo el nivel bajo de referencia.</p>
-<ul>
-<li><p><strong>Intercepto (1.30)</strong>: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico bajo (GSE: Bajo) es de aproximadamente 1.30. Esto significa que, en promedio, se espera que los establecimientos en el nivel socioeconómico bajo tengan un desempeño académico de 1.30 en la escala utilizada en el estudio.</p></li>
-<li><p><strong>GSE: Medio (0.61)</strong>: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico medio es de aproximadamente 0.61 unidades más alto que para un establecimiento en el nivel socioeconómico bajo. Esto sugiere que, en promedio, se espera que los establecimientos en el nivel socioeconómico medio tengan un desempeño académico superior en 0.61 unidades en comparación con los del nivel bajo.</p></li>
-<li><p><strong>GSE: Alto (0.86)</strong>: El valor predicho de desempeño académico para un establecimiento ubicado en el nivel socioeconómico alto es de aproximadamente 0.86 unidades más alto que para un establecimiento en el nivel socioeconómico bajo. Esto sugiere que, en promedio, se espera que los establecimientos en el nivel socioeconómico alto tengan un desempeño académico superior en 0.86 unidades en comparación con los del nivel bajo.</p></li>
-</ul>
-<p>En resumen, este modelo indica que, después de controlar otros factores, se espera que los establecimientos ubicados en niveles socioeconómicos medio y alto tengan un desempeño académico superior en comparación con los establecimientos en el nivel socioeconómico bajo, siendo este efecto mayor para los establecimientos en el nivel socioeconómico alto.</p>
-<p>-</p>
-<p>Para interpretar los valores predichos en este modelo (Modelo 1), se debe tener en cuenta que la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el tipo de dependencia del establecimiento (cod_depe2), donde el valor 1 corresponde a establecimientos municipales, el valor 2 a establecimientos particulares subvencionados y el valor 3 a establecimientos particulares pagados.</p>
-<ul>
-<li><p><strong>Intercepto (1.20)</strong>: El valor predicho de desempeño académico para un establecimiento municipal es de aproximadamente 1.20. Esto significa que, en promedio, se espera que los establecimientos municipales tengan un desempeño académico de 1.20 en la escala utilizada en el estudio.</p></li>
-<li><p><strong>Dependencia: Particular subvencionado (0.59)</strong>: El valor predicho de desempeño académico para un establecimiento particular subvencionado es de aproximadamente 0.59 unidades más alto que para un establecimiento municipal. Esto sugiere que, en promedio, se espera que los establecimientos particulares subvencionados tengan un desempeño académico superior en 0.59 unidades en comparación con los municipales.</p></li>
-<li><p><strong>Dependencia: Particular pagado (0.98)</strong>: El valor predicho de desempeño académico para un establecimiento particular pagado es de aproximadamente 0.98 unidades más alto que para un establecimiento municipal. Esto sugiere que, en promedio, se espera que los establecimientos particulares pagados tengan un desempeño académico superior en 0.98 unidades en comparación con los municipales.</p></li>
-</ul>
-<p>En resumen, este modelo indica que, después de controlar otros factores, se espera que los establecimientos particulares subvencionados y particulares pagados tengan un desempeño académico superior en comparación con los municipales, siendo este efecto mayor para los establecimientos particulares pagados.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(reg3, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">""</span>, </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.values =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">dot.size =</span> <span class="dv">3</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">line.size =</span> <span class="dv">1</span>, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">value.size =</span> <span class="dv">4</span>, </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">spacing =</span> <span class="dv">1</span>, </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">vline.color =</span> <span class="st">"blue"</span>, </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis.labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Medio"</span>, </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Alto"</span>), </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Trabajo04_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p><strong>Modelo 1 (reg2):</strong></p>
-<ul>
-<li><p><strong>Intercepto:</strong> El desempeño promedio de los establecimientos municipales en el SIMCE 2017 es de aproximadamente 1.20 puntos.</p></li>
-<li><p><strong>Dependencia: Particular subvencionado vs.&nbsp;Municipal:</strong> Los establecimientos particulares subvencionados tienen un desempeño promedio 0.59 puntos mayor que los municipales, manteniendo constantes las demás variables en el modelo.</p></li>
-<li><p><strong>Dependencia: Particular pagado vs.&nbsp;Municipal:</strong> Los establecimientos particulares pagados tienen un desempeño promedio 0.98 puntos mayor que los municipales, manteniendo constantes las demás variables en el modelo.</p></li>
-<li><p><strong>R2:</strong> El modelo explica el 13% de la variabilidad en el desempeño del establecimiento.</p></li>
-</ul>
-<p><strong>Modelo 2 (reg3):</strong></p>
-<ul>
-<li><p><strong>Intercepto:</strong> El desempeño promedio de los establecimientos del grupo socioeconómico (GSE) bajo en el SIMCE 2017 es de aproximadamente 1.30 puntos.</p></li>
-<li><p><strong>GSE: Medio vs.&nbsp;Bajo:</strong> Los establecimientos del GSE medio tienen un desempeño promedio 0.61 puntos mayor que los del GSE bajo, manteniendo constantes las demás variables en el modelo.</p></li>
-<li><p><strong>GSE: Alto vs.&nbsp;Bajo:</strong> Los establecimientos del GSE alto tienen un desempeño promedio 0.86 puntos mayor que los del GSE bajo, manteniendo constantes las demás variables en el modelo.</p></li>
-<li><p><strong>R2:</strong> El modelo explica el 19% de la variabilidad en el desempeño del establecimiento.</p></li>
-</ul>
-<p>En resumen, los resultados sugieren que la dependencia administrativa y el nivel socioeconómico de los estudiantes están asociados significativamente con el desempeño académico de los establecimientos en el SIMCE 2017, con los establecimientos particulares (subvencionados y pagados) y los del GSE alto mostrando un mejor desempeño en comparación con los municipales y los del GSE bajo, respectivamente.</p>
-</section>
-</section>
-<section id="modelo-1" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-1">Modelo 1:</h3>
-<ul>
-<li><p><strong>Intercepto</strong>: El desempeño promedio de los establecimientos municipales (categoría de referencia) es de 1.20.</p></li>
-<li><p><strong>Dependencia: Particular subvencionado</strong>: En promedio, los establecimientos particulares subvencionados tienen un desempeño 0.59 puntos más alto que los municipales, manteniendo constante el efecto de las otras variables.</p></li>
-<li><p><strong>Dependencia: Particular pagado</strong>: En promedio, los establecimientos particulares pagados tienen un desempeño 0.98 puntos más alto que los municipales, manteniendo constante el efecto de las otras variables.</p></li>
-</ul>
-</section>
-<section id="modelo-2" class="level3">
-<h3 class="anchored" data-anchor-id="modelo-2">Modelo 2:</h3>
-<ul>
-<li><p><strong>Intercepto</strong>: El desempeño promedio de los establecimientos clasificados como “Bajo” en el grupo socioeconómico (GSE) es de 1.30.</p></li>
-<li><p><strong>GSE: Medio</strong>: En promedio, los establecimientos clasificados como “Medio” en el GSE tienen un desempeño 0.61 puntos más alto que los clasificados como “Bajo”, manteniendo constante el efecto de las otras variables.</p></li>
-<li><p><strong>GSE: Alto</strong>: En promedio, los establecimientos clasificados como “Alto” en el GSE tienen un desempeño 0.86 puntos más alto que los clasificados como “Bajo”, manteniendo constante el efecto de las otras variables.</p></li>
-</ul>
-<p>Estas interpretaciones indican cómo cada variable independiente (dependencia y grupo socioeconómico) se relaciona con el desempeño educativo, considerando las demás variables constantes en el modelo.</p>
-<p>Por ejemplo, una interpretación sustantiva de los resultados podría ser que, en promedio, los estudiantes de establecimientos particulares pagados tienden a tener un desempeño educativo significativamente superior en el SIMCE en comparación con los estudiantes de establecimientos municipales, incluso después de controlar otros factores. Otra interpretación podría ser que los estudiantes de nivel socioeconómico alto tienen un desempeño educativo notablemente mejor que los estudiantes de nivel socioeconómico bajo, independientemente de otros factores.</p>
-<ol type="1">
-<li><p><strong>Modelo 1 (reg2):</strong> Este modelo analiza la relación entre el tipo de dependencia de los establecimientos educativos (Municipal, Particular subvencionado, Particular pagado) y el desempeño educativo (cdm_2017).</p>
-<ul>
-<li><p>El intercepto (1.20) representa el desempeño promedio en la categoría de referencia, que en este caso es la dependencia municipal.</p></li>
-<li><p>El coeficiente para Particular subvencionado (0.59) indica que, en promedio, los establecimientos de esta categoría tienen un desempeño 0.59 puntos más alto que los municipales.</p></li>
-<li><p>El coeficiente para Particular pagado (0.98) indica que, en promedio, los establecimientos de esta categoría tienen un desempeño 0.98 puntos más alto que los municipales.</p></li>
-</ul></li>
-<li><p><strong>Modelo 2 (reg3):</strong> Este modelo analiza la relación entre el grupo socioeconómico de los estudiantes (Bajo, Medio, Alto) y el desempeño educativo (cdm_2017).</p>
-<ul>
-<li><p>El intercepto (1.30) representa el desempeño promedio en la categoría de referencia, que en este caso es el grupo socioeconómico Bajo.</p></li>
-<li><p>El coeficiente para Medio (0.61) indica que, en promedio, los estudiantes de nivel socioeconómico Medio tienen un desempeño 0.61 puntos más alto que los estudiantes de nivel socioeconómico Bajo.</p></li>
-<li><p>El coeficiente para Alto (0.86) indica que, en promedio, los estudiantes de nivel socioeconómico Alto tienen un desempeño 0.86 puntos más alto que los estudiantes de nivel socioeconómico Bajo.</p></li>
-</ul></li>
-</ol>
-<p>Estas interpretaciones sugieren que tanto el tipo de dependencia de los establecimientos educativos como el grupo socioeconómico de los estudiantes tienen un impacto significativo en el desempeño educativo, con diferencias importantes entre los distintos tipos de establecimientos y grupos socioeconómicos.</p>
-<section id="parte-2.1-cálculo-de-valores-predichos-de-un-coef.-de-regresión" class="level4">
-<h4 class="anchored" data-anchor-id="parte-2.1-cálculo-de-valores-predichos-de-un-coef.-de-regresión">Parte 2.1 <strong>Cálculo de Valores Predichos de un Coef. de Regresión</strong></h4>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_depe2, <span class="at">data=</span>simce2m2017_finalnum)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knitreg</span>(<span class="fu">list</span>(reg2), </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"Modelo 1"</span>),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.coef.names =</span> <span class="fu">c</span>(<span class="st">"Intercepto"</span>, </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular subvencionado &lt;br&gt; &lt;i&gt;(Ref. Dep.: Municipal)&lt;/i&gt;"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular pagado"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_depe2, <span class="at">data=</span>simce2m2017_finalnum)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knitreg</span>(<span class="fu">list</span>(reg2), </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"Modelo 1"</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">custom.coef.names =</span> <span class="fu">c</span>(<span class="st">"Intercepto"</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular subvencionado &lt;br&gt; &lt;i&gt;(Ref. Dep.: Municipal)&lt;/i&gt;"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Dependencia: Particular pagado"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
 <caption>
@@ -1133,18 +1042,18 @@ Num. obs.
 
 </table>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(reg2, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"cod_depe2"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">fill=</span><span class="st">"grey"</span>)<span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Código de Dependencia"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span>, </span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular subvencionado"</span>, </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular pagado"</span>)) <span class="sc">+</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">16</span>), </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">16</span>, <span class="at">by =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(reg2, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"cod_depe2"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">fill=</span><span class="st">"grey"</span>)<span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Código de Dependencia"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Municipal"</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular subvencionado"</span>, </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"Particular pagado"</span>)) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">16</span>), </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">16</span>, <span class="at">by =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-plot-reg2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1152,6 +1061,26 @@ Num. obs.
 <figcaption class="figure-caption">Figure&nbsp;1: reg2</figcaption>
 </figure>
 </div>
+</div>
+</div>
+<p>Para interpretar los valores predichos de este modelo, se debe tener en cuenta que la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el tipo de dependencia del establecimiento (cod_depe2). El desempeño promedio de los establecimientos municipales en el SIMCE 2017 es de aproximadamente 1.20 puntos, es decir se espera que los establecimientos de dependencia municipal tengan un desempeño académico de 1.20 en la escala utilizada en el estudio, para los establecimientos particulares subvencionados se predice un desempeño promedio 0.59 puntos mayor que los municipales, mientras que los particulares pagados un 0.98. El modelo expone un 13% de variabilidad en el desempeño del establecimiento en la prueba SIMCE 2° medio 2017, en suma el modelo indica que se espera un desempeño superior de parte de los establecimientos particulares pagados y subvencionados en comparación con los municipales, siendo este efecto mayor en los p.&nbsp;pagados.</p>
+<p><strong>Modelo 2 (reg3):</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(reg3, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">""</span>, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.values =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">dot.size =</span> <span class="dv">3</span>, </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">line.size =</span> <span class="dv">1</span>, </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">value.size =</span> <span class="dv">4</span>, </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">spacing =</span> <span class="dv">1</span>, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">vline.color =</span> <span class="st">"blue"</span>, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">axis.labels =</span> <span class="fu">c</span>(<span class="st">"Bajo"</span>, </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Medio"</span>, </span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"Alto"</span>), </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Trabajo04_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>reg3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(cdm_2017 <span class="sc">~</span> cod_grupo, <span class="at">data=</span>simce2m2017_finalnum)</span>
@@ -1280,19 +1209,26 @@ Num. obs.
 </div>
 </div>
 </div>
-</section>
-<section id="parte-3-análisis-e-interpretación" class="level4">
-<h4 class="anchored" data-anchor-id="parte-3-análisis-e-interpretación">Parte 3 Análisis e Interpretación</h4>
+<p>En este modelo, la variable dependiente es el desempeño académico (cdm_2017) y la variable independiente es el grupo socioeconómico (cod_grupo2), el valor predicho de desempeño académico para un establecimiento ubicado en un GSE: Bajo es 1.30, lo que significa que ese puntaje es el esperado para los establecimientos de ese grupo socioeconómico, el valor para los establecimientos GSE: Medio es de 0.61 unidades más alto que los anteriores y para los GSE: Alto es de un 0.86, esto quiere que decir que se espera que los establecimientos de GSE: Medio y Alto tengan en comparación un desempeño 0.61 y 0.86 puntos (respectivamente) más alto que los de GSE: Bajo. (Los tres puntajes expuestos cuentan con significancia estadística alta ya que: (p &lt; 0.001)) El 19% de la variabilidad en el desempeño académico se explica por el grupo socioeconómico, se concluye que en este modelo se espera que los establecimientos ubicados en los GSE Alto y Medio tengan mejores resultados en cuanto a desempeño académico en comparación con los establecimientos que pertenezcan a un GSE Bajo.</p>
+<p>Los resultados de los modelos de regresión lineal presentados subrayan la relación entre el tipo de dependencia del establecimiento educativo, el grupo socioeconómico y el desempeño académico SIMCE de los estudiantes en Chile. Los hallazgos indican que tanto el tipo de dependencia como el GSE pueden ser predictores significativos del rendimiento académico, con los establecimientos particulares (P. subvencionados y P. pagados) y los estudiantes de GSE medio y alto mostrando mejores desempeños académicos en comparación con sus contrapartes municipales y de GSE bajo.</p>
 </section>
 <section id="conclusiones" class="level4">
 <h4 class="anchored" data-anchor-id="conclusiones">Conclusiones</h4>
+<p>Los resultados de los modelos de regresión lineal presentados subrayan la relación entre la dependencia del establecimiento educativo, el grupo socioeconómico y el desempeño académico de los estudiantes en Chile. Los hallazgos indican que tanto el tipo de dependencia como el GSE son predictores significativos del rendimiento académico, con los establecimientos particulares (subvencionados y pagados) y los estudiantes de GSE medio y alto mostrando mejores desempeños académicos en comparación con sus contrapartes municipales y de GSE bajo, esto sugiere que las desigualdades en el desempeño académico están vinculadas tanto a la estructura del sistema educativo como al contexto socioeconómico en el que se encuentran los establecimientos, las tablas y gráficos acumuladas a lo largo de los trabajos realizados muestran claramente una distribución desigual entre establecimientos por GSE y su tipo de dependencia que se refleja en los puntajes del SIMCE. Las implicaciones de estos resultados son importa pues la perpetuación de un sistema académico que favorece la competencia y la privatización puede continuar agravando las desigualdades tanto sociales como académicas en Chile.</p>
+<p>La segregación socioeconómica observada sugiere la necesidad de seguir estudiando el fenómeno, como se plantea en la problematización la privatización e implementación de un sistema educativo neoliberal durante la dictadura, ha hecho que estos modelos mercantiles operen también en la educación, por lo que la libre elección de los padres al elegir un establecimiento o la selección de estudiantes por parte de los mismos, que pareciera ser una buena idea se ve limitada por diferentes factores económicos, sociales, geográficos, etc. Por lo que la libre elección sólo queda en la teoría, y las claras desigualdades socioeconómicas del país se reproducen en el proceso de aprendizaje de los estudiantes chilenos, influyendo en las condiciones de estudio como en el desempeño académico que se puede medir con pruebas estandarizadas como el SIMCE.</p>
+<p>La literatura existente respalda estos hallazgos, por ejemplo, <span class="citation" data-cites="budnikEmpresaEducativaChilena2011">Budnik et al. (<a href="#ref-budnikEmpresaEducativaChilena2011" role="doc-biblioref">2011</a>)</span> han documentado cómo la segregación escolar y las desigualdades socioeconómicas se reflejan en los resultados educativos, estas investigaciones han resaltado la necesidad de intervenciones integrales que consideren tanto factores institucionales como contextuales para promover una mayor equidad en el sistema educativo chileno. Futuras investigaciones podrían profundizar en los mecanismos específicos a través de los cuales se produce esta segregación ya que no existe ninguna medida de segregación escolar como tal ni convenciones entre expertos al respecto. Asimismo, poder incluir en los análisis otros factores, como la ubicación geográfica o la infraestructura escolar, y revisar si influyen en la calidad educativa, fomentando la segregación.</p>
+
 </section>
 </section>
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-budnikEmpresaEducativaChilena2011" class="csl-entry" role="listitem">
+Budnik, Jenny Assaél, Rodrigo Cornejo Chávez, Juan González López, Jesús Redondo Rojo, Rodrigo Sánchez Edmonson, and Mario Sobarzo Morales. 2011. <span>“La Empresa Educativa <span>Chilena</span>.”</span> <em>Educa<span>ç</span><span>ã</span>o &amp; Sociedade</em> 32 (115): 305–22. <a href="https://doi.org/10.1590/S0101-73302011000200004">https://doi.org/10.1590/S0101-73302011000200004</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Informe teórico en <a href="https://naxinii.github.io/Trabajos/Trabajo01.html">Trabajo01 (naxinii.github.io)</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

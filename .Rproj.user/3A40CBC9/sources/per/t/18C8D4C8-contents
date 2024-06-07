@@ -1,0 +1,278 @@
+---
+title: "Trabajo03"
+author: "IgnaciaCS"
+format: html
+editor: visual
+toc: true
+link-citations: true
+bibliography: Trabajo02.bib
+link-bibliography: true
+---
+
+# Trabajo 03: R para Análisis Estadístico
+
+## Asociación de variables y construcción de índices
+
+## Por: Ignacia Castillo Soto
+
+### **Mercantilización del sistema educativo y segregación escolar en Chile**
+
+#### Introducción
+
+###### (Trabajo 01)
+
+Cómo se mencionó en la primera entrega[^1], la mercantilización del sistema educativo en el país comienza con las reformas neoliberales implementadas en dictadura, las cuales debilitaron el sistema educativo estatal promoviendo los fines de lucro y la competencia individual, a pesar de nuevas reformas, estas no han generado cambios sustanciales en las politicas educativas las cuales han llevado a una extrema privatización de la educación, la cual ha fomentado la segregación y desigualdad de oportunidades educativas en Chile.
+
+[^1]: Informe teórico en [Trabajo01 (naxinii.github.io)](https://naxinii.github.io/Trabajos/Trabajo01.html)
+
+La segregación escolar se refiere a la distribución desigual de los estudiantes en las escuelas según sus características socioeconómicas o culturales. En Chile, la segregación se evidencia tanto en la facultad que tienen los establecimientos para seleccionar estudiantes como en la libertad de elección de los padres, libertad teórica, ya que en la práctica, esta elección puede estar limitada por factores socioeconómicos y culturales, lo que lleva a la concentración de ciertos grupos en determinadas escuelas.
+
+Las brechas educativas han aumentado debido a la naturaleza del sistema educacional actual, el cual reproduce las desigualdades preexistentes en el país. La idea principal de esta investigación se centra en cómo las prácticas de privatización han fomentado la segregación escolar, tomando los datos disponibles que entrega la Agencia de la Calidad de la Educación de la prueba SIMCE 2017 2° medio , seleccionando las variables que podrían reflejar mejor este fenómeno.
+
+#### Análisis descriptivo
+
+###### (Trabajo 02)
+
+SIMCE es una evaluación cuyo objetivo es conocer los resultados educativos de los establecimientos, evaluando el logro de los contenidos y habilidades del Currículum Nacional, recogiendo información sobre el contexto educativo a través de cuestionarios que responden directores(as), docentes, estudiantes, padres, madres y apoderados, de modo de analizar los resultados en forma integral.
+
+La segunda entrega de este curso[^2] contó con la generación de una nueva base de datos a partir de las bases originales del proceso SIMCE 2017 para los cursos de 2° medio a nivel país, junto a la selección, procesamiento y analisis descriptivo de las variables relevantes para el informe, las cuales son:
+
+[^2]: Procesamiento y análisis completo en [Trabajo02 (naxinii.github.io)](https://naxinii.github.io/Trabajos/Trabajo02.html)
+
+-   VARIABLE 1:"cod_depe2" = Código de dependencia 3 categorías (Municipal(1); Particular subvencionado(2); Particular pagado(3))
+
+-   VARIABLE 2: "cod_grupo" = Código de grupo socioeconómico (Bajo(1);Medio bajo(2);Medio(3);Medio alto(4);Alto(5))
+
+-   VARIABLE 3: "cdm_2017" = Categoría de Desempeño 2017 (INSUFICIENTE(1), MEDIO-BAJO(2), MEDIO(3) Y ALTO(4))
+
+Se destacó que la mayoría de los establecimientos tienen un desempeño académico medio, seguido por un desempeño medio-bajo. En cuanto al tipo de establecimiento una gran mayoria son del tipo municipal subvencionado. En relación con el GSE más del 50% de establecimientos se encuentran entre el Medio y el Bajo. Se incluyen gráficos que muestran la distribución de las categorías de desempeño y del tipo de establecimiento. En el primer gráfico se observa una distribución desigual entre las categorías, destacando el desempeño medio como el más común. En el segundo gráfico, se destaca la minoría de colegios particulares pagados en comparación con los subvencionados.
+
+```{r}
+pacman::p_load(dplyr, 
+               sjmisc, 
+               car, 
+               sjlabelled, 
+               stargazer, 
+               haven,
+               kableExtra,
+               sjPlot,
+               summarytools,
+               ggplot2)
+rm(list=ls())       
+options(scipen=999) 
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
+
+#| label: fig-cdm_2017
+#| fig-cap: “Categorías de Desempeño”
+graph1 <- simce2m2017_final %>% ggplot(aes(x = cdm_2017)) + 
+  geom_bar(fill = "coral")+
+  labs(title = "Categoría de Desempeño 2017",
+       x = "Categoría de Desempeño",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph1
+#| label: fig-cod_depe2
+#| fig-cap:  “Código de Dependencia Establecimiento”
+graph2 <- simce2m2017_final %>% ggplot(aes(x = cod_depe2)) + 
+  geom_bar(fill = "green")+
+  labs(title = "Código de Dependencia Establecimiento",
+       x = "Codigo Dependencia",
+       y = "Frecuencia") +
+  theme_bw()
+
+graph2
+```
+
+#### Asociación de variables y construcción de índices
+
+###### (Trabajo 03)
+
+#### Parte 1. Preparación de datos
+
+Para el trabajo 02 se realizó la preparación de los datos y se generaron 2 bases (la 1ra incluye los casos NA y la 2da no) simce2m2017_total.RData y simce2m2017_final.Rdata
+
+Revisamos que los NA no sean más del 10% para ver si podemos hacer el análisis con casos completos, luego de eso tenemos que sólo el 3.859527% del total son casos perdidos lo cual no supone problemas para trabajar con la base "simce2m2017_final.RData"[^3]
+
+[^3]: PD: La preparación y tratamiento de los casos perdidos con "listwise deletion" se encuentra en entre las líneas 203 - 215 y 260 - 276 del Script "Procesamiento(2)" del Trabajo 2
+
+```{r}
+pacman::p_load(dplyr, 
+               sjmisc, 
+               sjPlot, 
+               sjlabelled, 
+               kableExtra, 
+               GGally, 
+               corrplot,
+               tidyverse, 
+               car, 
+               haven,
+               summarytools,
+               psych)
+
+rm(list=ls())       
+options(scipen=999)
+
+#Carga de la base de datos
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_total.RData")
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
+
+dim(simce2m2017_total)
+dim(simce2m2017_final)
+
+2876-2765
+
+111/2876*100
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_final.RData")
+dim(simce2m2017_final)
+frq(simce2m2017_final)
+```
+
+Convertir variables desde \<factor\> a \<numeric\>, recodificar, re-agregar etiquetas y nombres[^4]
+
+[^4]: Esto según los códigos contenidos en las glosas que se encuentran en la carpeta "input" bajo el nombre de "simce2m2017_glosas"
+
+```{r}
+simce2m2017_final$cod_grupo <- as.numeric(factor(simce2m2017_final$cod_grupo, levels = c("Bajo","Medio bajo","Medio","Medio alto","Alto")))
+
+simce2m2017_final$cod_depe2 <- as.numeric(factor(simce2m2017_final$cod_depe2, levels =c("Municipal", "Particular subvencionado","Particular pagado")))
+
+simce2m2017_final$cdm_2017 <- as.numeric(factor(simce2m2017_final$cdm_2017, levels =c("INSUFICIENTE","MEDIO-BAJO","MEDIO","ALTO")))
+
+frq(simce2m2017_final)
+
+#Recodificar para que la escala parta de "0" (Práctico 7)
+
+simce2m2017_final$cod_grupo <- recode(simce2m2017_final$cod_grupo,"1=0; 2=1; 3=2; 4=3; 5=4")
+
+simce2m2017_final$cod_depe2 <- recode(simce2m2017_final$cod_depe2,"1=0; 2=1; 3=2")
+
+simce2m2017_final$cdm_2017 <- recode(simce2m2017_final$cdm_2017,"1=0; 2=1; 3=2; 4=3")
+
+frq(simce2m2017_final)
+
+
+simce2m2017_finalnum <- simce2m2017_final
+save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+dim(simce2m2017_finalnum)
+frq(simce2m2017_finalnum)
+
+#Re-agregar etiquetas y nombrar
+
+simce2m2017_finalnum$cod_grupo <- set_labels(simce2m2017_finalnum$cod_grupo,
+                                             labels = c("Bajo"=0,
+                                                        "Medio bajo"=1,
+                                                        "Medio"=2,
+                                                        "Medio alto"=3,
+                                                        "Alto"=4))
+
+simce2m2017_finalnum$cod_grupo <- set_label(x = simce2m2017_finalnum$cod_grupo,label = "GSE")
+
+simce2m2017_finalnum$cod_depe2 <- set_labels(simce2m2017_finalnum$cod_depe2,
+                                             labels = c("Municipal"=0,
+                                                        "Particular subvencionado"=1,
+                                                        "Particular pagado"=2))
+
+simce2m2017_finalnum$cod_depe2 <- set_label(x = simce2m2017_finalnum$cod_depe2,label = "Código dependencia")
+
+simce2m2017_finalnum$cdm_2017 <- set_labels(simce2m2017_finalnum$cdm_2017,
+                                            labels = c("INSUFICIENTE"=0,
+                                                       "MEDIO-BAJO"=1,
+                                                       "MEDIO"=2,
+                                                       "ALTO"=3))
+
+simce2m2017_finalnum$cdm_2017 <- set_label(x = simce2m2017_finalnum$cdm_2017,label = "Categoría desempeño")
+
+frq(simce2m2017_finalnum)
+save(simce2m2017_finalnum,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
+```
+
+#### Parte. 2 Matrices de correlación // Tablas de Contingencia
+
+```{r}
+#| label: tbl-sjt-xtab1
+#| tbl-cap: "Código dependencia y GSE"
+sjt.xtab(simce2m2017_finalnum$cod_depe2, simce2m2017_finalnum$cod_grupo,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
+En la @tbl-sjt-xtab1 podemos ver que predominantemente los establecimientos de dependencia municipal se concentran en los GSE más bajos (64% en GSE bajo y 35.8% en GSE medio bajo), mientras que los establecimientos subvencionados no se caracterizan por un GSE en particular, las proporciones se concentran entre los GSE medio y medio-alto, por último los establecimientos particulares pagados pertenecen casi exclusivamente al GSE alto (94%). Esto muestra la alta segregación económica que existe al clasificar los tipos de establecimientos que existen en el país lo que explica que sea un factor a la hora de realizar estudios de las diferencias educativas que pueden existir, los grupos socioeconómicos más bajos tienden a asistir a establecimientos municipales mientras que los grupos altos a particulares pagados, esto se explica por si sólo ya que el asistir a un colegio particular requiere de ciertas condiciones socioeconómicas que lo permitan.
+
+```{r}
+#| label: tbl-sjt-xtab2
+#| tbl-cap: "Código dependencia y Categoría desempeño"
+sjt.xtab(simce2m2017_finalnum$cod_depe2, simce2m2017_finalnum$cdm_2017,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
+Revisando la @tbl-sjt-xtab2 extraemos principalmente que la distribución del desempeño en la prueba SIMCE 2017 indica que los colegios particulares pagados tienen un desempeño académico significativamente mejor que los colegios municipales, con los particulares subvencionados ubicándose en una posición intermedia, sin embargo, considerando la cantidad de establecimientos existentes en cada categoría, tiene sentido que los colegios particulares se encuentren en menor proporción, ya que hay menos en total.
+
+```{r}
+#| label: tbl-sjt-xtab3
+#| tbl-cap: "GSE y Categoría desempeño"
+sjt.xtab(simce2m2017_finalnum$cod_grupo, simce2m2017_finalnum$cdm_2017,
+         show.col.prc=TRUE,
+         show.summary=FALSE,
+         encoding = "UTF-8")
+```
+
+Al ver la @tbl-sjt-xtab3 , la relación entre el GSE y el desempeño académico en la de los establecimientos es clara: entre mejor posicionados socioeconómicamente se encuentren los establecimientos educativos, mejor es su desempeño académico en el sistema nacional de evaluación de resultados de aprendizaje
+
+Las tablas de contingencia muestran que el factor socioeconómico es un factor importante a la hora de analizar la segregación educativa, ya que existen diferencias significativas en el desempeño académico en las pruebas de medición estandarizadas que son aplicadas a todos los establecimientos, el hecho de que la educación en Chile esté construida como un modelo de mercado y la libre elección de los establecimientos particulares hace que resalte la desigualdad educativa en el sistema escolar chileno, viéndose beneficiado en resultados académicos, aquellos que asisten a establecimientos que son clasificados como GSE Alto y Medio-Alto.
+
+#### Parte 2.2 Construcción de Escalas - Reporte de Consistencia Interna: Alfa de Chronbach
+
+```{r}
+#Construcción de Escalas
+
+load("~/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum.RData")
+frq(simce2m2017_finalnum)
+dim(simce2m2017_finalnum)
+
+#Utilizaremos las dos variables ordinales: cod_grupo y cdm_2017, sumado a que la base "simce2m2017_finalnum" ya se encuentra sin casos NA
+
+#Estimar consistencia interna: Alfa de Chronbach
+
+psych::alpha(dplyr::select(simce2m2017_finalnum, cdm_2017, cod_grupo))
+```
+
+El coeficiente alfa de 0.57 sugiere una consistencia no favorable entre ambas variables analizadas sin embargo para los propósitos del trabajo vamos a trabajar tratando de realizar la escala de igual manera pero no se seguirá trabajando con ella.
+
+```{r}
+simce2m2017_finalnum2 <- simce2m2017_finalnum %>% 
+  rowwise() %>% 
+  mutate(cond_socioeduc = sum(cdm_2017, cod_grupo))
+summary(simce2m2017_finalnum2$cond_socioeduc)
+```
+
+```{r}
+save(simce2m2017_finalnum2,file = "C:/Users/nachi/OneDrive/Documentos/Universidad/UAH 5° Semestre/OFC R para análisis estadístico/Trabajos/input/data-proc/simce2m2017_finalnum2.RData")
+```
+
+```{r}
+#| label: fig-plot-condicion
+#| fig-cap: "Histograma Condición Socioeducativa"
+ggplot(simce2m2017_finalnum2, aes(x = cond_socioeduc)) +
+  geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
+  theme_bw() +
+  xlab("Condición Socioeducativa") +
+  ylab("Cantidad")
+```
+
+Esta distribución puede ser indicativa de un sistema educativo donde la mayoría de los estudiantes se encuentran en situaciones medias en términos de desempeño académico y grupo socioeconómico, sin embargo se evidencia la existencia de desigualdades o segregación ya que la distribución de estas condiciones educativas concentraría a minorías en los extremos desfavorables (o más favorables).
+
+#### Conclusiones
+
+Los resultados de este trabajo principalmente de las tablas de contingencia ejemplifican como los establecimientos particulares pagados tienden a caracterizarse como grupos socioeconómicos altos, mientras que los establecimientos municipales como grupos socioeconómicos bajos, reflejando una distribución que perpetua desigualdades, fiel reflejo del modelo neoliberal chileno, desigualdades que también se visualizan en el desempeño SIMCE, donde los colegios particulares pagados obtienen consistentemente mejores resultados que los municipales, implicaciones significativas puesto que respaldan la teoría de que la privatización y los mecanismos de mercado en la educación aumentan las brechas educativas, como sugieren @budnikEmpresaEducativaChilena2011 y @sandracarrilloSegregacionEscolarAmerica2020.
